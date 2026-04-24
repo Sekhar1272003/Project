@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+
+<style>
+
+/* Page Background */
+body {
+    background-color: #098089;
+    font-family: Georgia;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    }
+
+/* Form Container */
+.form-box {
+    width: 700px;
+    margin: auto;
+}
+
+/* Table Layout */
+table {
+    width: 100%;
+}
+
+/* Labels */
+td:first-child {
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Inputs */
+input, select, textarea {
+    padding: 8px;
+    width: 80%;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+/* Small Inputs (DOB) */
+.small {
+    width: 60px;
+}
+
+/* Radio & Checkbox */
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+}
+
+/* Button */
+button {
+    padding: 8px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+    color: white;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Student Registration Form</h1>
+
+<div class="form-box">
+
+<form>
+
+<table>
+
+<tr>
+<td>Roll No :</td>
+<td><input type="text" required></td>
+</tr>
+
+<tr>
+<td>Student Name :</td>
+<td>
+<input type="text" placeholder="First Name"> -
+<input type="text" placeholder="Last Name">
+</td>
+</tr>
+
+<tr>
+<td>Father's Name :</td>
+<td><input type="text"></td>
+</tr>
+
+<tr>
+<td>Mother's Name :</td>
+<td><input type="text"></td>
+</tr>
+
+<tr>
+<td>Date of Birth :</td>
+<td>
+   <input type="text" class="small" placeholder="DD"> -
+   <input type="text" class="small" placeholder="MM"> -
+   <input type="text" class="small" placeholder="YYYY">
+</td>
+</tr>
+
+<tr>
+<td>Mobile No :</td>
+<td>
+<input type="text" class="small" value="+91"> -
+<input type="text">
+</td>
+</tr>
+
+<tr>
+<td>Email ID :</td>
+<td><input type="email"></td>
+</tr>
+
+<tr>
+<td>Password :</td>
+<td><input type="password"></td>
+</tr>
+
+<tr>
+<td>Gender :</td>
+<td>
+   <input type="radio" name="g"> Male
+   <input type="radio" name="g"> Female
+   <input type="radio" name="g"> Other
+</td>
+</tr>
+
+<tr>
+<td>Department :</td>
+<td>
+    <input type="checkbox"> CSE
+    <input type="checkbox"> IT
+    <input type="checkbox"> ECE
+    <input type="checkbox"> Civil
+    <input type="checkbox"> Mech
+</td>
+</tr>
+
+<tr>
+<td>Course :</td>
+<td>
+<select>
+       <option>Select Course</option>
+       <option>MERN Stack</option>
+       <option>Java Full Stack</option>
+       <option>Python Full Stack</option>
+       <option>Data Science</option>
+       <option>DSA</option>
+       <option>System Design</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Student Photo :</td>
+<td><input type="file"></td>
+</tr>
+
+<tr>
+<td>City :</td>
+<td><input type="text"></td>
+</tr>
+
+<tr>
+<td>State :</td>
+<td><input type="text"></td>
+</tr>
+
+<tr>
+<td>Country :</td>
+<td><input type="text"></td>
+</tr>
+
+<tr>
+<td>PIN Code :</td>
+<td><input type="number"></td>
+</tr>
+
+<tr>
+<td>Address :</td>
+<td><textarea rows="4"></textarea></td>
+</tr>
+
+<tr>
+<td>Hobbies :</td>
+<td>
+   <input type="checkbox"> Reading
+   <input type="checkbox"> Sports
+   <input type="checkbox"> Music
+   <input type="checkbox"> Coding
+</td>
+</tr>
+
+<tr>
+<td>Qualification :</td>
+<td>
+<select>
+    <option>Select</option>
+    <option>10th</option>
+    <option>Intermediate</option>
+     <option>Diploma</option>
+    <option>B.Tech</option>
+    <option>M.Tech</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td align="center" colspan="2">
+    <button type="submit">Register</button>
+    <button type="reset">Reset</button>
+</td>
+</tr>
+
+</table>
+
+</form>
+
+</div>
+
+</body>
+</html>
