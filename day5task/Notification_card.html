@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food App Notifications</title>
+
+<style>
+
+/* Basic Page Style */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* 1. Sticky Header */
+.header {
+    position: sticky;
+    top: 0;
+    background-color: #ff5722;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+}
+
+/* 2. Cards Layout */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+/* Card Design */
+.card {
+    position: relative;
+    background: white;
+    width: 220px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* 5. Badge */
+.badge {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+
+/* Button */
+.card button {
+    margin-top: 10px;
+    padding: 6px 10px;
+    border: none;
+    background: #ff5722;
+    color: white;
+    border-radius: 4px;
+}
+
+/* 3 & 4 Hidden Message */
+.message {
+    margin-top: 10px;
+    color: green;
+
+    display: none;
+    visibility: hidden;
+}
+
+/* Show on hover */
+.card:hover .message {
+    display: block;
+    visibility: visible;
+}
+
+/* 6. Fixed Help Button */
+.help {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    🍔 Food Delivery Notifications
+</div>
+
+<!-- Cards -->
+<div class="container">
+
+    <div class="card">
+        <div class="badge">1</div>
+        <h3>Order Placed</h3>
+        <p>Your food order is confirmed.</p>
+        <button>Track</button>
+        <div class="message">New Notification!</div>
+    </div>
+
+    <div class="card">
+        <div class="badge">2</div>
+        <h3>Out for Delivery</h3>
+        <p>Your order is on the way.</p>
+        <button>View</button>
+        <div class="message">New Notification!</div>
+    </div>
+
+    <div class="card">
+        <div class="badge">3</div>
+        <h3>Delivered</h3>
+        <p>Your order has arrived.</p>
+        <button>Rate</button>
+        <div class="message">New Notification!</div>
+    </div>
+
+</div>
+
+<!-- Fixed Button -->
+<button class="help">Help</button>
+
+</body>
+</html>
