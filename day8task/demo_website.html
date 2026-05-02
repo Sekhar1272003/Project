@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choco Dream | Artisan Chocolatier</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brown-dark: #3b1f0e;
+    --brown-mid: #6b3a1f;
+    --brown-light: #c49a6c;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --red: #d63327;
+    --text-dark: #2a1505;
+    --text-mid: #5c3d1e;
+    --swirl-bg: #f0eee8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 48px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 42px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-social {
+    display: flex;
+    gap: 12px;
+  }
+
+  .nav-social a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.6);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background 0.3s;
+  }
+
+  .nav-social a:hover { background: rgba(255,255,255,0.2); }
+
+  /* ── HERO ── */
+   .hero {
+            width: 100%;
+            height: 100vh;
+            background: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-background.jpg') no-repeat center/cover;
+            position: relative;
+            color: #fff;
+        }
+
+    .hero content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    .logo {
+            width: 1300px;
+        }
+  
+        /* ─── BADGE ─── */
+    .badge {
+      position: fixed;
+      bottom: 80px;
+      right: 8px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .demos-badge {
+      background: #fff;
+      color: #222;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .demos-badge span.num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ea4913;
+    }
+
+    .buy-btn {
+      background: #e81a1a;
+      color: #fff;
+      border: none;
+      padding: 14px 26px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 20px rgba(224,82,30,0.4);
+    }
+
+    .buy-btn:hover {
+      background: #c74318;
+      transform: translateY(-2px);
+    }
+     .btn-scroll {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  }
+
+  .btn-scroll:hover {
+    background: #333;
+    transform: translateY(-3px);
+  }
+
+  .btn-scroll i {
+    color: #fff;
+    font-size: 18px;
+  }
+  /* ── ARTISAN SECTION ── */
+  .artisan {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 100px 80px;
+    background: var(--swirl-bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .artisan::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(200,170,140,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(180,200,220,0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, rgba(220,180,200,0.08) 0%, transparent 40%);
+    animation: swirlMove 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes swirlMove {
+    0% { transform: scale(1) rotate(0deg); }
+    100% { transform: scale(1.05) rotate(2deg); }
+  }
+
+  .artisan-images {
+    position: relative;
+    flex: 0 0 420px;
+    height: 400px;
+  }
+
+  .stamp-circle {
+    position: absolute;
+    top: -20px; left: -10px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    border: 1.5px dashed var(--brown-light);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 3;
+  }
+
+  .stamp-inner {
+    text-align: center;
+    font-size: 0.5rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+  }
+
+  .artisan-img-main {
+    position: absolute;
+    top: 20px; left: 80px;
+    width: 280px; height: 320px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    border: 6px solid var(--white);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  }
+
+  .artisan-img-small {
+    position: absolute;
+    bottom: 0; left: 20px;
+    width: 160px; height: 160px;
+    object-fit: cover;
+    border: 5px solid var(--white);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    transform: rotate(-3deg);
+    z-index: 2;
+  }
+
+  .artisan-text {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .artisan-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+  }
+
+  .artisan-text h2 em { font-style: italic; color: var(--brown-mid); }
+
+  .artisan-text p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-mid);
+    max-width: 480px;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 1.5px solid var(--text-dark);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    background: var(--text-dark);
+    color: var(--white);
+  }
+
+  /* ── WORKSHOP GRID ── */
+  .workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .workshop-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    height: 420px;
+    border-radius: 8px;
+  }
+
+  .workshop-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .workshop-item:hover img { transform: scale(1.08); }
+
+  .workshop-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(30,10,0,0.55);
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    text-align: center;
+    line-height: 1.3;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .workshop-item:hover .workshop-label{opacity:1;}
+
+  .workshop-label em { font-style: italic; display: block; font-size: 2.5rem; }
+
+  /* ── FLAVORS ── */
+  .flavors {
+    padding: 100px 60px;
+    background: var(--swirl-bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flavors::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 60%, rgba(180,210,230,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 30%, rgba(210,180,220,0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(200,220,180,0.08) 0%, transparent 45%);
+  }
+
+  .flavors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .flavor-card {
+    text-align: center;
+  }
+
+  .flavor-img-wrap {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    overflow: visible;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .flavor-img-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    opacity: 0.35;
+  }
+
+  .flavor-card:nth-child(1) .flavor-img-wrap::before { background: #b0d4e8; }
+  .flavor-card:nth-child(2) .flavor-img-wrap::before { background: #e8d4b0; }
+  .flavor-card:nth-child(3) .flavor-img-wrap::before { background: #e8b0d4; }
+  .flavor-card:nth-child(4) .flavor-img-wrap::before { background: #d4e8b0; }
+
+  .flavor-img-wrap img {
+    width: 160px; height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    transform: translateY(-10px);
+  }
+
+  .flavor-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+  }
+
+  .flavor-card h3 em { font-style: italic; }
+
+  .flavor-card p {
+    font-size: 0.82rem;
+    line-height: 1.85;
+    color: var(--text-mid);
+    font-weight: 300;
+  }
+
+  /* ── VIDEO SECTION ── */
+  .video-section {
+  position: relative; 
+  height:100vh;
+  overflow: hidden;
+  padding: 0;
+  cursor:pointer;
+}
+.video-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/video-background.jpg') no-repeat center/cover;
+  transition: 0.5s;
+}
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  z-index: 2;
+  transition: 0.3s;
+}
+.vimeo-wrap {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 0.5s;
+}
+.vimeo-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.video-section:hover .vimeo-wrap {
+  opacity: 1;
+}
+
+.video-section:hover .play-btn {
+  opacity: 0;
+}
+
+.video-section:hover .video-bg {
+  transform: scale(1.05);
+  filter: blur(2px);
+}
+/* ── REVIEWS ── */
+  .reviews {
+    padding: 120px 60px;
+    text-align: center;
+    background: var(--swirl-bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reviews::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(190,210,230,0.12) 0%, transparent 70%);
+  }
+
+  .reviews-watermark {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(6rem, 15vw, 14rem);
+    font-style: italic;
+    color: rgba(100,70,40,0.06);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -4px;
+  }
+
+  .reviews h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reviews h2 em { font-style: italic; color: var(--brown-mid); }
+
+  .review-text {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--text-mid);
+    max-width: 780px;
+    margin: 0 auto 28px;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reviewer-name {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-dark);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-nav {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-nav button {
+    width: 40px; height: 40px;
+    border: 1.5px solid var(--text-dark);
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-dark);
+    transition: all 0.3s;
+  }
+
+  .review-nav button:hover { background: var(--text-dark); color: var(--white); }
+  /*location*/
+        .location {
+            width: 100%;
+            height: 500px;
+        }
+
+        .location iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .contact-card {
+            width: 90%;
+            background: white;
+            margin: -150px auto 0 auto;
+            padding: 50px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 80px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-side input,
+        .form-side textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #222;
+            background: transparent;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .form-side textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .form-side button {
+            width: 120px;
+            padding: 14px 0;
+            background: transparent;
+            border: 1px solid #222;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-side button:hover {
+            background: black;
+            color: white;
+        }
+
+        .info-side {
+            flex: 1;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .info-side h2 {
+            font-size: 52px;
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+
+        .info-side h2 span {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .info-side p {
+            color: #777;
+            line-height: 1.9;
+            font-size: 18px;
+        }
+
+        
+
+  /* ── GALLERY HEADER ── */
+  .gallery-header {
+    background-image: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/background-img-2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 150vh;
+    padding-top: 220px;
+    }
+
+  /* ── GALLERY GRID ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 20px;
+  }
+
+  .gallery-grid img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+
+  .gallery-grid img:hover { transform: scale(1.03); }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .footer-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/footer-img.jpg');
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(0.35);
+  }
+
+  .footer-content { position: relative; z-index: 2; }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .footer-social a {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+  }
+
+  .footer-social a:hover { background: rgba(255,255,255,0.2); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .artisan { flex-direction: column; padding: 60px 30px; }
+    .artisan-images { flex: none; width: 100%; height: 300px; }
+    .flavors { padding: 60px 24px; }
+    .flavors-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-grid img { height: 260px; }
+    .workshop-grid { grid-template-columns: 1fr; height: auto; }
+    .workshop-item { height: 200px; }
+    .contact { grid-template-columns: 1fr; }
+    .contact-form, .contact-info { padding: 60px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-logo">bridge</div>
+  <ul class="nav-links">
+    <li><a href="#home">HOME</a></li>
+    <li><a href="#team">TEAM</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="#" aria-label="Facebook">f</a>
+    <a href="#" aria-label="Twitter">𝕏</a>
+    <a href="#" aria-label="Instagram">⊕</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-content">
+      <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-graphic-3.png"class="logo" alt="Logo">
+  </div>
+</section>
+<!-- Badge & CTA -->
+  <div class="badge">
+    <div class="demos-badge">
+      <span class="num">630+</span> Bridge<br>demos
+    </div>
+    <button class="buy-btn">🛒 BUY NOW $69</button>
+  </div>
+<!-- Scroll-to-top button -->
+  <button class="btn-scroll" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Scroll to top">
+  <i class="fa-solid fa-angles-up"></i>
+</button>
+
+<!-- ── ARTISAN ── -->
+<section class="artisan" id="about">
+  <div class="artisan-images">
+    <div class="stamp-circle">
+      <div class="stamp-inner">
+        LOREM IPSUM<br>
+        <em style="font-size:1.4em">Lorem<br>Ipsum</em><br>
+        TRAD…
+      </div>
+    </div>
+    <img class="artisan-img-main"
+      src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80"
+      alt="Boulangerie exterior">
+    <img class="artisan-img-small"
+      src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&q=80"
+      alt="Chocolatiers at work">
+  </div>
+
+  <div class="artisan-text">
+    <h2><em>Artisan</em><br>chocolatier</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitatio</p>
+    <a href="#" class="btn-outline">READ ALL</a>
+  </div>
+</section>
+
+<!-- ── WORKSHOP GRID ── -->
+<section class="workshop-grid">
+  <div class="workshop-item">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-1.jpg" alt="Chocolate truffles">
+    <div class="workshop-label"><em>Love</em>chocolate</div>
+
+  </div>
+  <div class="workshop-item">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-2.jpg" alt="Workshop">
+    <div class="workshop-label"><em>Workshop</em>registration</div>
+  </div>
+  <div class="workshop-item">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-3.jpg" alt="Chocolate making">
+    <div class="workshop-label"><em>Think</em>chocolate</div>
+
+  </div>
+</section>
+
+<!-- ── FLAVORS ── -->
+<section class="flavors" id="team">
+  <div class="flavors-grid">
+    <div class="flavor-card">
+      <div class="flavor-img-wrap">
+        <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-1.jpg" alt="Dark chocolate">
+      </div>
+      <h3><em>Peper</em> &amp; sweet</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+    </div>
+    <div class="flavor-card">
+      <div class="flavor-img-wrap">
+        <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-2.jpg" alt="Mint chocolate">
+      </div>
+      <h3><em>Mint</em> &amp; sweet</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+    </div>
+    <div class="flavor-card">
+      <div class="flavor-img-wrap">
+        <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-3.jpg" alt="Hazelnut caramel">
+      </div>
+      <h3><em>Hazelnut</em> caramel</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+    </div>
+    <div class="flavor-card">
+      <div class="flavor-img-wrap">
+        <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-4.jpg" alt="Chilli chocolate">
+      </div>
+      <h3><em>Chilli</em> &amp; sweet</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── VIDEO ── -->
+<section class="video-section">
+ <div class="video-bg"></div>
+  <div class="play-btn"></div>
+
+  <div class="vimeo-wrap">
+    <iframe
+      src="https://player.vimeo.com/video/109264555?h=ac9ac6f44d&autoplay=0&color=ffffff&title=0&byline=0&portrait=0"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section class="reviews">
+  <div class="reviews-watermark">Happiness</div>
+  <h2><em>Chocolate</em> reviews</h2>
+  <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+  <div class="reviewer-name">Medison Jon</div>
+  <div class="review-nav">
+    <button aria-label="Previous">&#8249;</button>
+    <button aria-label="Next">&#8250;</button>
+  </div>
+</section>
+
+ <section class="location">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15441.421108620298!2d78.53545266982582!3d14.635763064998104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb38415c2014b91%3A0xf00b1495b18f53a8!2sMaheshwara%20Nagar%2C%20Valasa%20Palle%2C%20Andhra%20Pradesh%20516309!5e0!3m2!1sen!2sin!4v1777635515350!5m2!1sen!2sin"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+    <div class="contact-card">
+        <div class="form-side">
+            <input type="text" placeholder="Name*">
+            <input type="email" placeholder="Email*">
+            <textarea placeholder="Message"></textarea>
+            <button>SEND</button>
+        </div>
+        <div class="info-side">
+            <h2><span>Visit</span> our shops</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>09:00 - 19h Monday - Friday</p>
+            <p>75-11 Jewett Ave Jersey City, NJ</p>
+        </div>
+    </div>
+
+<!-- ── GALLERY HEADER ── -->
+<section class="gallery-header">
+</section>
+
+<!-- ── GALLERY ── -->
+<section class="gallery-grid" style="overflow:hidden;">
+  <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-6.jpg" alt="Gallery 1">
+  <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-5.jpg" alt="Gallery 2">
+  <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-4.jpg" alt="Gallery 3">
+  <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-3.jpg" alt="Gallery 4">
+  <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-2.jpg" alt="Gallery 5">
+  <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-1.jpg" alt="Gallery 6">
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-bg"></div>
+  <div class="footer-content">
+    <div class="footer-logo">bridge</div>
+    <div class="footer-copy">
+      © Copyright Qode Interactive — All Rights Reserved<br>
+      Proudly Made For You.
+    </div>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="Twitter">𝕏</a>
+      <a href="#" aria-label="Instagram">⊕</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
