@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chaco dream</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .topbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: none;
+      padding: 0 34px;
+      background: transparent;
+    }
+
+    .brand {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      display: block;
+      width: 120px;
+      height: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      flex: 1 1 auto;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0em;
+      font-size: 15.4px;
+      font-weight: 500;
+    }
+
+    .nav a {
+      color: rgba(255, 233, 226, 0.92);
+      text-decoration: none;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+    }
+
+    .social {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex: 0 0 auto;
+    }
+
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: #f4d5e2;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+
+    .social i {
+      color: #000000 !important;
+      font-size: 18px;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-img {
+      position: absolute;
+      top: 50%;
+      left: 46%;
+      transform: translate(-50%, -50%);
+      width: 90vw;
+      animation: fallDown 1.5s ease-out forwards;
+    }
+
+    .hero-graphic {
+      position: absolute;
+      left: 14px;
+      bottom: 22px;
+      z-index: 2;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      gap: 26px;
+    }
+
+    .hero-graphic-item {
+      display: block;
+      animation: fallDownGraphic 1.5s ease-out forwards;
+    }
+
+    .hero-graphic-float {
+      display: block;
+      animation: floatLoop 2.2s ease-in-out 1.5s infinite alternate;
+    }
+
+    .hero-graphic img {
+      display: block;
+    }
+
+    .hero-graphic-right {
+      position: absolute;
+      right: 18px;
+      top: 168px;
+      z-index: 2;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 72px;
+    }
+
+    .hero-graphic-right .hero-graphic-item {
+      align-self: flex-end;
+    }
+
+    .hero-graphic-one {
+      width: 126px;
+      align-self: flex-end;
+    }
+
+    .hero-graphic-two {
+      width: 96px;
+      margin-bottom: 10px;
+      align-self: flex-end;
+    }
+
+    .hero-graphic-right-one {
+      width: 94px;
+    }
+
+    .hero-graphic-right-two {
+      width: 122px;
+      margin-left: -12px;
+    }
+
+    @keyframes fallDown {
+      0% {
+        top: -200px;
+        opacity: 0;
+      }
+
+      100% {
+        top: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fallDownGraphic {
+      0% {
+        transform: translateY(-220px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatLoop {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /*chocolate*/
+    .chocolate {
+      display: flex;
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .left {
+      width: 50%;
+    }
+
+    .left img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .right h2 {
+      font-size: 60px;
+      line-height: 70px;
+      font-style: italic;
+      font-weight: bolder;
+      width: 10px;
+      margin-left: 30%;
+      text-align: center;
+      letter-spacing: -0.2px;
+    }
+
+    .right {
+      width: 50%;
+      margin-top: 50px;
+      text-align: center;
+      margin-left: 50px;
+    }
+
+    .right p {
+      color: #565656;
+      font-size: 18px;
+      line-height: 28px;
+      font-style: normal;
+      margin-top: 20px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .right button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      letter-spacing: 1.1;
+    }
+
+    .right button:hover {
+      background-color: #000000;
+      color: #fff;
+    }
+
+    .img {
+      display: flex;
+      gap: 20px;
+
+    }
+
+    .fixed-panel {
+      position: fixed;
+      right: 0;
+      bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      z-index: 999;
+    }
+
+    .fixed-box {
+      background: #fff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      width: 180px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .fixed-box .num {
+      font-size: 26px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .fixed-box .text {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.1;
+    }
+
+    .fixed-buy {
+      background: #ff2d55;
+      color: #fff;
+      border: none;
+      width: 180px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 20px;
+      background: #f5f5f5;
+      margin: 40px 0;
+    }
+
+    .gallery-section {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 20px;
+    }
+
+    .image {
+      position: relative;
+      flex: 1;
+      height: 510px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      transition: background 0.4s ease;
+      z-index: 1;
+    }
+
+    .overlay-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+      font-family: "Playfair Display", serif;
+      flex-direction: column;
+
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    .image:hover .overlay-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .overlay-text span {
+      font-size: 42px;
+      font-style: italic;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .overlay-text p {
+      font-size: 44px;
+      margin: 0;
+    }
+
+    .image:hover img {
+      transform: scale(1.08);
+    }
+
+    .image:hover::after {
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .footer-section {
+      width: 100%;
+      margin: 0;
+      padding: 80px 0 56px;
+      background-image: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/footer-img.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      text-align: center;
+      font-family: Georgia, serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: #f4cfe0;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+
+    .footer-social i {
+      color: #000000 !important;
+      font-size: 18px;
+    }
+
+    .flavor-section {
+      padding: 80px 20px;
+      background: #ffffff;
+    }
+
+    .flavor-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .flavor-item {
+      width: 23%;
+      text-align: center;
+    }
+
+    .flavor-img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .flavor-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .flavor-item h3 {
+      font-size: 26px;
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .flavor-item .italic {
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .flavor-item p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
+      max-width: 250px;
+      margin: 0 auto;
+    }
+
+    .video-section {
+      width: 100%;
+      position: relative;
+      margin: 60px 0;
+      padding: 0;
+    }
+
+
+    .video-wrapper {
+      position: relative;
+    }
+
+    .video-thumb {
+      width: 100%;
+      display: block;
+      transition: filter 0.4s ease, transform 0.4s ease;
+    }
+
+    .video-thumb:hover {
+      filter: brightness(0.7);
+      transform: scale(1.05);
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90px;
+      height: 90px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 90px;
+      font-size: 30px;
+      color: #000;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .play-button:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: #fff;
+    }
+
+    .video-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+    }
+
+    .video-modal:target {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .video-box {
+      width: 80%;
+      max-width: 900px;
+      margin: 8% auto;
+      background: #000;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -35px;
+      right: 0;
+      font-size: 28px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .review-section {
+      width: 100%;
+      background: #f5f5f5;
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .review-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .review-section::before {
+      content: "Happy clients";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 120px;
+      color: rgba(255, 182, 193, 0.2);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-card {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .gallery-card:hover .gallery-overlay {
+      opacity: 1;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="hero">
+    <header class="topbar" aria-label="Bridge header">
+      <div class="brand">
+        <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/lmobile-ogo.png" alt="Bridge">
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="demowebsite.html">HOME</a>
+        <a href="team.html">TEAM</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+
+      <div class="social" aria-label="Social links">
+        <a href="#" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </header>
+
+    <img class="img" src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-background.jpg"
+      alt="">
+    <img class="hero-img" src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-graphic-3.png"
+      alt="">
+    <div class="hero-graphic" aria-hidden="true">
+      <div class="hero-graphic-item">
+        <img class="hero-graphic-float hero-graphic-one"
+          src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/graphic-1.png" alt="">
+      </div>
+      <div class="hero-graphic-item">
+        <img class="hero-graphic-float hero-graphic-two"
+          src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/graphic-5.png" alt="">
+      </div>
+    </div>
+    <div class="hero-graphic-right" aria-hidden="true">
+      <div class="hero-graphic-item">
+        <img class="hero-graphic-float hero-graphic-right-two"
+          src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/graphic-3.png" alt="">
+      </div>
+      <div class="hero-graphic-item">
+        <img class="hero-graphic-float hero-graphic-right-one"
+          src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-graphic-2.png" alt="">
+      </div>
+    </div>
+  </div>
+
+  <section class="chocolate">
+    <div class="left">
+      <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/h1-img-1.jpg" alt="">
+    </div>
+    <div class="right">
+      <h2><em>Artisan</em><br>chocolatier</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam quis nostrud exercitation</p>
+      <button>READ ALL</button>
+    </div>
+  </section>
+
+  <div class="fixed-panel">
+    <div class="fixed-box">
+      <div class="num">630+</div>
+      <div class="text">Bridge demos</div>
+    </div>
+    <button class="fixed-buy">BUY NOW $69</button>
+  </div>
+
+  <section class="gallery-section">
+    <div class="gallery">
+
+      <div class="image">
+        <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-1.jpg" alt="">
+        <div class="overlay-text">
+          <span>Love</span>
+          <p>Chocolate</p>
+        </div>
+      </div>
+
+      <div class="image">
+        <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-2.jpg" alt="">
+        <div class="overlay-text">
+          <span>Workshop</span>
+          <p>registration</p>
+        </div>
+      </div>
+
+      <div class="image">
+        <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-3.jpg" alt="">
+        <div class="overlay-text">
+          <span>Think</span>
+          <p>Chocolate</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section class="flavor-section">
+    <div class="flavor-container">
+
+      <div class="flavor-item">
+        <div class="flavor-img" style="background-color:#cfe3e8;">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-1.jpg" alt="">
+        </div>
+        <h3><span class="italic">Peper</span> &amp; sweet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+      </div>
+
+      <div class="flavor-item">
+        <div class="flavor-img" style="background-color:#f2c7d7;">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-2.jpg" alt="">
+        </div>
+        <h3><span class="italic">Mint</span> &amp; sweet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+      </div>
+
+      <div class="flavor-item">
+        <div class="flavor-img" style="background-color:#cfe3e8;">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-3.jpg" alt="">
+        </div>
+        <h3><span class="italic">Hazelnut</span> caramel</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+      </div>
+
+      <div class="flavor-item">
+        <div class="flavor-img" style="background-color:#f2c7d7;">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-4.jpg" alt="">
+        </div>
+        <h3><span class="italic">Chilly</span> &amp; sweet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+      </div>
+
+    </div>
+  </section>
+  <section class="video-section">
+    <div class="video-wrapper">
+      <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/video-background.jpg"
+        class="video-thumb">
+      <a href="#videoModal" class="play-button">▶</a>
+    </div>
+
+    <div id="videoModal" class="video-modal">
+      <div class="video-box">
+        <a href="#" class="close-btn">✕</a>
+        <iframe title="vimeo-player" src="https://player.vimeo.com/video/109264555?h=ac9ac6f44d" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"   allowfullscreen></iframe>" frameborder="0"
+      
+        
+      </div>
+    </div>
+  </section>
+  <section class="review-section">
+    <div class="review-content">
+
+      <h2
+        style="font-family: 'Playfair Display', serif; font-size: 60px; font-style: italic; font-weight: 400; margin: 0;">
+        Chocolate <span style="font-style: normal;">reviews</span>
+      </h2>
+
+      <p style="font-family: 'Open Sans', sans-serif; font-size: 18px; margin: 20px auto; max-width: 800px;">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip
+      </p>
+
+      <h4 style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400;">
+        Medison Jon
+      </h4>
+
+    </div>
+  </section>
+  <section style="width:100%; margin:0; padding:60px 0 40px 0; overflow:hidden;">
+    <div style="padding:0 40px;">
+      <!-- MAP -->
+      <div style="width:100%; height:100vh; border-radius:15px; overflow:hidden;">
+        <iframe src="https://maps.google.com/maps?q=17.4396669,78.4893904&z=13&output=embed"
+          style="width:100%; height:100%; border:0; border-radius:15px;" loading="lazy" allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- FORM CARD (NOW OUTSIDE MAP) -->
+      <div
+        style="width:90%; max-width:900px; margin:-100px auto 0 auto; background:white; padding:45px; border-radius:12px; box-shadow:0 15px 50px rgba(0,0,0,0.2); position:relative; z-index:2;">
+
+        <div style="display:flex; gap:50px; flex-wrap:wrap;">
+
+          <!-- LEFT -->
+          <div style="flex:1; min-width:250px;">
+
+            <div style="margin-bottom:30px;">
+              <label style="font-size:12px; color:#888;">Name*</label>
+              <input type="text" style="width:100%; border:none; border-bottom:1px solid #ddd; padding:10px 0;">
+            </div>
+
+            <div style="margin-bottom:30px;">
+              <label style="font-size:12px; color:#888;">Email*</label>
+              <input type="email" style="width:100%; border:none; border-bottom:1px solid #ddd; padding:10px 0;">
+            </div>
+
+            <div style="margin-bottom:30px;">
+              <label style="font-size:12px; color:#888;">Message</label>
+              <textarea style="width:100%; border:none; border-bottom:1px solid #ddd; height:70px;"></textarea>
+            </div>
+
+            <button style="padding:12px 32px; border:1.5px solid #333; background:transparent; cursor:pointer;">
+              SEND
+            </button>
+
+          </div>
+
+          <!-- RIGHT -->
+          <div style="flex:1; min-width:250px; border-left:1px solid #e0e0e0; padding-left:30px;">
+
+            <h3 style="font-size:40px; font-weight:400;">
+              <span style="font-style:italic;">Visit</span> our shops
+            </h3>
+
+            <p style="color:#777;">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+
+            <p><strong>09:00–19h Monday - Friday</strong></p>
+            <p style="color:#777;">77-11 Jewell Ave Jersey City</p>
+
+            <p><strong>(+1) 555 678 786</strong></p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery/Image Section -->
+  <section style="width:100%; margin:0; padding:80px 0; background:white; overflow:hidden;">
+    <div style="padding:0 40px;">
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-1.jpg" alt="Gallery 1">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-2.jpg" alt="Gallery 2">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-3.jpg" alt="Gallery 3">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-4.jpg" alt="Gallery 4">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-5.jpg" alt="Gallery 5">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-card">
+          <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-6.jpg" alt="Gallery 6">
+          <div class="gallery-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <section class="footer-section">
+
+      <div class="footer-content">
+
+        <h2 style="font-size:42px; margin-bottom:20px; letter-spacing:2px;">bridge</h2>
+
+        <p style="font-size:16px; margin-bottom:8px;">
+          © Copyright Qode Interactive – All Rights Reserved
+        </p>
+        <p style="font-size:16px; margin-bottom:35px;">
+          Proudly Made For You.
+        </p>
+
+        <div class="footer-social">
+
+          <span>
+            <a href="https://www.facebook.com/QodeInteractive/" target="_blank">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+          </span>
+
+          <span>
+            <a href="https://twitter.com/QodeInteractive" target="_blank">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </span>
+
+          <span>
+            <a href="https://www.instagram.com/qodeinteractive/" target="_blank">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </span>
+
+        </div>
+
+      </div>
+    </section>
+  </footer>
+</body>
+
+</html>

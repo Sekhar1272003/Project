@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: relative;
+            color: #fff;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff2c55;
+            text-decoration: underline;
+        }
+
+        .socials span {
+            background: #e78294;
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .socials span:hover {
+            background: white;
+        }
+
+        .socials a {
+            color: #000;
+        }
+
+
+        /* CTA */
+        .fixed-panel {
+            position: fixed;
+            right: 0;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            z-index: 999;
+        }
+
+        .fixed-box {
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 180px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .fixed-box .num {
+            font-size: 26px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .fixed-box .text {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.1;
+        }
+
+        .fixed-buy {
+            background: #ff2d55;
+            color: #fff;
+            border: none;
+            width: 180px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* MAP SECTION */
+        .map-section {
+            position: relative;
+            height: 600px;
+            z-index: -1000;
+            margin-top: -600px;
+        }
+
+        /* MAP (iframe) */
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(100%) brightness(20%);
+        }
+
+        /* FLOATING CARD */
+        .contact-card {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f4f4f4;
+            padding: 50px;
+            width: 70%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* LEFT FORM */
+        .form {
+            width: 50%;
+        }
+
+        .form input,
+        .form textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #999;
+            background: transparent;
+            padding: 10px 0;
+            margin-bottom: 25px;
+            outline: none;
+        }
+
+        .form textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        /* BUTTON */
+        .form button {
+            padding: 10px 30px;
+            border: 1px solid #333;
+            background: transparent;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form button:hover {
+            background: #ff2c55;
+            color: #fff;
+            border-color: #ff2c55;
+        }
+
+        /* RIGHT CONTENT */
+        .info {
+            width: 50%;
+            text-align: center;
+        }
+
+        .info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .info h2 span {
+            font-style: italic;
+        }
+
+        .info p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .info .details {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .darkchoco {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        .darkchoco img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .footer {
+            position: relative;
+            height: 60vh;
+            background: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/footer-img.jpg') no-repeat center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            z-index: -100;
+        }
+
+        /* Dark overlay */
+        .footer .overlay1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        /* Content */
+        .footer .content1 {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo1 {
+            font-size: 50px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #fff;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #ff4d6d;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">bridge</div>
+            <ul class="nav-links">
+                <li><a href="demowebsite.html">HOME</a></li>
+                <li><a href="team.html">TEAM</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <div class="socials">
+                <span><a href="#"><i class="fa-brands fa-facebook-f"></i></a></span>
+                <span><a href="#"><i class="fa-brands fa-twitter"></i></a></span>
+                <span><a href="#"><i class="fa-brands fa-instagram"></i></a></span>
+            </div>
+        </nav>
+
+        <div class="fixed-panel">
+            <div class="fixed-box">
+                <div class="num">630+</div>
+                <div class="text">Bridge demos</div>
+            </div>
+            <button class="fixed-buy">BUY NOW $69</button>
+        </div>
+    </header>
+    <section class="map-section">
+
+        <!-- GOOGLE MAP -->
+        <iframe src="https://www.google.com/maps?q=New+Jersey&output=embed"></iframe>"
+        ></iframe>
+
+        <!-- FLOAT CARD -->
+        <div class="contact-card">
+
+            <!-- FORM -->
+            <div class="form">
+                <input type="text" placeholder="Name*">
+                <input type="email" placeholder="Email*">
+                <textarea placeholder="Message"></textarea>
+                <button>SEND</button>
+            </div>
+
+            <!-- INFO -->
+            <div class="info">
+                <h2><span>Visit</span> our shops</h2>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore.
+                </p>
+
+                <div class="details">
+                    09:00–19h Monday – Friday <br>
+                    75–11 Jewett Ave Jersey City, NJ 07304 USA <br>
+                    + (1) 555 678 786
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="final">
+        <div class="darkchoco">
+            <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/background-img-2.jpg" alt="">
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="overlay1"></div>
+
+        <div class="content1">
+            <h1 class="logo1">bridge</h1>
+
+            <p class="copyright">
+                © Copyright Qode Interactive – All Rights Reserved <br>
+                Proudly Made For You.
+            </p>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>
