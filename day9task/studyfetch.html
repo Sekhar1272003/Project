@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Fetch Task</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f3f3f3;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 95%;
+      background: #fff;
+      border-radius: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 25px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 35px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #1d4ed8;
+      color: #fff;
+      width: 130px;
+    }
+
+    .primary:hover {
+      background-color: #5279e6;
+    }
+
+    .outline {
+      background: #fff;
+      border: 1px solid #ccc;
+      width: 130px;
+    }
+
+    .outline:hover {
+      background: rgb(216, 214, 214);
+    }
+
+    .hero {
+      height: 150vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      font-weight: 500;
+    }
+
+    .hero span {
+      font-style: italic;
+    }
+
+    .hero button {
+      margin-top: 20px;
+      padding: 25px 50px;
+      border: none;
+      border-radius: 40px;
+      background: #1d4ed8;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hero button:hover {
+      background-color: #5279e6;
+    }
+
+    .float-img {
+      position: absolute;
+      border-radius: 20px;
+      overflow: hidden;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .float-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+
+      75% {
+        transform: translateX(15px);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+
+    }
+
+    .img1 {
+      top: 100px;
+      left: 150px;
+      width: 170px;
+      height: 170px;
+    }
+
+    .img2 {
+      top: 120px;
+      right: 300px;
+      width: 200px;
+      height: 200px;
+    }
+
+    .img3 {
+      top: 180px;
+      left: 40%;
+      width: 130px;
+      height: 130px;
+    }
+
+    .img4 {
+      bottom: 120px;
+      left: 200px;
+      width: 160px;
+      height: 180px;
+    }
+
+    .img5 {
+      bottom: 140px;
+      right: 500px;
+      width: 160px;
+      height: 120px;
+    }
+
+    .img6 {
+      bottom: 80px;
+      right: -30px;
+      width: 140px;
+      height: 300px;
+    }
+
+    .img7 {
+      bottom: 400px;
+      left: -50px;
+      width: 140px;
+      height: 250px;
+    }
+
+    .img8 {
+      bottom: 550px;
+      right: -20px;
+      width: 140px;
+      height: 180px;
+    }
+
+
+    .section {
+      padding: 80px 60px;
+    }
+
+    /* HEADING */
+    .section h1 {
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 1.2;
+      max-width: 700px;
+      margin-bottom: 80px;
+    }
+
+    /* STATS */
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    /* EACH BOX */
+    .stat-box {
+      flex: 1;
+    }
+
+    /* LEFT BORDER LINE */
+    .stat-box:first-child {
+      border-left: 2px solid #ddd;
+      padding-left: 40px;
+    }
+
+    /* CENTER DIVIDER */
+    .stat-box:last-child {
+      border-left: 2px solid #ddd;
+      padding-left: 40px;
+    }
+
+    /* NUMBERS */
+    .stat-number {
+      font-size: 100px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    /* TEXT */
+    .stat-text {
+      font-size: 20px;
+      color: #333;
+      max-width: 400px;
+    }
+
+    /* BUTTON */
+    .btn-container {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .btn2 {
+      background: #1d4ed8;
+      color: #fff;
+      border: none;
+      padding: 15px 70px;
+      border-radius: 40px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .btn2:hover {
+      background-color: #5279e6;
+    }
+
+    /*Video Section*/
+    .video-section {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .video-section h1 {
+      font-size: 40px;
+      margin-bottom: 40px;
+      color: #111827;
+    }
+
+    .video-section h4 {
+      margin-bottom: 20px;
+    }
+
+    .video-container {
+      max-width: 1200px;
+      margin: auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    * Section */
+.tabs-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.tabs-section h1 {
+  font-size: 40px;
+}
+
+.tabs-section p {
+  max-width: 800px;
+  font-size: 20px;
+  margin: auto;
+  color: #6b7280;
+}
+
+/* Hide radio */
+input {
+  display: none;
+}
+
+/* Tabs container (box style like image) */
+.tabs {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 40px auto 20px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Each tab */
+.tabs label {
+  flex: 1;
+  padding: 14px 10px;
+  cursor: pointer;
+  background: #f9fafb;
+  border-right: 1px solid #e5e7eb;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.tabs label:last-child {
+  border-right: none;
+}
+
+/* Active tab */
+#tab1:checked ~ .tabs label[for="tab1"],
+#tab2:checked ~ .tabs label[for="tab2"],
+#tab3:checked ~ .tabs label[for="tab3"],
+#tab4:checked ~ .tabs label[for="tab4"],
+#tab5:checked ~ .tabs label[for="tab5"],
+#tab6:checked ~ .tabs label[for="tab6"]{
+  background: white;
+  font-weight: 600;
+  box-shadow: inset 0 -2px 0 black;
+}
+
+/* Slider */
+.slider {
+  width: 1200px;
+  max-width: 95%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: white;
+}
+
+/* Track */
+.slides {
+  display: flex;
+  width: 600%;
+  transition: transform 0.6s ease;
+}
+
+/* Slide */
+.slide {
+  width: 100%;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+
+}
+
+/* Image */
+.left img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* Text */
+.right {
+  text-align: left;
+  flex: 1;
+  width: 100%;
+}
+
+.right small {
+  color: #0d0d0e;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.right h2 {
+  margin: 10px 0;
+  font-size: 50px;
+  margin-top: 20px;
+}
+
+.right p {
+  color: #4b5563;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+/* Button */
+.btn3 {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 18px;
+  background: #2563eb;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+/* Slide movement */
+#tab1:checked ~ .slider .slides { transform: translateX(0%); }
+#tab2:checked ~ .slider .slides { transform: translateX(-16.666%); }
+#tab3:checked ~ .slider .slides { transform: translateX(-33.333%); }
+#tab4:checked ~ .slider .slides { transform: translateX(-50%); }
+#tab5:checked ~ .slider .slides { transform: translateX(-66.666%); }
+#tab6:checked ~ .slider .slides { transform: translateX(-83.333%); }
+    .research {
+            background: rgb(197, 241, 236);
+            padding: 80px 100px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+        }
+
+        .left small {
+            font-size: 16px;
+            color: #111;
+        }
+
+        .left h1 {
+            font-size: 40px;
+            font-weight: 500;
+            margin-top: 15px;
+            line-height: 1.2;
+            max-width: 500px;
+        }
+
+        .right {
+            max-width: 420px;
+            text-align: left;
+        }
+
+        .right p {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .right a {
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .right a:hover {
+            color: #444;
+        }
+
+        .stats1 {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+
+        .stat1 {
+            flex: 1;
+            padding: 0 40px;
+        }
+
+
+        .stat1:nth-child(1) {
+            border-left: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .stat1:nth-child(2) {
+            border-left: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .stat1:nth-child(3) {
+            border-left: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .stat1 h2 {
+            font-size: 80px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+
+        .stat1 p {
+            font-size: 20px;
+            max-width: 320px;
+            line-height: 1.4;
+        }
+        .partnerships {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            padding: 80px 100px;
+        }
+
+        .image-box {
+            width: 520px;
+            height: 520px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            max-width: 500px;
+        }
+
+        .content small {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .content h1 {
+            font-size: 56px;
+            font-weight: 500;
+            margin: 15px 0 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #444;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btns {
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-outline {
+            color: #333;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .btn-outline:hover {
+            background: #f6f4f4;
+        }
+
+        .btn-primary {
+            background: #1d4ed8;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #3b82f6;
+        }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <img src="https://www.studyfetch.com/_next/image?url=%2Flogo-text-only.png&w=64&q=75" alt="logo">
+    </div>
+
+    <div class="nav-links">
+      <a href="#">Features</a>
+      <a href="#">Educators & Enterprise</a>
+      <a href="#">News</a>
+      <button class="btn primary">Start for Free</button>
+      <button class="btn outline">Login</button>
+    </div>
+  </div>
+
+  <section class="hero">
+
+    <div>
+      <h1>Learning that adapts<br>to <span>you</span></h1>
+      <button>Start learning</button>
+    </div>
+
+    <div class="float-img img1">
+      <img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Fhero%2Feight.webp&w=256&q=75">
+    </div>
+
+    <div class="float-img img2">
+      <img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Fhero%2Fsix.webp&w=256&q=75">
+    </div>
+
+    <div class="float-img img3">
+      <img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Fhero%2Fseven.webp&w=256&q=75">
+    </div>
+
+    <div class="float-img img4">
+      <img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Fhero%2Ftwo.webp&w=256&q=75">
+    </div>
+
+    <div class="float-img img5">
+      <img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Fhero%2Fthree.webp&w=256&q=75">
+    </div>
+
+    <div class="float-img img6">
+      <img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Fhero%2Ffour.webp&w=256&q=75">
+    </div>
+
+    <div class="float-img img7">
+      <img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Fhero%2Fone.webp&w=256&q=75">
+    </div>
+
+    <div class="float-img img8">
+      <img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Fhero%2Ffive.webp&w=256&q=75">
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h1>The trusted AI learning platform for<br> students.</h1>
+
+    <div class="stats">
+
+      <div class="stat-box">
+        <div class="stat-number">7M+</div>
+        <div class="stat-text">Users Worldwide</div>
+      </div>
+
+      <div class="stat-box">
+        <div class="stat-number">92%</div>
+        <div class="stat-text">
+          of Frequent Active Users Reported Better Grades
+        </div>
+      </div>
+
+    </div>
+
+    <div class="btn-container">
+      <button class="btn2">Start for Free</button>
+    </div>
+
+  </section>
+
+  <section class="video-section">
+    <h4>Watch a Demo</h4>
+    <h1>How your notes become a complete<br> study system</h1>
+
+    <div class="video-container">
+      <video autoplay muted controls>
+        <source src="https://studyfetchcdn.studyfetch.com/trailer.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+  <!-- tabs Section -->
+<section class="tabs-section">
+  <h4>Features</h4>
+  <h1>Unleash the power of your course<br>materials</h1>
+  <p>Upload your materials once and unlock a suite of tools designed to help you understand<br>
+    faster, retain longer, and stress less.</p>
+
+  <!-- Radio -->
+  <input type="radio" name="tab" id="tab1" checked>
+  <input type="radio" name="tab" id="tab2">
+  <input type="radio" name="tab" id="tab3">
+  <input type="radio" name="tab" id="tab4">
+  <input type="radio" name="tab" id="tab5">
+  <input type="radio" name="tab" id="tab6">
+
+  <!-- Square Tabs -->
+  <div class="tabs">
+    <label for="tab1">Study Plan</label>
+    <label for="tab2">Spark.E</label>
+    <label for="tab3">Tutor Me</label>
+    <label for="tab4">Live Lecture</label>
+    <label for="tab5">Notes</label>
+    <label for="tab6">Arcade</label>
+  </div>
+
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slides">
+
+      <div class="slide">
+        <div class="left"><img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Ffeatures%2Fstudy-plan.png&w=640&q=75"></div>
+        <div class="right">
+          <small>Study Plan</small>
+          <h2>Know exactly what comes next</h2>
+          <p>Spark.E builds a personalized study schedule around your materials and deadlines, breaking everything into clear milestones so you always know exactly where to focus.</p>
+          <a class="btn3">Start Now</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="left"><img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Ffeatures%2Fsparke.png&w=640&q=75"></div>
+        <div class="right">
+          <small>Spark.E</small>
+          <h2>Your AI tutor that actually knows your coursework</h2>
+          <p>Trained on your uploaded notes and materials, Spark.E answers questions, generates quizzes, and explains concepts around the clock via chat or voice.</p>
+          <a class="btn3">Start Now</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="left"><img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Ffeatures%2Ftutor-me.png&w=640&q=75"></div>
+        <div class="right">
+          <small>Tutor Me</small>
+          <h2>Learn at your own pace</h2>
+          <p>Tutor Me adapts to how you study, sets goals, and guides you forward only when you're ready, giving you the experience of a personal tutor available whenever you need one.</p>
+          <a class="btn3">Start Now</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="left"><img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Ffeatures%2Flive-lecture.png&w=640&q=75"></div>
+        <div class="right">
+          <small>Live Lecture</small>
+          <h2>Never miss a thing in class</h2>
+          <p>-Live Lecture captures your notes in real time as you listen, so you can stay fully present and walk away with everything you need, no frantic typing required.</p>
+          <a class="btn3">Start Now</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="left"><img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Ffeatures%2Flive-lecture.png&w=640&q=75"></div>
+        <div class="right">
+          <small>Notes</small>
+          <h2>Your materials, organized and ready to study.</h2>
+          <p>Upload your PDFs, PowerPoints, videos, or slides and get clean, structured notes in seconds. Choose between summarized, in-depth, or comprehensive formats depending on how deep you need to go, and watch your materials transform into organized, study-ready content.</p>
+          <a class="btn3">Start Now</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="left"><img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Ffeatures%2Farcade.png&w=640&q=75"></div>
+        <div class="right">
+          <small>Challenge</small>
+          <h2>Study hard, play harder</h2>
+          <p>Arcade transforms your course materials into game-style challenges, making it easier and genuinely fun to retain what you've learned long after you close your notebook.</p>
+          <a class="btn3">Start Now</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+  <section class="research">
+
+        <div class="top">
+
+            <div class="left">
+                <small>Research</small>
+                <h1>Finals season put us to the test. We passed.</h1>
+            </div>
+
+            <div class="right">
+                <p>*Based on a study of 1,000 StudyFetch students during December 2024 finals</p>
+                <a href="#">Read the Report ></a>
+            </div>
+
+        </div>
+
+        <div class="stats1">
+
+            <div class="stat1">
+                <h2>92%</h2>
+                <p>of regular active users reported grade improvements</p>
+            </div>
+
+            <div class="stat1">
+                <h2>85%</h2>
+                <p>of total users reported grade improvements</p>
+            </div>
+
+            <div class="stat1">
+                <h2>30%</h2>
+                <p>reduction is average study time reported</p>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="partnerships">
+
+        <div class="image-box">
+            <img src="https://www.studyfetch.com/_next/image?url=%2Flanding%2Fpartnerships_updated.png&w=1920&q=75"
+                alt="">
+        </div>
+
+        <div class="content">
+            <h4>Partnerships</h4>
+            <h1>Expanding access</h1>
+            <p>
+                StudyFetch partners with NVIDIA to expand access to AI education through workforce readiness programs.
+            </p>
+
+            <div class="buttons">
+                <button class="btns btn-outline">Learn more</button>
+                <button class="btns btn-primary">Get Started for Free</button>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>
