@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova UI</title>
+
+<style>
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* BODY BACKGROUND */
+body{
+    background: radial-gradient(circle at 20% 30%, #9b4dff, transparent 40%),
+                radial-gradient(circle at 80% 70%, #00d4ff, transparent 40%),
+                #0a0a0f;
+    color:white;
+}
+
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.logo::before{
+    content:"◆";
+    color:#00d4ff;
+}
+.logo span{
+    color:#00d4ff;
+}
+
+
+/* NAV BUTTON */
+.nav-btn{
+    padding:10px 20px;
+    border-radius:20px;
+    border:none;
+    background:linear-gradient(90deg,#6a5cff,#00d4ff);
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.nav-btn:hover{
+    transform:scale(1.05);
+    opacity:0.9;
+}
+
+/* HERO SECTION */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding-top:80px;
+}
+
+.hero h1{
+    font-size:80px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:600px;
+    opacity:0.8;
+    margin-bottom:20px;
+}
+
+/* HERO BUTTON */
+.hero-btn{
+    padding:14px 30px;
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(90deg,#6a5cff,#00d4ff);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hero-btn:hover{
+    transform:scale(1.1);
+}
+
+/* FEATURES SECTION */
+.features{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    padding:80px 40px;
+    flex-wrap:wrap;
+}
+
+/* CARD */
+.card{
+    width:300px;
+    padding:30px;
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    border:1px solid rgba(255,255,255,0.1);
+
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+/* ICON */
+.icon{
+    width:50px;
+    height:50px;
+    border-radius:10px;
+    background:rgba(0,212,255,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:15px;
+    font-size:20px;
+}
+
+/* TEXT */
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:14px;
+    opacity:0.8;
+}
+
+/* FOOTER */
+.footer{
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display:flex;
+    justify-content:space-between;
+    padding:20px 60px;
+    font-size:14px;
+    opacity:0.7;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Nova<span>.</span></div>
+    <button class="nav-btn">Get Started</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Connect in the<br>Speed of Light</h1>
+    <p>
+        A completely revolutionized team messaging platform.
+        Secure, instantaneous, and designed to look as good as it performs.
+    </p>
+    <button class="hero-btn">Experience Nova</button>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+
+    <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Real-time Sync</h3>
+        <p>
+            Collaborate with your team instantly across the globe.
+            Messages arrive before you blink.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🔒</div>
+        <h3>End-to-End Encrypted</h3>
+        <p>
+            Your data belongs to you. Military-grade encryption
+            protects conversations at every step.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">⚙️</div>
+        <h3>Custom Workflows</h3>
+        <p>
+            Create automated bots, integrate tools, and streamline
+            your daily operations seamlessly.
+        </p>
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div>© 2026 Nova Communications. All rights reserved.</div>
+    <div>Privacy Policy &nbsp;&nbsp; Terms &nbsp;&nbsp; Contact</div>
+</div>
+
+</body>
+</html>
