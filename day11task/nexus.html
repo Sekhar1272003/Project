@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sticky-top {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .marquee-container {
+      width: 100%;
+      background: #111826;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 9px 0;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .marquee-content {
+      display: inline-block;
+      animation: marquee-scroll 28s linear infinite;
+      will-change: transform;
+    }
+
+    .marquee-container:hover .marquee-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .marquee-content span {
+      display: inline-block;
+      margin: 0 18px;
+      vertical-align: middle;
+      
+    }
+
+    .marquee-content .text-brand {
+      color: #00dad3;
+    }
+
+    .marquee-content .text-divider {
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0 6px;
+    }
+
+    .marquee-content i {
+      margin-right: 6px;
+      font-size: 0.75em;
+      opacity: 0.9;
+    }
+
+    nav {
+      width: 100%;
+      background: #fff;
+      border-bottom: 1.5px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 32px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, .06);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #1aabaf 0%, #2274dd 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(5deg);
+      transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.3s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(0deg) scale(1.08);
+      box-shadow: 0 6px 18px rgba(45, 210, 205, .35);
+    }
+
+    .logo-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+    }
+
+    .logo-wordmark {
+      font-size: 1.45rem;
+      font-weight: bold;
+      color: #1e293b;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .logo-wordmark span {
+      color: #2dd2cd;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      position: relative;
+      text-decoration: none;
+      color: #374151;
+      font-size: 0.95rem;
+      padding-bottom: 3px;
+      letter-spacing: 0.01em;
+      transition: color 0.28s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #2dd2cd;
+      border-radius: 2px;
+      transition: width 0.28s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links li a:hover {
+      color: #1aabaf;
+    }
+
+    .btn-apply {
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #2dd2cd;
+      background: transparent;
+      color: #0f766e;
+      font-size: 0.92rem;
+      font-weight: 500;
+      padding: 9px 24px;
+      border-radius: 999px;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: color 0.32s ease;
+      outline: none;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .btn-apply::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #0f766e;
+      transition: left 0.32s cubic-bezier(.4, 0, .2, 1);
+      z-index: 0;
+    }
+
+    .btn-apply:hover::before {
+      left: 0;
+    }
+
+    .btn-apply:hover {
+      color: #fff;
+    }
+
+    .btn-apply span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-wrapper {
+      width: 100%;
+      position: relative;
+    }
+
+    .hero-section {
+      position: relative;
+      width: 100%;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 60px 0 160px;
+      background: linear-gradient(135deg, #1565c0 0%, #1976d2 20%, #0288d1 45%, #0097a7 70%, #00bcd4 100%);
+      background-size: 220% 220%;
+      animation: hero-gradient-shift 4s ease-in-out infinite alternate;
+      overflow: hidden;
+      clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+    }
+
+    @keyframes hero-gradient-shift {
+      0% {
+        background-position: 0% 0%;
+      }
+
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+
+    .hero-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+      background-size: 30px 30px;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      width: fit-content;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-badge i {
+      font-size: 0.85em;
+      opacity: 0.9;
+    }
+
+    .hero-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .hero-heading .text-outline {
+      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.7);
+      color: transparent;
+      font-style: italic;
+    }
+    .hero-heading .text-gradient {
+      background: linear-gradient(90deg, #80deea 0%, #ffe082 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: rgba(219, 234, 254, 0.9);
+      line-height: 1.75;
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 8px;
+    }
+
+    .btn-explore {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: #fff;
+      color: #0d47a1;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-explore:hover {
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-tour {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: transparent;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(6px);
+      transition: background 0.3s ease;
+    }
+
+    .btn-tour:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-tour i {
+      font-size: 1.2em;
+    }
+
+    .hero-right {
+      position: relative;
+      height: 560px;
+    }
+
+    .img-card-top {
+      position: absolute;
+      top: 20px;
+      right: 0;
+      width: 72%;
+      height: 68%;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      transform: rotate(3deg);
+      transition: transform 0.5s cubic-bezier(.34, 1.2, .64, 1);
+      z-index: 20;
+      cursor: pointer;
+    }
+
+    .img-card-top:hover {
+      transform: rotate(0deg);
+    }
+
+    .img-card-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-card-top::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
+    }
+
+    .img-card-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 62%;
+      height: 62%;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      transform: rotate(-3deg);
+      transition: transform 0.5s cubic-bezier(.34, 1.2, .64, 1);
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .img-card-bottom:hover {
+      transform: rotate(0deg);
+    }
+
+    .img-card-bottom img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .placement-badge {
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translateY(-50%);
+      z-index: 30;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      animation: float-badge 3s ease-in-out infinite;
+    }
+
+    @keyframes float-badge {
+
+      0%,
+      100% {
+        transform: translateY(-50%) translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-50%) translateY(-10px);
+      }
+    }
+
+    .badge-icon {
+      width: 46px;
+      height: 46px;
+      background: #dcfce7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .badge-icon i {
+      color: #16a34a;
+      font-size: 1.1rem;
+    }
+
+    .badge-text p:first-child {
+      font-size: 0.72rem;
+      color: #6b7280;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-text p:last-child {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.1;
+    }
+
+    .stats-card {
+      position: relative;
+      z-index: 10;
+      margin-top: -52px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1100px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+      transform: translateY(-40%);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 36px 24px;
+      position: relative;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 1px;
+      background: #e5e7eb;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #1e2a4a;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .stat-label {
+      font-size: 0.88rem;
+      color: #6b7280;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      text-align: center;
+    }
+
+    .academics-section {
+      width: 100%;
+      background: #f8fafc;
+      padding: 100px 0 80px;
+    }
+
+    .academics-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .academics-header {
+      text-align: center;
+      max-width: 880px;
+      margin: 0 auto 56px;
+    }
+
+    .academics-header .section-eyebrow {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #020e10;
+      margin-bottom: 12px;
+    }
+
+    .academics-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+    }
+
+    .academics-header p {
+      font-size: 1.1rem;
+      color: #6b7280;
+      line-height: 1.75;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .program-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.28s ease, transform 0.28s ease, border-color 0.28s ease;
+    }
+
+    .program-card:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
+      transform: translateY(-4px);
+      border-color: darkgreen;
+      border-width: 3px;
+    }
+
+    .program-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+    }
+
+    .icon-blue {
+      background: #eff6ff;
+      color: #2563eb;
+    }
+
+    .icon-red {
+      background: #fff1f2;
+      color: #dc2626;
+    }
+
+    .icon-purple {
+      background: #faf5ff;
+      color: #9333ea;
+    }
+
+    .icon-green {
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+
+    .icon-yellow {
+      background: #fefce8;
+      color: #ca8a04;
+    }
+
+    .program-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .program-card p {
+      font-size: 0.9rem;
+      color: #6b7280;
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 24px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .program-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #0097a7;
+      text-decoration: none;
+      width: fit-content;
+    }
+
+    .program-link i {
+      font-size: 0.8em;
+      transition: transform 0.22s ease;
+    }
+
+    .program-link:hover i {
+      transform: translateX(5px);
+    }
+
+    .program-card.card-dark {
+      background: #0f4c4c;
+      border-color: transparent;
+    }
+
+    .program-card.card-dark:hover {
+      box-shadow: 0 16px 48px rgba(15, 76, 76, 0.35);
+      border-color: darkgreen;
+      border-width: 3px;
+    }
+
+    .program-card.card-dark .program-icon {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .program-card.card-dark h3 {
+      color: #fff;
+    }
+
+    .program-card.card-dark p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-catalog {
+      display: inline-block;
+      padding: 10px 24px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      width: fit-content;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn-catalog:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #fff;
+    }
+
+    .campus-section {
+      width: 100%;
+      background: #fff;
+      padding: 96px 0 80px;
+    }
+
+    .campus-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    
+    .campus-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      gap: 40px;
+    }
+
+    .campus-header-left {
+      max-width: 700px;
+    }
+
+    .campus-header-left .section-eyebrow {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #021012;
+      margin-bottom: 10px;
+    }
+
+    .campus-header-left h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    .campus-header-left p {
+      font-size: 1.2rem;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    .virtual-tour-link {
+      position: relative;
+      display: inline-block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #010b0c;
+      text-decoration: none;
+      padding-bottom: 4px;
+      transition: color 0.25s ease;
+    }
+
+    .virtual-tour-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #0097a7;
+      transition: background 0.25s ease;
+    }
+
+    .virtual-tour-link:hover {
+      color: #006d77;
+    }
+
+    .virtual-tour-link:hover::after {
+      background: #006d77;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 2fr;
+      grid-template-rows: 220px 320px;
+      gap: 14px;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .gallery-item:nth-child(2) {
+      grid-column: 2;
+      grid-row: 1 / 3;
+    }
+
+    .gallery-item:nth-child(3) {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .gallery-item:nth-child(4) {
+      grid-column: 1;
+      grid-row: 2 ;
+    }
+
+    .gallery-item:nth-child(5) {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(.4, 0, .2, 1), filter 0.5s ease;
+      filter: grayscale(80%);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.07);
+      filter: grayscale(0%);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 30, 50, 0.82) 0%, rgba(10, 30, 50, 0.2) 55%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 22px 22px;
+      opacity: 0;
+      transition: opacity 0.38s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay-content {
+      transform: translateY(12px);
+      transition: transform 0.38s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .gallery-item:hover .gallery-overlay-content {
+      transform: translateY(0);
+    }
+
+    .gallery-overlay-content h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+
+    .gallery-overlay-content p {
+      font-size: 0.8rem;
+      color: rgba(200, 220, 230, 0.9);
+      margin: 0;
+    }
+
+    
+
+    
+    
+  </style>
+</head>
+
+<body>
+
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <span class="text-brand">&#9733; Admissions Open for Fall 2027</span>
+      <span class="text-divider">|</span>
+      <span>Ranked #1 in Innovation</span>
+      <span class="text-divider">|</span>
+      <span class="text-brand">&#128197; Upcoming Event: Tech Symposium on Oct 15</span>
+      <span class="text-divider">|</span>
+      <span>Scholarship Application Deadline: Nov 1</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="text-brand">&#9733; Admissions Open for Fall 2027</span>
+      <span class="text-divider">|</span>
+      <span>Ranked #1 in Innovation</span>
+      <span class="text-divider">|</span>
+      <span class="text-brand">&#128197; Upcoming Event: Tech Symposium on Oct 15</span>
+      <span class="text-divider">|</span>
+      <span>Scholarship Application Deadline: Nov 1</span>
+    </div>
+  </div>
+
+  
+  <div class="sticky-top">
+    <nav>
+      <a class="logo" href="#">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" />
+          </svg>
+        </div>
+        <div class="logo-wordmark">Nexus<span>.</span></div>
+      </a>
+
+      <div style="display:flex; align-items:center; gap:40px;">
+        <ul class="nav-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Academics</a></li>
+          <li><a href="#">Campus Life</a></li>
+        </ul>
+        <a class="btn-apply" href="#">
+          <span>Apply Now</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="hero-wrapper">
+
+
+    <section class="hero-section" id="home">
+      <!-- Dot pattern overlay -->
+      <div class="hero-pattern"></div>
+
+      <div class="hero-content">
+
+
+        <div class="hero-left">
+          <div class="hero-badge">
+            <i class="fas fa-globe-americas"></i>
+            A Global Learning Hub
+          </div>
+
+          <h1 class="hero-heading">
+            Empowering the<br>
+            <span class="text-outline">Innovators</span> of<br>
+            <span class="text-gradient">Tomorrow.</span>
+          </h1>
+
+          <p class="hero-description">
+            Join a vibrant community of scholars, researchers, and creators. At Nexus University,
+            we blur the lines between traditional education and future technologies.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#explore" class="btn-explore">
+              Explore Programs <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#tour" class="btn-tour">
+              <i class="fas fa-play-circle"></i> Virtual Tour
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+
+          <div class="img-card-top">
+            <img
+              src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Students graduating" />
+          </div>
+
+          <div class="img-card-bottom">
+            <img
+              src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Campus Library" />
+          </div>
+
+          <div class="placement-badge">
+            <div class="badge-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="badge-text">
+              <p>Placement Rate</p>
+              <p>98.5%</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-card">
+      <div class="stat-item">
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Academic Programs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">12k</div>
+        <div class="stat-label">Diverse Students</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">40+</div>
+        <div class="stat-label">Research Centers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">#10</div>
+        <div class="stat-label">Global Ranking</div>
+      </div>
+    </div>
+
+  </div>
+
+    <section class="academics-section" id="academics">
+    <div class="academics-inner">
+
+      <div class="academics-header">
+        <span class="section-eyebrow">Academics</span>
+        <h2>Discover Your Passion</h2>
+        <p>Choose from over 150 undergraduate and graduate programs designed to equip you with the skills needed to
+          thrive in a rapidly evolving world.</p>
+      </div>
+
+      
+      <div class="programs-grid">
+
+        <div class="program-card">
+          <div class="program-icon icon-blue">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Computer Science &amp; AI</h3>
+          <p>Pioneer the future of technology with our cutting-edge curriculum focusing on artificial intelligence,
+            machine learning, and software engineering.</p>
+          <a href="#" class="program-link">
+            Explore Faculty <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        
+        <div class="program-card">
+          <div class="program-icon icon-red">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3>Medical Sciences</h3>
+          <p>State-of-the-art facilities and clinical partnerships prepare the next generation of healthcare leaders and
+            medical researchers.</p>
+          <a href="#" class="program-link">
+            Explore Faculty <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        
+        <div class="program-card">
+          <div class="program-icon icon-purple">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3>Arts &amp; Design</h3>
+          <p>Cultivate your creative voice in an interdisciplinary environment that blends traditional techniques with
+            modern digital media.</p>
+          <a href="#" class="program-link">
+            Explore Faculty <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        
+        <div class="program-card">
+          <div class="program-icon icon-green">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <h3>Business Administration</h3>
+          <p>Develop entrepreneurial acumen and leadership skills through real-world case studies and global internship
+            opportunities.</p>
+          <a href="#" class="program-link">
+            Explore Faculty <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        
+        <div class="program-card">
+          <div class="program-icon icon-yellow">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h3>Law &amp; Public Policy</h3>
+          <p>Shape the foundation of society. Our rigorous program emphasizes critical thinking, ethics, and practical
+            advocacy.</p>
+          <a href="#" class="program-link">
+            Explore Faculty <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        
+        <div class="program-card card-dark">
+          <div class="program-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>View All Programs</h3>
+          <p>Browse our complete catalog of undergraduate, graduate, and professional certificate programs.</p>
+          <a href="#" class="btn-catalog">Full Catalog</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+   <section class="campus-section" id="campus-life">
+    <div class="campus-inner">
+
+      <div class="campus-header">
+        <div class="campus-header-left">
+          <span class="section-eyebrow">Campus Life</span>
+          <h2>More Than Just Classes</h2>
+          <p>Immerse yourself in a dynamic environment featuring state-of-the-art facilities, 200+ student clubs, and
+            vibrant cultural events.</p>
+        </div>
+        <div class="campus-header-right">
+          <a href="#" class="virtual-tour-link">Take a Virtual Tour</a>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Campus building">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <h3>Historic Main Hall</h3>
+              <p>Heart of our campus architecture</p>
+            </div>
+          </div>
+        </div>
+
+    
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Students studying">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <h3>Collaborative Spaces</h3>
+              <p>24/7 Innovation Hub</p>
+            </div>
+          </div>
+        </div>
+
+    
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            alt="Seminar">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <h3>Guest Lectures</h3>
+              <p>Learn from industry leaders</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1571260899304-4250701120f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Athletics">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <h3>D1 Athletics</h3>
+              <p>Home of the Nexus Knights</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            alt="Student Life">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <h3>Student Organizations</h3>
+              <p>Find your community</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+</body>
+
+</html>
