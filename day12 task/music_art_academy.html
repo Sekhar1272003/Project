@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Melodia — Music & Arts Academy</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #fff9f2;
+            color: #1e1206;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem;
+            background: rgba(255, 249, 242, 0.97);
+            box-shadow: 0 2px 20px rgba(224, 123, 57, 0.12);
+
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1e1206;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo i {
+            color: #e07b39;
+            font-size: 1.4rem;
+        }
+
+        .nav-logo span {
+            color: #e07b39;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a3520;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .nav-links a:hover {
+            background: #e07b39;
+            color: #fff;
+        }
+
+        .nav-btn {
+            background: #e07b39;
+            color: #fff;
+            padding: 0.55rem 1.3rem;
+            border-radius: 25px;
+            transition: background 0.25s, transform 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #c05e22;
+            transform: translateY(-2px);
+        }
+
+
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 3rem;
+            background: linear-gradient(135deg, #fff9f2 55%, #ffe8d0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .hero-content {
+            flex: 1;
+            max-width: 560px;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(224, 123, 57, 0.12);
+            color: #e07b39;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge i {
+            font-size: 0.75rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+            font-weight: 700;
+            line-height: 1.12;
+            color: #1e1206;
+            margin-bottom: 1.3rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #6b4e2e;
+            line-height: 1.8;
+            margin-bottom: 2.2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.22s, box-shadow 0.22s, background 0.22s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-orange {
+            background: #e07b39;
+            color: #fff;
+            box-shadow: 0 6px 22px rgba(224, 123, 57, 0.35);
+        }
+
+        .btn-orange:hover {
+            background: #c05e22;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(224, 123, 57, 0.45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #e07b39;
+            border: 2px solid #e07b39;
+        }
+
+        .btn-outline:hover {
+            background: #e07b39;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            padding-left: 3rem;
+            animation: fadeInRight 0.9s 0.2s ease both;
+        }
+
+        .hero-img-card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(30, 18, 6, 0.22);
+            max-width: 430px;
+            width: 100%;
+        }
+
+        .hero-img-card img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-img-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .hero-img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(30, 18, 6, 0.75), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            color: #fff;
+        }
+
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .hstat {
+            text-align: center;
+        }
+
+        .hstat .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e07b39;
+            display: block;
+        }
+
+        .hstat .lbl {
+            font-size: 0.78rem;
+            color: #8a6040;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+
+        #about {
+            padding: 6rem;
+            background: #1e1206;
+            color: #fff9f2;
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-imgs {
+            position: relative;
+            height: 500px;
+        }
+
+        .about-img-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 360px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-img-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .about-img-main:hover img {
+            transform: scale(1.06);
+        }
+
+        .about-img-sub {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 240px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 4px solid #e07b39;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        .about-img-sub img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .about-img-sub:hover img {
+            transform: scale(1.06);
+        }
+
+        .about-text .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e07b39;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.4rem;
+            color: #fff9f2;
+        }
+
+        .about-text h2 em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: rgba(255, 249, 242, 0.72);
+            margin-bottom: 1rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+            margin-top: 1.8rem;
+        }
+
+        .about-feat {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: rgba(255, 249, 242, 0.85);
+        }
+
+        .about-feat i {
+            color: #e07b39;
+            font-size: 1rem;
+        }
+
+        #programs {
+            padding: 6rem;
+            background: #fff9f2;
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e07b39;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.9rem;
+        }
+
+        .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1e1206;
+            margin-bottom: 0.9rem;
+        }
+
+        .section-head h2 em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .section-head p {
+            font-size: 1rem;
+            color: #6b4e2e;
+            line-height: 1.75;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .prog-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(30, 18, 6, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .prog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 48px rgba(224, 123, 57, 0.22);
+        }
+
+        .prog-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .prog-card:hover .prog-img {
+            transform: scale(1.06);
+        }
+
+        .prog-img-wrap {
+            overflow: hidden;
+        }
+
+        .prog-body {
+            padding: 1.5rem;
+        }
+
+        .prog-icon-circle {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(224, 123, 57, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .prog-card:hover .prog-icon-circle {
+            background: #e07b39;
+        }
+
+        .prog-icon-circle i {
+            color: #e07b39;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .prog-card:hover .prog-icon-circle i {
+            color: #fff;
+        }
+
+        .prog-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e1206;
+            margin-bottom: 0.5rem;
+        }
+
+        .prog-body p {
+            font-size: 0.9rem;
+            color: #7a5a38;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .prog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #e07b39;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .prog-link:hover {
+            gap: 0.7rem;
+        }
+
+        #faculty {
+            padding: 6rem;
+            background: #fdf3e8;
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faculty-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(30, 18, 6, 0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(224, 123, 57, 0.2);
+        }
+
+        .faculty-img-wrap {
+            overflow: hidden;
+            height: 220px;
+            position: relative;
+        }
+
+        .faculty-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .faculty-card:hover .faculty-img-wrap img {
+            transform: scale(1.07);
+        }
+
+        .faculty-overlay {
+            position: absolute;
+            background: linear-gradient(to top, rgba(224, 123, 57, 0.75), transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 1rem;
+            gap: 0.7rem;
+        }
+
+        .faculty-card:hover .faculty-overlay {
+            opacity: 1;
+        }
+
+        .faculty-social {
+            width: 34px;
+            height: 34px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e07b39;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .faculty-social:hover {
+            background: #e07b39;
+            color: #fff;
+        }
+
+        .faculty-info {
+            padding: 1.2rem 1rem;
+        }
+
+        .faculty-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1e1206;
+            margin-bottom: 0.3rem;
+        }
+
+        .faculty-info p {
+            font-size: 0.8rem;
+            color: #e07b39;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-bottom: 0.6rem;
+        }
+
+        .faculty-info span {
+            font-size: 0.82rem;
+            color: #8a6040;
+        }
+
+
+        #enroll {
+            padding: 6rem;
+            background: linear-gradient(135deg, #1e1206 0%, #3a2010 100%);
+            color: #fff9f2;
+        }
+
+        .enroll-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .enroll-left .section-label {
+            color: #e07b39;
+        }
+
+        .enroll-left h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #fff9f2;
+            margin-bottom: 1rem;
+        }
+
+        .enroll-left h2 em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .enroll-left p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 249, 242, 0.68);
+            margin-bottom: 2rem;
+        }
+
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 249, 242, 0.06);
+            border: 1px solid rgba(224, 123, 57, 0.2);
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            transition: background 0.25s, border-color 0.25s;
+        }
+
+        .contact-card:hover {
+            background: rgba(224, 123, 57, 0.12);
+            border-color: #e07b39;
+        }
+
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(224, 123, 57, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e07b39;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card h5 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255, 249, 242, 0.5);
+            margin-bottom: 0.15rem;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: rgba(255, 249, 242, 0.9);
+        }
+
+
+        .enroll-form {
+            background: #fff9f2;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .enroll-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e1206;
+            margin-bottom: 0.4rem;
+        }
+
+        .enroll-form p {
+            font-size: 0.88rem;
+            color: #8a6040;
+            margin-bottom: 1.8rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #4a3520;
+            margin-bottom: 0.45rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .form-group label i {
+            color: #e07b39;
+            font-size: 0.8rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e8d8c8;
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            color: #1e1206;
+            background: #fff;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #e07b39;
+            box-shadow: 0 0 0 4px rgba(224, 123, 57, 0.12);
+        }
+
+        .form-group input::placeholder {
+            color: #c0a880;
+        }
+
+        .form-group select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            background: #e07b39;
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+            box-shadow: 0 6px 22px rgba(224, 123, 57, 0.4);
+        }
+
+        .btn-submit:hover {
+            background: #c05e22;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(224, 123, 57, 0.5);
+        }
+
+        footer {
+      background: #100b04;
+      padding: 2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff9f2;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    footer .logo i, footer .logo span { color: #e07b39; }
+
+    footer p {
+      font-size: 0.82rem;
+      color: rgba(255,249,242,0.4);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,249,242,0.5);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: #e07b39; }
+
+
+
+       
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <a href="#hero" class="nav-logo">
+            <i class="fa-solid fa-music"></i>
+            Melody<span>.</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#faculty">Faculty</a></li>
+            <li><a href="#enroll" class="nav-btn">Enroll Free</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-star"></i>
+                Hyderabad's Premier Arts Academy
+            </div>
+            <h1 class="hero-title">
+                Discover Your<br><em>Creative Voice</em>
+            </h1>
+            <p class="hero-sub">
+                Learn music, fine arts, and dance from world-class instructors in a warm, inspiring environment. All
+                ages, all skill levels, all welcome.
+            </p>
+            <div class="hero-btns">
+                <a href="#enroll" class="btn btn-orange">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Start Free Trial
+                </a>
+                <a href="#programs" class="btn btn-outline">
+                    <i class="fa-solid fa-play"></i>
+                    Explore Programs
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hstat">
+                    <span class="num">2,400+</span>
+                    <span class="lbl">Students</span>
+                </div>
+                <div class="hstat">
+                    <span class="num">48</span>
+                    <span class="lbl">Faculty</span>
+                </div>
+                <div class="hstat">
+                    <span class="num">20 Years</span>
+                    <span class="lbl">Experience</span>
+                </div>
+                <div class="hstat">
+                    <span class="num">12+</span>
+                    <span class="lbl">Programs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="hero-img-card">
+                <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80"
+                    alt="Student playing violin" />
+                <div class="hero-img-overlay">
+                    <p>Featured Student</p>
+                    <h4>Live Performance at Annual Concert 2026</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+        <div class="about-inner">
+            <div class="about-imgs">
+                <div class="about-img-main">
+                    <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=700&q=80"
+                        alt="Music students at Melodia Academy" />
+                </div>
+                <div class="about-img-sub">
+                    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=500&q=80"
+                        alt="Art class at Melodia" />
+                </div>
+            </div>
+
+            <div class="about-text">
+                <div class="section-label">
+                    <i class="fa-solid fa-circle-info"></i> About Us
+                </div>
+                <h2>Where <em>Passion</em> Meets Purpose</h2>
+                <p>
+                    Founded in 2004, Melodia Academy has been Hyderabad's most trusted music and arts institution for
+                    two decades. We blend classical traditions with modern creativity.
+                </p>
+                <p>
+                    Our faculty includes national award winners, international performers, and dedicated educators who
+                    bring the best out of every student — from toddlers to adults.
+                </p>
+                <div class="about-features">
+                    <div class="about-feat"><i class="fa-solid fa-check-circle"></i> All age groups</div>
+                    <div class="about-feat"><i class="fa-solid fa-check-circle"></i> Certified instructors</div>
+                    <div class="about-feat"><i class="fa-solid fa-check-circle"></i> Online & offline</div>
+                    <div class="about-feat"><i class="fa-solid fa-check-circle"></i> Annual recitals</div>
+                    <div class="about-feat"><i class="fa-solid fa-check-circle"></i> Exam preparation</div>
+                    <div class="about-feat"><i class="fa-solid fa-check-circle"></i> Free trial class</div>
+                </div>
+                <br />
+                <a href="#enroll" class="btn btn-orange" style="margin-top:0.5rem;">
+                    <i class="fa-solid fa-arrow-right"></i> Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs">
+        <div class="section-head">
+            <div class="section-label">
+                <i class="fa-solid fa-layer-group"></i> Our Programs
+            </div>
+            <h2>Find Your <em>Perfect</em> Program</h2>
+            <p>From classical ragas to contemporary art, we have a program crafted just for you.</p>
+        </div>
+
+        <div class="programs-grid">
+
+            <!-- Card 1 -->
+            <div class="prog-card">
+                <div class="prog-img-wrap">
+                    <img class="prog-img" src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=600&q=80"
+                        alt="Piano lessons" />
+                </div>
+                <div class="prog-body">
+                    <div class="prog-icon-circle">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                    <h3>Piano & Keyboard</h3>
+                    <p>Classical, jazz, and contemporary styles — from beginner scales to full concert pieces. All ages
+                        welcome.</p>
+                    <a href="#enroll" class="prog-link">Enroll Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="prog-card">
+                <div class="prog-img-wrap">
+                    <img class="prog-img" src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80"
+                        alt="Guitar lessons" />
+                </div>
+                <div class="prog-body">
+                    <div class="prog-icon-circle">
+                        <i class="fa-solid fa-guitar"></i>
+                    </div>
+                    <h3>Guitar & Strings</h3>
+                    <p>Acoustic, electric, and classical guitar; violin and cello — individually tailored for every
+                        student.</p>
+                    <a href="#enroll" class="prog-link">Enroll Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="prog-card">
+                <div class="prog-img-wrap">
+                    <img class="prog-img" src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=80"
+                        alt="Vocal training" />
+                </div>
+                <div class="prog-body">
+                    <div class="prog-icon-circle">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                    <h3>Vocal Training</h3>
+                    <p>Carnatic, Hindustani, Western classical and modern pop vocals — find your true singing voice.</p>
+                    <a href="#enroll" class="prog-link">Enroll Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="prog-card">
+                <div class="prog-img-wrap">
+                    <img class="prog-img" src="https://images.unsplash.com/photo-1543443258-92b04ad5ec6b?w=600&q=80"
+                        alt="Percussion lessons" />
+                </div>
+                <div class="prog-body">
+                    <div class="prog-icon-circle">
+                        <i class="fa-solid fa-drum"></i>
+                    </div>
+                    <h3>Percussion & Drums</h3>
+                    <p>Tabla, mridangam, djembe, and modern drum kit — rhythm for every tradition and genre.</p>
+                    <a href="#enroll" class="prog-link">Enroll Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="prog-card">
+                <div class="prog-img-wrap">
+                    <img class="prog-img" src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=600&q=80"
+                        alt="Fine arts classes" />
+                </div>
+                <div class="prog-body">
+                    <div class="prog-icon-circle">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3>Fine Arts</h3>
+                    <p>Drawing, oil painting, watercolour, sculpture, and digital illustration for beginners to advanced
+                        artists.</p>
+                    <a href="#enroll" class="prog-link">Enroll Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="prog-card">
+                <div class="prog-img-wrap">
+                    <img class="prog-img" src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=600&q=80"
+                        alt="Dance classes" />
+                </div>
+                <div class="prog-body">
+                    <div class="prog-icon-circle">
+                        <i class="fa-solid fa-person"></i>
+                    </div>
+                    <h3>Dance & Movement</h3>
+                    <p>Bharatanatyam, Kuchipudi, contemporary, and Bollywood dance — expressive movement for every age.
+                    </p>
+                    <a href="#enroll" class="prog-link">Enroll Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="faculty">
+        <div class="section-head">
+            <div class="section-label">
+                <i class="fa-solid fa-users"></i> Our Faculty
+            </div>
+            <h2>Learn from the <em>Best</em></h2>
+            <p>Award-winning performers and passionate educators dedicated to your artistic growth.</p>
+        </div>
+
+        <div class="faculty-grid">
+
+            <div class="faculty-card">
+                <div class="faculty-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+                        alt="Dr. Priya Nair" />
+                    <div class="faculty-overlay">
+                        <a href="#" class="faculty-social"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="faculty-social"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="faculty-social"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="faculty-info">
+                    <h4>Dr. Priya Nair</h4>
+                    <p>Piano · Classical</p>
+                    <span>15 years teaching experience</span>
+                </div>
+            </div>
+
+            <div class="faculty-card">
+                <div class="faculty-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
+                        alt="Arjun Rao" />
+                    <div class="faculty-overlay">
+                        <a href="#" class="faculty-social"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="faculty-social"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="faculty-social"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="faculty-info">
+                    <h4>Arjun Rao</h4>
+                    <p>Guitar · Jazz & Blues</p>
+                    <span>International performer & coach</span>
+                </div>
+            </div>
+
+            <div class="faculty-card">
+                <div class="faculty-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
+                        alt="Meena Krishnan" />
+                    <div class="faculty-overlay">
+                        <a href="#" class="faculty-social"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="faculty-social"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="faculty-social"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="faculty-info">
+                    <h4>Meena Krishnan</h4>
+                    <p>Vocals · Carnatic</p>
+                    <span>National award recipient 2019</span>
+                </div>
+            </div>
+
+            <div class="faculty-card">
+                <div class="faculty-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&q=80" alt="Rahul Verma" />
+                    <div class="faculty-overlay">
+                        <a href="#" class="faculty-social"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="faculty-social"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="faculty-social"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="faculty-info">
+                    <h4>Rahul Verma</h4>
+                    <p>Fine Arts · Oil & Watercolour</p>
+                    <span>Exhibited in 8 countries</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="enroll">
+        <div class="enroll-inner">
+
+            <div class="enroll-left">
+                <div class="section-label">
+                    <i class="fa-solid fa-paper-plane"></i> Enroll & Contact
+                </div>
+                <h2>Start Your <em>Free Trial</em> Today</h2>
+                <p>No commitments — just come in, experience the joy of learning, and decide from there. Our counsellors
+                    are here to help you find the perfect program.</p>
+
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h5>Address</h5>
+                            <p>Banjara Hills, Hyderabad, Telangana 500034</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h5>Phone</h5>
+                            <p>+91 9398836535</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>hello@melodiaacademy.in</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <h5>Hours</h5>
+                            <p>Mon – Sat: 9 AM – 8 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="enroll-form">
+                <h3>Book a Free Trial Class</h3>
+                <p>Fill in your details and we'll confirm within 24 hours!</p>
+
+                <div class="form-row" >
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user"></i> First Name  </label>
+                        <input type="text" placeholder="Rahul"/>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user"></i> Last Name</label>
+                        <input type="text" placeholder="Sharma" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+                    <input type="email" placeholder="rahul@example.com" />
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                    <input type="tel" placeholder="+91 98765 43210" />
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-music"></i> Program of Interest</label>
+                    <select>
+                        <option value="">— Select a program —</option>
+                        <option>Piano & Keyboard</option>
+                        <option>Guitar & Strings</option>
+                        <option>Vocal Training</option>
+                        <option>Percussion & Drums</option>
+                        <option>Fine Arts</option>
+                        <option>Dance & Movement</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-calendar"></i> Preferred Day</label>
+                    <select>
+                        <option value="">— Select a day —</option>
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                        <option>Saturday</option>
+                    </select>
+                </div>
+
+                <button class="btn-submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Book My Free Trial
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+ <footer>
+  <a href="#hero" class="logo">
+    <i class="fa-solid fa-music"></i>
+    Melodia<span>.</span>
+  </a>
+  <p>© 2026 Melodia Music & Arts Academy. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+  </div>
+</footer>
+    
+
+
+</body>
+
+</html>
