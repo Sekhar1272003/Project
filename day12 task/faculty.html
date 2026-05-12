@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Melodia — Faculty</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #fff9f2;
+            color: #1e1206;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            background: rgba(255, 249, 242, 0.97);
+            box-shadow: 0 2px 20px rgba(224, 123, 57, 0.12);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1e1206;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo i,
+        .nav-logo span {
+            color: #e07b39;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a3520;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .nav-links a:hover {
+            background: #e07b39;
+            color: #fff;
+        }
+
+        .nav-links a.active-link {
+            background: #e07b39;
+            color: #fff;
+        }
+
+        .nav-btn {
+            background: #e07b39;
+            color: #fff;
+            padding: 0.55rem 1.3rem;
+            border-radius: 25px;
+        }
+
+        .nav-btn:hover {
+            background: #c05e22;
+        }
+
+        /* COMMON */
+       .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.22s, box-shadow 0.22s, background 0.22s;
+        }
+
+        .btn-orange {
+            background: #e07b39;
+            color: #fff;
+            box-shadow: 0 6px 22px rgba(224, 123, 57, 0.35);
+        }
+
+        .btn-orange:hover {
+            background: #c05e22;
+            transform: translateY(-3px);
+        }    
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e07b39;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.9rem;
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1e1206;
+            margin-bottom: 0.9rem;
+        }
+
+        .section-head h2 em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .section-head p {
+            font-size: 1rem;
+            color: #6b4e2e;
+            line-height: 1.75;
+        }
+
+        /* PAGE BANNER */
+        .page-banner {
+            min-height: 38vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 5rem 4rem 3rem;
+            background: linear-gradient(135deg, #1e1206 55%, #3a2010 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1200&q=60') center/cover;
+            opacity: 0.12;
+        }
+
+        .page-banner-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: #fff9f2;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .page-banner h1 em {
+            color: #e07b39;
+            font-style: italic;
+        }
+
+        .page-banner p {
+            color: rgba(255, 249, 242, 0.7);
+            font-size: 1.05rem;
+            max-width: 500px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: #e07b39;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 249, 242, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* FACULTY GRID */
+        .faculty-full {
+            padding: 5rem 4rem;
+            background: #fff9f2;
+        }
+
+        .faculty-full-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faculty-full-card {
+            background: #fff;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 6px 28px rgba(30, 18, 6, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .faculty-full-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .faculty-full-img {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .faculty-full-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .faculty-full-card:hover .faculty-full-img img {
+            transform: scale(1.06);
+        }
+
+        .faculty-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #e07b39;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.7rem;
+            border-radius: 10px;
+        }
+
+        .faculty-full-body {
+            padding: 1.8rem;
+        }
+
+        .faculty-full-body h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .faculty-full-body .role {
+            color: #e07b39;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .faculty-full-body p {
+            font-size: 0.88rem;
+            color: #6b4e2e;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .faculty-creds {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .cred-badge {
+            background: #fff9f2;
+            border: 1px solid rgba(224, 123, 57, 0.2);
+            color: #8a6040;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 8px;
+        }
+
+        .faculty-socials {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .faculty-socials a {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(224, 123, 57, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e07b39;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .faculty-socials a:hover {
+            background: #e07b39;
+            color: #fff;
+            border-color: #e07b39;
+        }
+
+        /* JOIN FACULTY */
+        .join-faculty {
+            padding: 5rem 4rem;
+            background: #fff;
+            text-align: center;
+        }
+
+        .join-faculty h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .join-faculty h2 em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .join-faculty p {
+            color: #6b4e2e;
+            max-width: 560px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1e1206;
+            color: #fff9f2;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            text-align: center;
+        }
+
+        footer .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff9f2;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        footer .logo i,
+        footer .logo span {
+            color: #e07b39;
+        }
+
+        footer p {
+            font-size: 0.82rem;
+            color: rgba(255, 249, 242, 0.4);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 249, 242, 0.5);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #e07b39;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 249, 242, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: #e07b39;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar">
+        <a class="nav-logo" href="music_art_academy.html"><i class="fa-solid fa-music"></i>Melody<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="music_art_academy.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="faculty.html" class="active-link">Faculty</a></li>
+            <li><a href="fees.html">Fees</a></li>
+            <li><a href="enroll.html" class="nav-btn">Enroll</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-banner">
+        <div class="page-banner-content">
+            <div class="breadcrumb"><a href="music_art_academy.html">Home</a><span>/</span><span
+                    style="color:rgba(255,249,242,0.6)">Faculty</span></div>
+            <h1>Our <em>Faculty</em></h1>
+            <p>48 dedicated artists and educators who bring passion, expertise, and joy to every class.</p>
+        </div>
+    </div>
+
+    <div class="faculty-full">
+        <div class="section-head">
+            <div class="section-label"><i class="fa-solid fa-users"></i> Meet the Team</div>
+            <h2>Taught by the <em>Best</em></h2>
+            <p>Award-winning performers, PhDs, and dedicated mentors — our faculty is the heart of Melodia.</p>
+        </div>
+        <div class="faculty-full-grid">
+            <div class="faculty-full-card">
+                <div class="faculty-full-img">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80"
+                        alt="Dr. Priya Nair" />
+                    <div class="faculty-tag">Founder & Director</div>
+                </div>
+                <div class="faculty-full-body">
+                    <h4>Dr. Priya Nair</h4>
+                    <div class="role">Piano · Classical & Contemporary</div>
+                    <p>PhD in Music from Madras University, Dr. Priya has performed at Carnegie Hall and trained under
+                        Maestro Vikram Seth. She founded Melodia in 2004 with a vision to democratize arts education.
+                    </p>
+                    <div class="faculty-creds"><span class="cred-badge">ABRSM Grade 8</span><span
+                            class="cred-badge">Trinity Examiner</span><span class="cred-badge">PhD Music</span></div>
+                    <div class="faculty-socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i
+                                class="fa-brands fa-linkedin-in"></i></a><a href="#"><i
+                                class="fa-solid fa-envelope"></i></a></div>
+                </div>
+            </div>
+            <div class="faculty-full-card">
+                <div class="faculty-full-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80"
+                        alt="Arjun Rao" />
+                    <div class="faculty-tag">Head of Strings</div>
+                </div>
+                <div class="faculty-full-body">
+                    <h4>Arjun Rao</h4>
+                    <div class="role">Guitar · Jazz, Blues & Fusion</div>
+                    <p>International touring musician who has performed across 15 countries. Arjun blends Indian
+                        classical sensibilities with jazz improvisation in a unique teaching style loved by students of
+                        all ages.</p>
+                    <div class="faculty-creds"><span class="cred-badge">Berklee Alumni</span><span
+                            class="cred-badge">20+ Years</span><span class="cred-badge">Recording Artist</span></div>
+                    <div class="faculty-socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i
+                                class="fa-brands fa-linkedin-in"></i></a><a href="#"><i
+                                class="fa-solid fa-envelope"></i></a></div>
+                </div>
+            </div>
+            <div class="faculty-full-card">
+                <div class="faculty-full-img">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=80"
+                        alt="Meena Krishnan" />
+                    <div class="faculty-tag">Head of Vocals</div>
+                </div>
+                <div class="faculty-full-body">
+                    <h4>Meena Krishnan</h4>
+                    <div class="role">Vocals · Carnatic & Hindustani</div>
+                    <p>National award recipient 2019 and disciple of Padma Vibhushan vidushi M.S. Subbulakshmi's
+                        tradition. Meena has trained 50+ students who have qualified in state and national music
+                        competitions.</p>
+                    <div class="faculty-creds"><span class="cred-badge">National Award 2019</span><span
+                            class="cred-badge">18 Years Teaching</span><span class="cred-badge">All India Radio</span>
+                    </div>
+                    <div class="faculty-socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i
+                                class="fa-brands fa-linkedin-in"></i></a><a href="#"><i
+                                class="fa-solid fa-envelope"></i></a></div>
+                </div>
+            </div>
+            <div class="faculty-full-card">
+                <div class="faculty-full-img">
+                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=500&q=80" alt="Rahul Verma" />
+                    <div class="faculty-tag">Head of Visual Arts</div>
+                </div>
+                <div class="faculty-full-body">
+                    <h4>Rahul Verma</h4>
+                    <div class="role">Fine Arts · Oil, Watercolour & Digital</div>
+                    <p>BFA from Sir J.J. School of Art, Mumbai. Rahul has exhibited in 8 countries and his work is part
+                        of private collections in the UK and Singapore. He believes art is the most human thing we do.
+                    </p>
+                    <div class="faculty-creds"><span class="cred-badge">BFA Mumbai</span><span
+                            class="cred-badge">Exhibited Internationally</span><span class="cred-badge">12 Years</span>
+                    </div>
+                    <div class="faculty-socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i
+                                class="fa-brands fa-linkedin-in"></i></a><a href="#"><i
+                                class="fa-solid fa-envelope"></i></a></div>
+                </div>
+            </div>
+            <div class="faculty-full-card">
+                <div class="faculty-full-img">
+                    <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=500&q=80"
+                        alt="Kavitha Srinivas" />
+                    <div class="faculty-tag">Dance Faculty</div>
+                </div>
+                <div class="faculty-full-body">
+                    <h4>Kavitha Srinivas</h4>
+                    <div class="role">Dance · Bharatanatyam & Kuchipudi</div>
+                    <p>Trained under Guru Saroja Vaidyanathan, Kavitha has presented Arangetrams for 30+ students. She
+                        brings a deep understanding of abhinaya, nritta, and nritya to every class.</p>
+                    <div class="faculty-creds"><span class="cred-badge">Govt. Scholarship</span><span
+                            class="cred-badge">30+ Arangetrams</span><span class="cred-badge">22 Years</span></div>
+                    <div class="faculty-socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i
+                                class="fa-brands fa-linkedin-in"></i></a><a href="#"><i
+                                class="fa-solid fa-envelope"></i></a></div>
+                </div>
+            </div>
+            <div class="faculty-full-card">
+                <div class="faculty-full-img">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&q=80"
+                        alt="Karthik Menon" />
+                    <div class="faculty-tag">Percussion Faculty</div>
+                </div>
+                <div class="faculty-full-body">
+                    <h4>Karthik Menon</h4>
+                    <div class="role">Tabla · Mridangam · Modern Drums</div>
+                    <p>A versatile percussionist trained in both the Varanasi Gharana for tabla and Palakkad style
+                        mridangam. Karthik also plays jazz drum kit and has collaborated with artists across genres.</p>
+                    <div class="faculty-creds"><span class="cred-badge">Varanasi Gharana</span><span
+                            class="cred-badge">Jazz Drummer</span><span class="cred-badge">16 Years</span></div>
+                    <div class="faculty-socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i
+                                class="fa-brands fa-linkedin-in"></i></a><a href="#"><i
+                                class="fa-solid fa-envelope"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="join-faculty">
+        <div class="section-label"><i class="fa-solid fa-handshake"></i> Join Our Team</div>
+        <h2>Are You a <em>Passionate</em> Artist?</h2>
+        <p>We're always looking for exceptional musicians, dancers, and visual artists who love teaching. If you're
+            dedicated to nurturing talent and believe in the power of arts education, we'd love to hear from you.</p>
+        <a href="mailto:careers@melodiaacademy.in" class="btn btn-orange"><i class="fa-solid fa-paper-plane"></i> Send
+            Your Portfolio</a>
+    </div>
+
+    <footer>
+        <a class="logo" href="music_art_academy.html"><i class="fa-solid fa-music"></i>Melody<span>.</span></a>
+        <div class="footer-nav">
+            <a href="music_art_academy.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="faculty.html">Faculty</a>
+            <a href="fees.html">Fees</a>
+            <a href="enroll.html">Enroll</a>
+        </div>
+        <div class="footer-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <p>© 2026 Melodia Music & Arts Academy. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -164,7 +164,6 @@
         .hero-btns {
             display: flex;
             gap: 1rem;
-            flex-wrap: wrap;
         }
 
         .btn {
@@ -206,14 +205,12 @@
             transform: translateY(-3px);
         }
 
-        .hero-image {
-            flex: 1;
+        .hero-image {     
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 2;
             padding-left: 3rem;
-            animation: fadeInRight 0.9s 0.2s ease both;
         }
 
         .hero-img-card {
@@ -640,6 +637,111 @@
             color: #8a6040;
         }
 
+        #testimonials {
+            padding: 5rem 4rem;
+            background: #fff9f2;
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testi-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 6px 24px rgba(30, 18, 6, 0.07);
+            position: relative;
+        }
+
+        .testi-card::before {
+            content: '';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: rgba(224, 123, 57, 0.15);
+            position: absolute;
+            top: -0.5rem;
+            left: 1.2rem;
+            line-height: 1;
+        }
+
+        .testi-text {
+            font-size: 0.95rem;
+            color: #4a3520;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding-top: 1.5rem;
+        }
+
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testi-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e07b39;
+        }
+
+        .testi-name {
+            font-weight: 700;
+            color: #1e1206;
+            font-size: 0.95rem;
+        }
+
+        .testi-role {
+            font-size: 0.8rem;
+            color: #8a6040;
+        }
+
+        .testi-stars {
+            color: #e07b39;
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+
+        #gallery-strip {
+            padding: 4rem;
+            background: #1e1206;
+        }
+
+        #gallery-strip .section-head h2 {
+            color: #fff9f2;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.07);
+        }
 
         #enroll {
             padding: 6rem;
@@ -835,50 +937,70 @@
         }
 
         footer {
-      background: #100b04;
-      padding: 2rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+            background: #1e1206;
+            color: #fff9f2;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            text-align: center;
+        }
 
-    footer .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #fff9f2;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        footer .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff9f2;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    footer .logo i, footer .logo span { color: #e07b39; }
+        footer .logo i,
+        footer .logo span {
+            color: #e07b39;
+        }
 
-    footer p {
-      font-size: 0.82rem;
-      color: rgba(255,249,242,0.4);
-    }
+        footer p {
+            font-size: 0.82rem;
+            color: rgba(255, 249, 242, 0.4);
+        }
 
-    .footer-links {
-      display: flex;
-      gap: 1.2rem;
-    }
+        .footer-links {
+            display: flex;
+            gap: 1.2rem;
+        }
 
-    .footer-links a {
-      color: rgba(255,249,242,0.5);
-      font-size: 1rem;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+        .footer-links a {
+            color: rgba(255, 249, 242, 0.5);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
 
-    .footer-links a:hover { color: #e07b39; }
+        .footer-links a:hover {
+            color: #e07b39;
+        }
 
+        .footer-nav {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
 
+        .footer-nav a {
+            color: rgba(255, 249, 242, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
 
-       
+        .footer-nav a:hover {
+            color: #e07b39;
+        }
     </style>
 </head>
 
@@ -886,20 +1008,21 @@
 
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar">
-        <a href="#hero" class="nav-logo">
+        <a href="music_art_academy.html" class="nav-logo">
             <i class="fa-solid fa-music"></i>
             Melody<span>.</span>
         </a>
         <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#programs">Programs</a></li>
-            <li><a href="#faculty">Faculty</a></li>
-            <li><a href="#enroll" class="nav-btn">Enroll Free</a></li>
+            <li><a href="music_art_academy.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="fees.html">Fees</a></li>
+            <li><a href="enroll.html" class="nav-btn">Enroll</a></li>
         </ul>
     </nav>
 
-    <!-- ===== HERO ===== -->
+
     <section id="hero">
         <div class="hero-content">
             <div class="hero-badge">
@@ -1193,6 +1316,77 @@
         </div>
     </section>
 
+    <section id="testimonials">
+        <div class="section-head">
+            <div class="section-label"><i class="fa-solid fa-heart"></i> Student Stories</div>
+            <h2>What Our <em>Students</em> Say</h2>
+            <p>Real words from students and parents who have experienced the Melodia journey.</p>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card">
+                <p class="testi-text">My daughter has been learning Carnatic vocals for 3 years and the transformation
+                    is incredible. The faculty is deeply knowledgeable and so patient with kids.</p>
+                <div class="testi-author">
+                    <img class="testi-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80"
+                        alt="Lakshmi Reddy" />
+                    <div>
+                        <div class="testi-stars">★★★★★</div>
+                        <div class="testi-name">Lakshmi Reddy</div>
+                        <div class="testi-role">Parent · Vocal Student</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <p class="testi-text">I started guitar at 32 — no prior experience. The instructors never made me feel
+                    out of place. I performed on stage at the annual recital and it was life-changing!</p>
+                <div class="testi-author">
+                    <img class="testi-avatar"
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80"
+                        alt="Vikram Patel" />
+                    <div>
+                        <div class="testi-stars">★★★★★</div>
+                        <div class="testi-name">Vikram Patel</div>
+                        <div class="testi-role">Guitar Student · Adult Batch</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <p class="testi-text">The fine arts classes are phenomenal. My son's artwork was selected for the state
+                    youth art exhibition after just one year of training here. Truly exceptional teachers.</p>
+                <div class="testi-author">
+                    <img class="testi-avatar"
+                        src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100&q=80"
+                        alt="Sunita Sharma" />
+                    <div>
+                        <div class="testi-stars">★★★★★</div>
+                        <div class="testi-name">Sunita Sharma</div>
+                        <div class="testi-role">Parent · Fine Arts Student</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="gallery-strip">
+        <div class="section-head" style="padding-bottom:3rem;">
+            <div class="section-label"><i class="fa-solid fa-images"></i> Gallery</div>
+            <h2>Life at <em>Melodia</em></h2>
+            <p style="color:rgba(255,249,242,0.6);">A glimpse into the vibrant, creative world inside our academy.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=400&q=80"
+                    alt="Class" /></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=400&q=80"
+                    alt="Piano" /></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=400&q=80"
+                    alt="Dance" /></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=400&q=80"
+                    alt="Art" /></div>
+        </div>
+    </section>
+
+
     <section id="enroll">
         <div class="enroll-inner">
 
@@ -1240,10 +1434,10 @@
                 <h3>Book a Free Trial Class</h3>
                 <p>Fill in your details and we'll confirm within 24 hours!</p>
 
-                <div class="form-row" >
+                <div class="form-row">
                     <div class="form-group">
-                        <label><i class="fa-solid fa-user"></i> First Name  </label>
-                        <input type="text" placeholder="Rahul"/>
+                        <label><i class="fa-solid fa-user"></i> First Name </label>
+                        <input type="text" placeholder="Rahul" />
                     </div>
                     <div class="form-group">
                         <label><i class="fa-solid fa-user"></i> Last Name</label>
@@ -1296,20 +1490,25 @@
         </div>
     </section>
 
- <footer>
-  <a href="#hero" class="logo">
-    <i class="fa-solid fa-music"></i>
-    Melodia<span>.</span>
-  </a>
-  <p>© 2026 Melodia Music & Arts Academy. All rights reserved.</p>
+<footer>
+  <a class="logo" href="music_art_academy.html"><i class="fa-solid fa-music"></i>Melody<span>.</span></a>
+  <div class="footer-nav">
+    <a href="music_art_academy.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="faculty.html">Faculty</a>
+    <a href="fees.html">Fees</a>
+    <a href="enroll.html">Enroll</a>
+  </div>
   <div class="footer-links">
     <a href="#"><i class="fa-brands fa-instagram"></i></a>
     <a href="#"><i class="fa-brands fa-facebook"></i></a>
     <a href="#"><i class="fa-brands fa-youtube"></i></a>
     <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
   </div>
+  <p>© 2026 Melodia Music & Arts Academy. All rights reserved.</p>
 </footer>
-    
+
 
 
 </body>

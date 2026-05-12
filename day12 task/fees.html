@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Melodia — Fees & Pricing</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #fff9f2;
+            color: #1e1206;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            background: rgba(255, 249, 242, 0.97);
+            box-shadow: 0 2px 20px rgba(224, 123, 57, 0.12);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1e1206;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo i,
+        .nav-logo span {
+            color: #e07b39;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a3520;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .nav-links a:hover {
+            background: #e07b39;
+            color: #fff;
+        }
+
+        .nav-links a.active-link {
+            background: #e07b39;
+            color: #fff;
+        }
+
+        .nav-btn {
+            background: #e07b39 !important;
+            color: #fff !important;
+            padding: 0.55rem 1.3rem;
+            border-radius: 25px;
+        }
+
+        /* COMMON */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.22s, background 0.22s;
+        }
+
+        .btn-orange {
+            background: #e07b39;
+            color: #fff;
+            box-shadow: 0 6px 22px rgba(224, 123, 57, 0.35);
+        }
+
+        .btn-orange:hover {
+            background: #c05e22;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #e07b39;
+            border: 2px solid #e07b39;
+        }
+
+        .btn-outline:hover {
+            background: #e07b39;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e07b39;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.9rem;
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1e1206;
+            margin-bottom: 0.9rem;
+        }
+
+        .section-head h2 em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .section-head p {
+            font-size: 1rem;
+            color: #6b4e2e;
+            line-height: 1.75;
+        }
+
+        /* PAGE BANNER */
+        .page-banner {
+            min-height: 38vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 5rem 4rem 3rem;
+            background: linear-gradient(135deg, #1e1206 55%, #3a2010 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1200&q=60') center/cover;
+            opacity: 0.12;
+        }
+
+        .page-banner-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: #fff9f2;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .page-banner h1 em {
+            color: #e07b39;
+            font-style: italic;
+        }
+
+        .page-banner p {
+            color: rgba(255, 249, 242, 0.7);
+            font-size: 1.05rem;
+            max-width: 500px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: #e07b39;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 249, 242, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* FEES CONTENT */
+        .fees-content {
+            padding: 5rem 4rem;
+            background: #fff9f2;
+        }
+
+        .fees-intro {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 4rem;
+        }
+
+        .fees-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .fees-intro h2 em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .fees-intro p {
+            color: #6b4e2e;
+            line-height: 1.8;
+        }
+
+        /* PRICING CARDS */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+        }
+
+        .price-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 30px rgba(30, 18, 6, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .price-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 50px rgba(224, 123, 57, 0.18);
+        }
+
+        .price-card.featured {
+            background: #1e1206;
+            color: #fff9f2;
+            transform: scale(1.03);
+        }
+
+        .price-card.featured:hover {
+            transform: scale(1.03) translateY(-6px);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e07b39;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .price-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount {
+            margin: 1.5rem 0;
+        }
+
+        .price-amount .amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #e07b39;
+        }
+
+        .price-amount .per {
+            font-size: 0.85rem;
+            color: #8a6040;
+            margin-left: 0.3rem;
+        }
+
+        .price-card.featured .per {
+            color: rgba(255, 249, 242, 0.5);
+        }
+
+        .price-desc {
+            font-size: 0.88rem;
+            color: #6b4e2e;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-card.featured .price-desc {
+            color: rgba(255, 249, 242, 0.65);
+        }
+
+        .price-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .price-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        .price-features li i {
+            color: #e07b39;
+            font-size: 0.85rem;
+            width: 16px;
+        }
+
+        .price-card.featured .price-features li {
+            color: rgba(255, 249, 242, 0.85);
+        }
+
+        /* FEES TABLE */
+        .fees-table-wrap {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            overflow-x: auto;
+        }
+
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(30, 18, 6, 0.08);
+        }
+
+        .fees-table th {
+            background: #1e1206;
+            color: #fff9f2;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .fees-table td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #f0e8e0;
+            font-size: 0.92rem;
+            color: #4a3520;
+        }
+
+        .fees-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .fees-table tr:hover td {
+            background: #fff9f2;
+        }
+
+        .fees-table .price-col {
+            color: #e07b39;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* SCHOLARSHIPS */
+        .scholarship-section {
+            background: #1e1206;
+            padding: 5rem 4rem;
+            text-align: center;
+        }
+
+        .scholarship-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: #fff9f2;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .scholarship-section h2 em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .scholarship-section p {
+            color: rgba(255, 249, 242, 0.65);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .scholarship-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .schol-card {
+            background: rgba(255, 249, 242, 0.06);
+            border: 1px solid rgba(255, 249, 242, 0.1);
+            border-radius: 18px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .schol-card i {
+            font-size: 2rem;
+            color: #e07b39;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .schol-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #fff9f2;
+            margin-bottom: 0.5rem;
+        }
+
+        .schol-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 249, 242, 0.6);
+            line-height: 1.6;
+        }
+
+        /* PAYMENT */
+        .payment-section {
+            padding: 5rem 4rem;
+            background: #fff9f2;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pay-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(30, 18, 6, 0.07);
+            transition: transform 0.3s;
+        }
+
+        .pay-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .pay-card i {
+            font-size: 1.8rem;
+            color: #e07b39;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .pay-card h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1e1206;
+            margin-bottom: 0.3rem;
+        }
+
+        .pay-card p {
+            font-size: 0.82rem;
+            color: #8a6040;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 5rem 4rem;
+            background: #fff;
+        }
+
+        .faq-list {
+            max-width: 750px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: #fff9f2;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        /* CSS-only accordion using :target */
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.3rem 1.8rem;
+            font-weight: 700;
+            color: #1e1206;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .faq-q:hover {
+            background: rgba(224, 123, 57, 0.06);
+        }
+
+        .faq-q i {
+            color: #e07b39;
+            transition: transform 0.3s;
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.2s;
+        }
+
+        .faq-item:target .faq-a {
+            max-height: 200px;
+            padding: 0 1.8rem 1.3rem;
+        }
+
+        .faq-item:target .faq-q i {
+            transform: rotate(45deg);
+        }
+
+        .faq-a p {
+            font-size: 0.9rem;
+            color: #6b4e2e;
+            line-height: 1.75;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1e1206;
+            color: #fff9f2;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            text-align: center;
+        }
+
+        footer .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff9f2;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        footer .logo i,
+        footer .logo span {
+            color: #e07b39;
+        }
+
+        footer p {
+            font-size: 0.82rem;
+            color: rgba(255, 249, 242, 0.4);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 249, 242, 0.5);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #e07b39;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 249, 242, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: #e07b39;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a class="nav-logo" href="music_art_academy.html"><i class="fa-solid fa-music"></i>Melody<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="music_art_academy.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="fees.html" class="active-link">Fees</a></li>
+            <li><a href="enroll.html" class="nav-btn">Enroll</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-banner">
+        <div class="page-banner-content">
+            <div class="breadcrumb"><a href="music_art_academy.html">Home</a><span>/</span><span
+                    style="color:rgba(255,249,242,0.6)">Fees</span></div>
+            <h1>Fees & <em>Pricing</em></h1>
+            <p>Transparent, flexible pricing designed to make quality arts education accessible to all.</p>
+        </div>
+    </div>
+
+    <div class="fees-content">
+        <div class="fees-intro">
+            <div class="section-label"><i class="fa-solid fa-indian-rupee-sign"></i> Our Pricing</div>
+            <h2>Simple, <em>Transparent</em> Pricing</h2>
+            <p>No hidden charges. No registration surprises. Just straightforward fees and exceptional value for money.
+                All plans include access to our annual recital and student portal.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Starter</h3>
+                <p class="price-desc">Perfect for beginners exploring their first instrument or art form.</p>
+                <div class="price-amount"><span class="amount">₹2,500</span><span class="per">/ month</span></div>
+                <ul class="price-features">
+                    <li><i class="fa-solid fa-check"></i> 4 sessions per month (45 min each)</li>
+                    <li><i class="fa-solid fa-check"></i> 1 program of choice</li>
+                    <li><i class="fa-solid fa-check"></i> Student portal access</li>
+                    <li><i class="fa-solid fa-check"></i> Progress tracking</li>
+                    <li><i class="fa-solid fa-check"></i> Annual concert participation</li>
+                    <li><i class="fa-solid fa-xmark" style="color:#ccc"></i> Online classes not included</li>
+                </ul>
+                <a href="enroll.html" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
+            </div>
+            <div class="price-card featured">
+                <div class="popular-tag">Most Popular</div>
+                <h3>Pro</h3>
+                <p class="price-desc">The complete experience for serious students seeking rapid growth.</p>
+                <div class="price-amount"><span class="amount">₹4,200</span><span class="per">/ month</span></div>
+                <ul class="price-features">
+                    <li><i class="fa-solid fa-check"></i> 8 sessions per month (60 min each)</li>
+                    <li><i class="fa-solid fa-check"></i> 1 program of choice</li>
+                    <li><i class="fa-solid fa-check"></i> Online + in-person classes</li>
+                    <li><i class="fa-solid fa-check"></i> Monthly performance feedback</li>
+                    <li><i class="fa-solid fa-check"></i> Exam preparation support</li>
+                    <li><i class="fa-solid fa-check"></i> Priority slot booking</li>
+                </ul>
+                <a href="enroll.html" class="btn btn-orange" style="width:100%;justify-content:center;">Enroll Now</a>
+            </div>
+            <div class="price-card">
+                <h3>Family</h3>
+                <p class="price-desc">Best value for families with 2 or more students enrolling together.</p>
+                <div class="price-amount"><span class="amount">₹6,800</span><span class="per">/ month</span></div>
+                <ul class="price-features">
+                    <li><i class="fa-solid fa-check"></i> Up to 3 students</li>
+                    <li><i class="fa-solid fa-check"></i> 8 sessions each per month</li>
+                    <li><i class="fa-solid fa-check"></i> Mix and match programs</li>
+                    <li><i class="fa-solid fa-check"></i> Online + in-person access</li>
+                    <li><i class="fa-solid fa-check"></i> Dedicated family counsellor</li>
+                    <li><i class="fa-solid fa-check"></i> Recital performance priority</li>
+                </ul>
+                <a href="enroll.html" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
+            </div>
+        </div>
+
+        <div class="section-head" style="margin-top:3rem;">
+            <div class="section-label"><i class="fa-solid fa-table"></i> Detailed Fee Structure</div>
+            <h2>Program-wise <em>Fee Breakdown</em></h2>
+            <p>All fees are per month. One-time registration fee of ₹500 applies. Materials & instruments on request.
+            </p>
+        </div>
+        <div class="fees-table-wrap">
+            <table class="fees-table">
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Level</th>
+                        <th>Sessions/Month</th>
+                        <th>Duration</th>
+                        <th>Monthly Fee</th>
+                        <th>Annual Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Piano & Keyboard</td>
+                        <td>Beginner</td>
+                        <td>4</td>
+                        <td>45 min</td>
+                        <td class="price-col">₹2,500</td>
+                        <td class="price-col">₹27,000</td>
+                    </tr>
+                    <tr>
+                        <td>Piano & Keyboard</td>
+                        <td>Intermediate / Advanced</td>
+                        <td>8</td>
+                        <td>60 min</td>
+                        <td class="price-col">₹4,500</td>
+                        <td class="price-col">₹48,600</td>
+                    </tr>
+                    <tr>
+                        <td>Guitar & Strings</td>
+                        <td>All Levels</td>
+                        <td>4–8</td>
+                        <td>45–60 min</td>
+                        <td class="price-col">₹2,200 – ₹4,000</td>
+                        <td class="price-col">₹23,760 – ₹43,200</td>
+                    </tr>
+                    <tr>
+                        <td>Vocal Training</td>
+                        <td>Beginner</td>
+                        <td>4</td>
+                        <td>45 min</td>
+                        <td class="price-col">₹2,000</td>
+                        <td class="price-col">₹21,600</td>
+                    </tr>
+                    <tr>
+                        <td>Vocal Training</td>
+                        <td>Advanced</td>
+                        <td>8</td>
+                        <td>60 min</td>
+                        <td class="price-col">₹3,800</td>
+                        <td class="price-col">₹41,040</td>
+                    </tr>
+                    <tr>
+                        <td>Percussion & Drums</td>
+                        <td>All Levels</td>
+                        <td>4–8</td>
+                        <td>60 min</td>
+                        <td class="price-col">₹2,500 – ₹4,200</td>
+                        <td class="price-col">₹27,000 – ₹45,360</td>
+                    </tr>
+                    <tr>
+                        <td>Fine Arts</td>
+                        <td>Beginner</td>
+                        <td>4</td>
+                        <td>90 min</td>
+                        <td class="price-col">₹2,800</td>
+                        <td class="price-col">₹30,240</td>
+                    </tr>
+                    <tr>
+                        <td>Fine Arts</td>
+                        <td>Advanced</td>
+                        <td>8</td>
+                        <td>90 min</td>
+                        <td class="price-col">₹5,000</td>
+                        <td class="price-col">₹54,000</td>
+                    </tr>
+                    <tr>
+                        <td>Dance & Movement</td>
+                        <td>All Levels</td>
+                        <td>8–12</td>
+                        <td>60 min</td>
+                        <td class="price-col">₹2,000 – ₹3,500</td>
+                        <td class="price-col">₹21,600 – ₹37,800</td>
+                    </tr>
+                    <tr>
+                        <td>Online Sessions</td>
+                        <td>Any Program</td>
+                        <td>4–8</td>
+                        <td>45 min</td>
+                        <td class="price-col">₹1,800 – ₹3,500</td>
+                        <td class="price-col">₹19,440 – ₹37,800</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- SCHOLARSHIPS -->
+    <div class="scholarship-section">
+        <div class="section-label"><i class="fa-solid fa-graduation-cap"></i> Financial Support</div>
+        <h2>Scholarships & <em>Concessions</em></h2>
+        <p>We believe no talented student should be held back by finances. Melodia offers three types of scholarships
+            reviewed each academic year.</p>
+        <div class="scholarship-grid">
+            <div class="schol-card"><i class="fa-solid fa-star"></i>
+                <h4>Merit Scholarship</h4>
+                <p>Up to 50% fee waiver for students who demonstrate exceptional aptitude in their audition or entrance
+                    assessment.</p>
+            </div>
+            <div class="schol-card"><i class="fa-solid fa-hands-holding-heart"></i>
+                <h4>Need-based Aid</h4>
+                <p>Up to 30% fee reduction for economically weaker sections, subject to documentation and counsellor
+                    review.</p>
+            </div>
+            <div class="schol-card"><i class="fa-solid fa-users"></i>
+                <h4>Sibling Discount</h4>
+                <p>10% discount on total fees when two or more siblings enroll simultaneously in any program.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="payment-section">
+        <div class="section-head">
+            <div class="section-label"><i class="fa-solid fa-credit-card"></i> Payment Methods</div>
+            <h2>Easy, <em>Secure</em> Payments</h2>
+            <p>We support multiple payment options for your convenience. Quarterly and annual payment discounts
+                available.</p>
+        </div>
+        <div class="payment-options">
+            <div class="pay-card"><i class="fa-brands fa-google-pay"></i>
+                <h5>Google Pay / PhonePe</h5>
+                <p>Instant UPI transfer to our verified merchant ID</p>
+            </div>
+            <div class="pay-card"><i class="fa-solid fa-building-columns"></i>
+                <h5>Bank Transfer</h5>
+                <p>NEFT / RTGS to our HDFC Bank current account</p>
+            </div>
+            <div class="pay-card"><i class="fa-regular fa-credit-card"></i>
+                <h5>Debit / Credit Card</h5>
+                <p>All major cards accepted with 0% extra charge</p>
+            </div>
+            <div class="pay-card"><i class="fa-solid fa-money-bill-wave"></i>
+                <h5>Cash at Centre</h5>
+                <p>Pay directly at our Banjara Hills reception desk</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ - CSS only accordion using :target -->
+    <div class="faq-section">
+        <div class="section-head">
+            <div class="section-label"><i class="fa-solid fa-circle-question"></i> FAQ</div>
+            <h2>Frequently Asked <em>Questions</em></h2>
+            <p>Everything you need to know about our fees and enrollment policies.</p>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item" id="faq1">
+                <a class="faq-q" href="#faq1">Is there a registration fee? <i class="fa-solid fa-plus"></i></a>
+                <div class="faq-a">
+                    <p>Yes, a one-time registration fee of ₹500 applies when you first enroll. This covers your student
+                        ID, portal access setup, and welcome kit. It is non-refundable.</p>
+                </div>
+            </div>
+            <div class="faq-item" id="faq2">
+                <a class="faq-q" href="#faq2">Can I change my program after enrolling? <i
+                        class="fa-solid fa-plus"></i></a>
+                <div class="faq-a">
+                    <p>Yes! You can switch programs at the end of any month. Simply inform your counsellor 7 days in
+                        advance and the new fee structure will apply from the next billing cycle.</p>
+                </div>
+            </div>
+            <div class="faq-item" id="faq3">
+                <a class="faq-q" href="#faq3">What is the refund policy? <i class="fa-solid fa-plus"></i></a>
+                <div class="faq-a">
+                    <p>If you wish to discontinue, fees for completed sessions are non-refundable. Fees for remaining
+                        sessions in the paid month can be refunded within 7 working days of application.</p>
+                </div>
+            </div>
+            <div class="faq-item" id="faq4">
+                <a class="faq-q" href="#faq4">Are there any discounts for annual payment? <i
+                        class="fa-solid fa-plus"></i></a>
+                <div class="faq-a">
+                    <p>Yes! Pay for 10 months and get 2 months free (an effective 16.7% discount). Quarterly payments
+                        receive a 5% discount. Contact our office for the annual payment invoice.</p>
+                </div>
+            </div>
+            <div class="faq-item" id="faq5">
+                <a class="faq-q" href="#faq5">Is the free trial class really free? <i class="fa-solid fa-plus"></i></a>
+                <div class="faq-a">
+                    <p>Absolutely — no strings attached. Your first class is completely free and there is no obligation
+                        to enroll. We simply want you to experience Melodia firsthand before deciding.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a class="logo" href="music_art_academy.html"><i class="fa-solid fa-music"></i>Melody<span>.</span></a>
+        <div class="footer-nav">
+            <a href="music_art_academy.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="faculty.html">Faculty</a>
+            <a href="fees.html">Fees</a>
+            <a href="enroll.html">Enroll</a>
+        </div>
+        <div class="footer-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <p>© 2026 Melodia Music & Arts Academy. All rights reserved.</p>
+    </footer>
+
+
+</body>
+
+</html>

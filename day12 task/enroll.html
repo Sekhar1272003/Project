@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Melodia — Enrollment</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #fff9f2;
+            color: #1e1206;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            background: rgba(255, 249, 242, 0.97);
+            box-shadow: 0 2px 20px rgba(224, 123, 57, 0.12);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1e1206;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo i,
+        .nav-logo span {
+            color: #e07b39;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a3520;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .nav-links a:hover {
+            background: #e07b39;
+            color: #fff;
+        }
+
+        .nav-links a.active-link {
+            background: #e07b39;
+            color: #fff;
+        }
+
+        .nav-btn {
+            background: #e07b39;
+            color: #fff ;
+            padding: 0.55rem 1.3rem;
+            border-radius: 25px;
+        }
+
+        /* COMMON */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.22s, background 0.22s;
+        }
+
+        .btn-orange {
+            background: #e07b39;
+            color: #fff;
+            box-shadow: 0 6px 22px rgba(224, 123, 57, 0.35);
+        }
+
+        .btn-orange:hover {
+            background: #c05e22;
+            transform: translateY(-3px);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e07b39;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.9rem;
+        }
+
+        /* PAGE BANNER */
+        .page-banner {
+            min-height: 38vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 5rem 4rem 3rem;
+            background: linear-gradient(135deg, #1e1206 55%, #3a2010 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1200&q=60') center/cover;
+            opacity: 0.12;
+        }
+
+        .page-banner-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: #fff9f2;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .page-banner h1 em {
+            color: #e07b39;
+            font-style: italic;
+        }
+
+        .page-banner p {
+            color: rgba(255, 249, 242, 0.7);
+            font-size: 1.05rem;
+            max-width: 500px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: #e07b39;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 249, 242, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* ENROLL PAGE */
+        .enroll-page {
+            padding: 5rem 4rem;
+            background: #fff9f2;
+        }
+
+        .enroll-page-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .enroll-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .enroll-info h2 em {
+            font-style: italic;
+            color: #e07b39;
+        }
+
+        .enroll-info p {
+            color: #6b4e2e;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #e07b39;
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .step-item h5 {
+            font-weight: 700;
+            color: #1e1206;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-item p {
+            font-size: 0.88rem;
+            color: #6b4e2e;
+            line-height: 1.6;
+        }
+
+        .enroll-perks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .perk {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #4a3520;
+        }
+
+        .perk i {
+            color: #e07b39;
+        }
+
+        .contact-info-box {
+            margin-top: 2rem;
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 16px rgba(30, 18, 6, 0.07);
+        }
+
+        .contact-info-box p {
+            font-size: 0.9rem;
+            color: #4a3520;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info-box p strong {
+            color: #1e1206;
+        }
+
+        /* FORM */
+        .big-form {
+            background: #fff;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 12px 40px rgba(30, 18, 6, 0.1);
+        }
+
+        .big-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .big-form>p {
+            font-size: 0.88rem;
+            color: #8a6040;
+            margin-bottom: 2rem;
+        }
+
+        .form-section-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #e07b39;
+            margin: 1.5rem 0 1rem;
+            border-top: 1px solid #f0e8e0;
+            padding-top: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #4a3520;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem 1rem;
+            border: 1.5px solid #e8d8c8;
+            border-radius: 12px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            color: #1e1206;
+            background: #fff9f2;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #e07b39;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .document-upload {
+            border: 2px dashed rgba(224, 123, 57, 0.3);
+            border-radius: 14px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .document-upload:hover {
+            border-color: #e07b39;
+            background: rgba(224, 123, 57, 0.04);
+        }
+
+        .document-upload i {
+            font-size: 2rem;
+            color: #e07b39;
+            margin-bottom: 0.7rem;
+            display: block;
+        }
+
+        .document-upload p {
+            font-size: 0.88rem;
+            color: #8a6040;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: #e07b39;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: background 0.25s, transform 0.2s;
+            box-shadow: 0 6px 22px rgba(224, 123, 57, 0.35);
+            text-decoration: none;
+        }
+
+        .btn-submit:hover {
+            background: #c05e22;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1e1206;
+            color: #fff9f2;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            text-align: center;
+        }
+
+        footer .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff9f2;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        footer .logo i,
+        footer .logo span {
+            color: #e07b39;
+        }
+
+        footer p {
+            font-size: 0.82rem;
+            color: rgba(255, 249, 242, 0.4);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 249, 242, 0.5);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #e07b39;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 249, 242, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: #e07b39;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a class="nav-logo" href="music_art_academy.html"><i class="fa-solid fa-music"></i>Melody<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="music_art_academy.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="fees.html">Fees</a></li>
+            <li><a href="enroll.html" class="nav-btn active-link">Enroll</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-banner">
+        <div class="page-banner-content">
+            <div class="breadcrumb"><a href="music_art_academy.html">Home</a><span>/</span><span
+                    style="color:rgba(255,249,242,0.6)">Enrollment</span></div>
+            <h1>Enroll at <em>Melodia</em></h1>
+            <p>Take the first step toward your creative journey. Book a free trial or complete your enrollment today.
+            </p>
+        </div>
+    </div>
+
+    <div class="enroll-page">
+        <div class="enroll-page-inner">
+            <div class="enroll-info">
+                <div class="section-label"><i class="fa-solid fa-map"></i> How It Works</div>
+                <h2>Start Your Journey in <em>4 Simple Steps</em></h2>
+                <p>Our enrollment process is quick, friendly, and commitment-free. You can book a free trial and decide
+                    later — no pressure, ever.</p>
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <div>
+                            <h5>Fill the Form</h5>
+                            <p>Complete the enrollment form with your details and preferred program. Takes less than 2
+                                minutes.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div>
+                            <h5>Counsellor Connects</h5>
+                            <p>Our team contacts you within 24 hours to discuss your goals, level, and schedule
+                                preferences.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <div>
+                            <h5>Free Trial Class</h5>
+                            <p>Attend your first class for free — no obligation. Meet your instructor and experience the
+                                Melodia environment.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">4</div>
+                        <div>
+                            <h5>Begin Your Journey</h5>
+                            <p>Confirm enrollment, complete payment, and start your regular classes. Your creative life
+                                begins here.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="enroll-perks">
+                    <div class="perk"><i class="fa-solid fa-check-circle"></i> Free first class</div>
+                    <div class="perk"><i class="fa-solid fa-check-circle"></i> No lock-in contract</div>
+                    <div class="perk"><i class="fa-solid fa-check-circle"></i> Flexible scheduling</div>
+                    <div class="perk"><i class="fa-solid fa-check-circle"></i> Online & offline</div>
+                    <div class="perk"><i class="fa-solid fa-check-circle"></i> All skill levels welcome</div>
+                    <div class="perk"><i class="fa-solid fa-check-circle"></i> 24hr confirmation</div>
+                </div>
+                <div class="contact-info-box">
+                    <div class="section-label" style="margin-bottom:0.7rem;"><i class="fa-solid fa-phone"></i> Contact
+                        Us Directly</div>
+                    <p><strong>Phone:</strong> +91 9398836535</p>
+                    <p><strong>Email:</strong> hello@melodiaacademy.in</p>
+                    <p><strong>Address:</strong> Banjara Hills, Hyderabad, Telangana 500034</p>
+                </div>
+            </div>
+
+            <div class="big-form">
+                <h3>Enrollment Application</h3>
+                <p>Fill all fields below. Our team will get back to you within 24 hours.</p>
+
+                <div class="form-section-title">Student Information</div>
+                <div class="form-row">
+                    <div class="form-group"><label><i class="fa-solid fa-user"></i> First Name</label><input type="text"
+                            placeholder="First name" required /></div>
+                    <div class="form-group"><label><i class="fa-solid fa-user"></i> Last Name</label><input type="text"
+                            placeholder="Last name" required /></div>
+                </div>
+                <div class="form-group"><label><i class="fa-solid fa-cake-candles"></i> Date of Birth</label><input
+                        type="date" required /></div>
+                <div class="form-group"><label><i class="fa-solid fa-person"></i> Gender</label><select required>
+                        <option value="">— Select —</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Prefer not to say</option>
+                    </select></div>
+
+                <div class="form-section-title">Contact Information</div>
+                <div class="form-group"><label><i class="fa-solid fa-envelope"></i> Email Address</label><input
+                        type="email" placeholder="your@email.com" required /></div>
+                <div class="form-group"><label><i class="fa-solid fa-phone"></i> Phone Number</label><input type="tel"
+                        placeholder="+91 98765 43210" required /></div>
+                <div class="form-group"><label><i class="fa-solid fa-location-dot"></i> Area / Locality</label><input
+                        type="text" placeholder="e.g. Jubilee Hills, Hyderabad" /></div>
+
+                <div class="form-section-title">Program Details</div>
+                <div class="form-group"><label><i class="fa-solid fa-music"></i> Program of Interest</label><select
+                        required>
+                        <option value="">— Select a program —</option>
+                        <option>Piano & Keyboard</option>
+                        <option>Guitar & Strings</option>
+                        <option>Vocal Training</option>
+                        <option>Percussion & Drums</option>
+                        <option>Fine Arts</option>
+                        <option>Dance & Movement</option>
+                    </select></div>
+                <div class="form-group"><label><i class="fa-solid fa-layer-group"></i> Experience Level</label><select
+                        required>
+                        <option value="">— Select level —</option>
+                        <option>Complete Beginner</option>
+                        <option>Some Experience (1–2 years)</option>
+                        <option>Intermediate (3–5 years)</option>
+                        <option>Advanced (5+ years)</option>
+                    </select></div>
+                <div class="form-group"><label><i class="fa-solid fa-calendar"></i> Preferred Schedule</label><select>
+                        <option value="">— Select preference —</option>
+                        <option>Weekday Morning (9AM–12PM)</option>
+                        <option>Weekday Afternoon (12PM–4PM)</option>
+                        <option>Weekday Evening (4PM–8PM)</option>
+                        <option>Weekend (Sat/Sun)</option>
+                    </select></div>
+                <div class="form-group"><label><i class="fa-solid fa-laptop"></i> Class Mode</label><select>
+                        <option value="">— Select mode —</option>
+                        <option>In-person (Banjara Hills Campus)</option>
+                        <option>Online (Live)</option>
+                        <option>Hybrid (Both)</option>
+                    </select></div>
+
+                <div class="form-section-title">Additional Information</div>
+                <div class="form-group"><label><i class="fa-solid fa-comment"></i> Tell us about your
+                        goals</label><textarea
+                        placeholder="What do you hope to achieve? Any special requirements or questions for our team?"></textarea>
+                </div>
+
+                <div class="document-upload">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p><strong>Upload Previous Certificates (Optional)</strong><br />Click to upload. PDF, JPG, PNG ·
+                        Max 5MB</p>
+                    <input type="file" accept=".pdf,.jpg,.jpeg,.png" style="opacity:0;position:absolute;" />
+                </div>
+
+                <a href="music_art_academy.html" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Submit
+                    Enrollment Application</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a class="logo" href="music_art_academy.html"><i class="fa-solid fa-music"></i>Melody<span>.</span></a>
+        <div class="footer-nav">
+            <a href="music_art_academy.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="faculty.html">Faculty</a>
+            <a href="fees.html">Fees</a>
+            <a href="enroll.html">Enroll</a>
+        </div>
+        <div class="footer-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <p>© 2026 Melodia Music & Arts Academy. All rights reserved.</p>
+    </footer>
+
+
+</body>
+
+</html>
