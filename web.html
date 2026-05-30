@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEasy - E-Commerce</title>
+
+  <link href="bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body { background-color: #f8f9fa; }
+    .navbar-brand span { color: #0d6efd; }
+    .hero-section { background: #0d6efd; color: #fff; padding: 80px 0; }
+    .product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.15); transition: 0.3s; }
+    .badge-sale { position: absolute; top: 10px; left: 10px; }
+    .star-rating { color: #ffc107; }
+    .footer-bg { background-color: #212529; color: #adb5bd; }
+    .category-icon { font-size: 2rem; color: #0d6efd; }
+    .offer-banner { background: #212529; color: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="bg-dark text-white text-center py-2 small">
+  <i class="fa fa-truck me-2"></i> Free shipping on orders over ₹999 &nbsp;|&nbsp;
+  <i class="fa fa-phone me-2"></i> 1800-123-4567
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4" href="#">Shop<span>Easy</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Deals</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+      </ul>
+      <form class="d-flex me-3">
+        <input class="form-control me-2" type="search" placeholder="Search products...">
+        <button class="btn btn-outline-primary" type="button"><i class="fa fa-search"></i></button>
+      </form>
+      <div class="d-flex gap-3">
+        <a href="#" class="text-dark position-relative">
+          <i class="fa fa-heart fa-lg"></i>
+          <span class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill">2</span>
+        </a>
+        <a href="#" class="text-dark position-relative">
+          <i class="fa fa-shopping-cart fa-lg"></i>
+          <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill">5</span>
+        </a>
+        <a href="#" class="text-dark"><i class="fa fa-user fa-lg"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <p class="text-warning fw-semibold mb-2"><i class="fa fa-bolt me-1"></i> New Arrivals 2025</p>
+        <h1 class="display-4 fw-bold mb-3">Shop the Latest Trends</h1>
+        <p class="lead mb-4">Discover thousands of products at unbeatable prices. Quality you can trust, delivered to your door.</p>
+        <div class="d-flex gap-3">
+          <a href="#" class="btn btn-warning btn-lg fw-semibold">Shop Now <i class="fa fa-arrow-right ms-1"></i></a>
+          <a href="#" class="btn btn-outline-light btn-lg">View Deals</a>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center mt-4 mt-lg-0">
+        <i class="fa fa-store" style="font-size:10rem; opacity:0.2;"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <h4 class="fw-bold text-center mb-4">Browse Categories</h4>
+    <div class="row g-3 text-center">
+      <div class="col-6 col-md-2">
+        <div class="card border-0 shadow-sm p-3 h-100">
+          <div class="category-icon mb-2"><i class="fa fa-mobile-alt"></i></div>
+          <small class="fw-semibold">Electronics</small>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="card border-0 shadow-sm p-3 h-100">
+          <div class="category-icon mb-2"><i class="fa fa-tshirt"></i></div>
+          <small class="fw-semibold">Fashion</small>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="card border-0 shadow-sm p-3 h-100">
+          <div class="category-icon mb-2"><i class="fa fa-couch"></i></div>
+          <small class="fw-semibold">Furniture</small>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="card border-0 shadow-sm p-3 h-100">
+          <div class="category-icon mb-2"><i class="fa fa-dumbbell"></i></div>
+          <small class="fw-semibold">Sports</small>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="card border-0 shadow-sm p-3 h-100">
+          <div class="category-icon mb-2"><i class="fa fa-book"></i></div>
+          <small class="fw-semibold">Books</small>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="card border-0 shadow-sm p-3 h-100">
+          <div class="category-icon mb-2"><i class="fa fa-blender"></i></div>
+          <small class="fw-semibold">Kitchen</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Offer Banner -->
+<section class="offer-banner py-4">
+  <div class="container">
+    <div class="row text-center g-3">
+      <div class="col-md-3">
+        <i class="fa fa-truck fa-lg text-warning me-2"></i> <span class="fw-semibold">Free Delivery</span>
+      </div>
+      <div class="col-md-3">
+        <i class="fa fa-undo fa-lg text-warning me-2"></i> <span class="fw-semibold">Easy Returns</span>
+      </div>
+      <div class="col-md-3">
+        <i class="fa fa-shield-alt fa-lg text-warning me-2"></i> <span class="fw-semibold">Secure Payment</span>
+      </div>
+      <div class="col-md-3">
+        <i class="fa fa-headset fa-lg text-warning me-2"></i> <span class="fw-semibold">24/7 Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="fw-bold mb-0">Featured Products</h4>
+      <a href="#" class="btn btn-outline-primary btn-sm">View All <i class="fa fa-arrow-right ms-1"></i></a>
+    </div>
+    <div class="row g-4">
+
+      <!-- Product 1 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100 border-0 shadow-sm product-card position-relative">
+          <span class="badge bg-danger badge-sale">SALE</span>
+          <div class="text-center p-4 bg-light">
+            <i class="fa fa-laptop" style="font-size:4rem; color:#6c757d;"></i>
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-1">Electronics</p>
+            <h6 class="card-title fw-semibold">Wireless Laptop Pro</h6>
+            <div class="star-rating small mb-2">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+              <span class="text-muted ms-1">(48)</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="fw-bold text-primary">₹45,999</span>
+              <span class="text-muted text-decoration-line-through small">₹55,000</span>
+            </div>
+            <button class="btn btn-primary w-100 btn-sm"><i class="fa fa-cart-plus me-1"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100 border-0 shadow-sm product-card position-relative">
+          <span class="badge bg-success badge-sale">NEW</span>
+          <div class="text-center p-4 bg-light">
+            <i class="fa fa-mobile-alt" style="font-size:4rem; color:#6c757d;"></i>
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-1">Electronics</p>
+            <h6 class="card-title fw-semibold">SmartPhone X12</h6>
+            <div class="star-rating small mb-2">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              <span class="text-muted ms-1">(120)</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="fw-bold text-primary">₹22,499</span>
+              <span class="text-muted text-decoration-line-through small">₹28,000</span>
+            </div>
+            <button class="btn btn-primary w-100 btn-sm"><i class="fa fa-cart-plus me-1"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100 border-0 shadow-sm product-card position-relative">
+          <div class="text-center p-4 bg-light">
+            <i class="fa fa-headphones" style="font-size:4rem; color:#6c757d;"></i>
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-1">Audio</p>
+            <h6 class="card-title fw-semibold">Noise-Cancel Headphones</h6>
+            <div class="star-rating small mb-2">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="far fa-star"></i>
+              <span class="text-muted ms-1">(85)</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="fw-bold text-primary">₹3,999</span>
+              <span class="text-muted text-decoration-line-through small">₹5,500</span>
+            </div>
+            <button class="btn btn-primary w-100 btn-sm"><i class="fa fa-cart-plus me-1"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100 border-0 shadow-sm product-card position-relative">
+          <span class="badge bg-warning text-dark badge-sale">HOT</span>
+          <div class="text-center p-4 bg-light">
+            <i class="fa fa-camera" style="font-size:4rem; color:#6c757d;"></i>
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-1">Camera</p>
+            <h6 class="card-title fw-semibold">DSLR Camera 4K</h6>
+            <div class="star-rating small mb-2">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+              <span class="text-muted ms-1">(63)</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="fw-bold text-primary">₹64,999</span>
+              <span class="text-muted text-decoration-line-through small">₹80,000</span>
+            </div>
+            <button class="btn btn-primary w-100 btn-sm"><i class="fa fa-cart-plus me-1"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100 border-0 shadow-sm product-card">
+          <div class="text-center p-4 bg-light">
+            <i class="fa fa-tshirt" style="font-size:4rem; color:#6c757d;"></i>
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-1">Fashion</p>
+            <h6 class="card-title fw-semibold">Casual Cotton T-Shirt</h6>
+            <div class="star-rating small mb-2">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="far fa-star"></i>
+              <span class="text-muted ms-1">(210)</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="fw-bold text-primary">₹599</span>
+              <span class="text-muted text-decoration-line-through small">₹999</span>
+            </div>
+            <button class="btn btn-primary w-100 btn-sm"><i class="fa fa-cart-plus me-1"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100 border-0 shadow-sm product-card">
+          <div class="text-center p-4 bg-light">
+            <i class="fa fa-shoe-prints" style="font-size:4rem; color:#6c757d;"></i>
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-1">Footwear</p>
+            <h6 class="card-title fw-semibold">Running Sports Shoes</h6>
+            <div class="star-rating small mb-2">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              <span class="text-muted ms-1">(95)</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="fw-bold text-primary">₹2,499</span>
+              <span class="text-muted text-decoration-line-through small">₹3,500</span>
+            </div>
+            <button class="btn btn-primary w-100 btn-sm"><i class="fa fa-cart-plus me-1"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100 border-0 shadow-sm product-card">
+          <div class="text-center p-4 bg-light">
+            <i class="fa fa-blender" style="font-size:4rem; color:#6c757d;"></i>
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-1">Kitchen</p>
+            <h6 class="card-title fw-semibold">Smart Blender 1000W</h6>
+            <div class="star-rating small mb-2">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i><i class="far fa-star"></i>
+              <span class="text-muted ms-1">(44)</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="fw-bold text-primary">₹1,799</span>
+              <span class="text-muted text-decoration-line-through small">₹2,500</span>
+            </div>
+            <button class="btn btn-primary w-100 btn-sm"><i class="fa fa-cart-plus me-1"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100 border-0 shadow-sm product-card">
+          <div class="text-center p-4 bg-light">
+            <i class="fa fa-book" style="font-size:4rem; color:#6c757d;"></i>
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-1">Books</p>
+            <h6 class="card-title fw-semibold">Learn Python Fast</h6>
+            <div class="star-rating small mb-2">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="far fa-star"></i>
+              <span class="text-muted ms-1">(310)</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="fw-bold text-primary">₹349</span>
+              <span class="text-muted text-decoration-line-through small">₹599</span>
+            </div>
+            <button class="btn btn-primary w-100 btn-sm"><i class="fa fa-cart-plus me-1"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="bg-primary text-white py-5">
+  <div class="container text-center">
+    <h4 class="fw-bold mb-2"><i class="fa fa-envelope me-2"></i>Subscribe to Our Newsletter</h4>
+    <p class="mb-4">Get the latest deals and offers straight to your inbox.</p>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="input-group">
+          <input type="email" class="form-control" placeholder="Enter your email address">
+          <button class="btn btn-warning fw-semibold">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-bg py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-3">
+        <h5 class="text-white fw-bold">Shop<span class="text-primary">Easy</span></h5>
+        <p class="small">Your one-stop destination for all your shopping needs. Quality products at the best prices.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-white fw-semibold mb-3">Quick Links</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>Home</a></li>
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>Shop</a></li>
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>About Us</a></li>
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>Contact</a></li>
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>FAQs</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-white fw-semibold mb-3">Customer Service</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>My Account</a></li>
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>Order Tracking</a></li>
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>Wishlist</a></li>
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>Returns & Refunds</a></li>
+          <li class="mb-1"><a href="#" class="text-secondary text-decoration-none"><i class="fa fa-chevron-right me-1 small"></i>Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-white fw-semibold mb-3">Contact Us</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><i class="fa fa-map-marker-alt me-2 text-primary"></i>123 Market Street, Hyderabad</li>
+          <li class="mb-2"><i class="fa fa-phone me-2 text-primary"></i>1800-123-4567</li>
+          <li class="mb-2"><i class="fa fa-envelope me-2 text-primary"></i>support@shopeasy.com</li>
+          <li class="mb-2"><i class="fa fa-clock me-2 text-primary"></i>Mon - Sat: 9AM - 6PM</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="border-secondary mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start small">
+        &copy; 2025 ShopEasy. All rights reserved.
+      </div>
+      <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+        <i class="fab fa-cc-visa fa-2x me-2"></i>
+        <i class="fab fa-cc-mastercard fa-2x me-2"></i>
+        <i class="fab fa-cc-paypal fa-2x me-2"></i>
+        <i class="fab fa-cc-amazon-pay fa-2x"></i>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

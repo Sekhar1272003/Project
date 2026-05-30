@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyBrand — Digital Agency</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #f8f9fc;
+      color: #222;
+    }
+
+    /* ---- NAVBAR ---- */
+    .mb-nav {
+      background: #0b0f1a;
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .mb-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .mb-brand span {
+      color: #4f8ef7;
+    }
+
+    .mb-nav-link {
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .mb-nav-link:hover {
+      color: #fff;
+      background: rgba(79, 142, 247, 0.15);
+    }
+
+    .mb-nav-cta {
+      background: #4f8ef7;
+      color: #fff;
+      border-radius: 24px;
+      padding: 8px 22px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .mb-nav-cta:hover {
+      background: #2a6fd6;
+    }
+
+    /* ---- HERO ---- */
+    .mb-hero {
+      background: linear-gradient(135deg, #0b0f1a 0%, #0d2052 60%, #0b0f1a 100%);
+      color: #fff;
+      padding: 110px 0 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mb-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(79, 142, 247, 0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .mb-hero-tag {
+      background: rgba(79, 142, 247, 0.2);
+      border: 1px solid rgba(79, 142, 247, 0.5);
+      color: #8ab4f8;
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .mb-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.6rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .mb-hero h1 span {
+      color: #4f8ef7;
+    }
+
+    .mb-hero p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 540px;
+      margin-bottom: 36px;
+    }
+
+    .mb-btn-blue {
+      background: #4f8ef7;
+      color: #fff;
+      border: none;
+      border-radius: 28px;
+      padding: 13px 32px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .mb-btn-blue:hover {
+      background: #2a6fd6;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(79, 142, 247, 0.35);
+      color: #fff;
+    }
+
+    .mb-btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 28px;
+      padding: 12px 30px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .mb-btn-ghost:hover {
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .mb-hero-img {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .mb-hero-img img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ---- TRUSTED BY ---- */
+    .mb-trusted {
+      background: #fff;
+      padding: 32px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .mb-trusted-label {
+      font-size: 13px;
+      color: #999;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mb-client-logo {
+      font-size: 15px;
+      font-weight: 700;
+      color: #bbb;
+      transition: color 0.2s;
+      cursor: default;
+    }
+
+    .mb-client-logo:hover {
+      color: #4f8ef7;
+    }
+
+    .mb-client-logo i {
+      font-size: 1.3rem;
+      margin-right: 6px;
+    }
+
+    /* ---- SECTION COMMON ---- */
+    .mb-section {
+      padding: 80px 0;
+    }
+
+    .mb-section-tag {
+      color: #4f8ef7;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .mb-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0b0f1a;
+      margin-bottom: 12px;
+    }
+
+    .mb-section-sub {
+      color: #666;
+      font-size: 1rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ---- CAROUSEL ---- */
+    .mb-carousel-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .mb-carousel-wrap .carousel-item img {
+      height: 460px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .mb-carousel-caption-box {
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 16px 22px;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .mb-carousel-caption-box h5 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .mb-carousel-caption-box p {
+      font-size: 13px;
+      margin: 0;
+      opacity: 0.85;
+    }
+
+    .mb-carousel-tag {
+      background: #4f8ef7;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(79, 142, 247, 0.8);
+      border-radius: 50%;
+      background-size: 50%;
+    }
+
+    /* ---- SERVICES ---- */
+    .mb-service-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 16px;
+      padding: 32px 24px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .mb-service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(79, 142, 247, 0.12);
+      border-color: #4f8ef7;
+    }
+
+    .mb-service-icon {
+      width: 56px;
+      height: 56px;
+      background: #e8f0fe;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #4f8ef7;
+      margin-bottom: 18px;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .mb-service-card:hover .mb-service-icon {
+      background: #4f8ef7;
+      color: #fff;
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .mb-service-card h5 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: #0b0f1a;
+    }
+
+    .mb-service-card p {
+      font-size: 14px;
+      color: #777;
+      margin: 0;
+    }
+
+    /* ---- TEAM CARDS ---- */
+    .mb-team-card {
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s, box-shadow 0.25s;
+      background: #fff;
+    }
+
+    .mb-team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+    }
+
+    .mb-team-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .mb-team-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .mb-team-card .mb-team-body {
+      padding: 18px;
+    }
+
+    .mb-team-card h5 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 3px;
+      color: #0b0f1a;
+    }
+
+    .mb-team-card .mb-role {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .mb-team-social a {
+      color: #bbb;
+      font-size: 14px;
+      margin-right: 10px;
+      transition: color 0.2s;
+    }
+
+    .mb-team-social a:hover {
+      color: #4f8ef7;
+    }
+
+    /* ---- STATS ---- */
+    .mb-stats {
+      background: linear-gradient(135deg, #0b0f1a, #0d2052);
+      color: #fff;
+      padding: 70px 0;
+    }
+
+    .mb-stat-box {
+      text-align: center;
+      padding: 20px;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mb-stat-box:last-child {
+      border-right: none;
+    }
+
+    .mb-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #4f8ef7;
+    }
+
+    .mb-stat-label {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 4px;
+    }
+
+    /* ---- PROCESS ---- */
+    .mb-process-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 16px;
+      padding: 28px 22px;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+
+    .mb-process-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(79, 142, 247, 0.1);
+    }
+
+    .mb-process-num {
+      width: 44px;
+      height: 44px;
+      background: #4f8ef7;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      margin: 0 auto 16px;
+    }
+
+    .mb-process-card h6 {
+      font-weight: 700;
+      color: #0b0f1a;
+      margin-bottom: 8px;
+    }
+
+    .mb-process-card p {
+      font-size: 13px;
+      color: #888;
+      margin: 0;
+    }
+
+    /* ---- PORTFOLIO ---- */
+    .mb-portfolio-item {
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .mb-portfolio-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    }
+
+    .mb-portfolio-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mb-portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 32, 82, 0.85), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .mb-portfolio-item:hover .mb-portfolio-overlay {
+      opacity: 1;
+    }
+
+    .mb-portfolio-overlay span {
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    /* ---- TESTIMONIALS ---- */
+    .mb-testi-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .mb-testi-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(79, 142, 247, 0.1);
+    }
+
+    .mb-testi-quote {
+      font-size: 2rem;
+      color: #4f8ef7;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .mb-testi-text {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    .mb-testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 12px;
+    }
+
+    .mb-testi-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: #0b0f1a;
+    }
+
+    .mb-testi-role {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    /* CTA */
+    .mb-cta {
+      background: #4f8ef7;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .mb-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .mb-cta p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      margin-bottom: 30px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .mb-cta-btn {
+      background: #fff;
+      color: #4f8ef7;
+      border: none;
+      border-radius: 28px;
+      padding: 14px 36px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .mb-cta-btn:hover {
+      background: #0b0f1a;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .mb-cta-btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.65);
+      border-radius: 28px;
+      padding: 13px 34px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+
+    .mb-cta-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    /* FOOTER */
+    .mb-footer {
+      background: #0b0f1a;
+      color: #888;
+      padding: 60px 0 28px;
+    }
+
+    .mb-footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .mb-footer-brand span {
+      color: #4f8ef7;
+    }
+
+    .mb-footer-link {
+      color: #777;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 9px;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+
+    .mb-footer-link:hover {
+      color: #4f8ef7;
+      padding-left: 4px;
+    }
+
+    .mb-social {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .mb-social:hover {
+      background: #4f8ef7;
+      color: #fff;
+    }
+
+    .mb-footer-divider {
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="mb-nav navbar navbar-expand-lg">
+    <div class="container">
+      <a class="mb-brand" href="index.html">My<span>Brand</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+        style="filter:invert(1);">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="mb-nav-link nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="mb-nav-link nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="mb-nav-link nav-link" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="mb-nav-link nav-link" href="team.html">Team</a></li>
+          <li class="nav-item"><a class="mb-nav-link nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="mb-nav-cta nav-link ms-3"><i class="fa fa-arrow-right me-2"></i>Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="mb-hero" id="home">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="mb-hero-tag"><i class="fa fa-bolt me-1"></i>Award-winning Digital Agency</div>
+          <h1>We Build Digital<br>Products That <span>Inspire</span></h1>
+          <p>From stunning websites to powerful mobile apps — we craft digital experiences that grow your brand and
+            captivate your audience.</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="#work" class="mb-btn-blue"><i class="fa fa-play me-2"></i>View Our Work</a>
+            <a href="#contact" class="mb-btn-ghost"><i class="fa fa-phone me-2"></i>Talk to Us</a>
+          </div>
+          <div class="d-flex gap-4 mt-4">
+            <div>
+              <div style="font-size:1.4rem;font-weight:800;color:#4f8ef7;">120+</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);">Projects Done</div>
+            </div>
+            <div>
+              <div style="font-size:1.4rem;font-weight:800;color:#4f8ef7;">40+</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);">Clients</div>
+            </div>
+            <div>
+              <div style="font-size:1.4rem;font-weight:800;color:#4f8ef7;">8 Yrs</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);">Experience</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="mb-hero-img">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
+              alt="Team working on digital projects">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TRUSTED BY -->
+  <section class="mb-trusted">
+    <div class="container">
+      <div class="row align-items-center g-3">
+        <div class="col-12 col-md-2 text-center text-md-start">
+          <span class="mb-trusted-label">Trusted by</span>
+        </div>
+        <div class="col-6 col-md-2 text-center"><span class="mb-client-logo"><i class="fab fa-google"></i>Google</span>
+        </div>
+        <div class="col-6 col-md-2 text-center"><span class="mb-client-logo"><i
+              class="fab fa-microsoft"></i>Microsoft</span></div>
+        <div class="col-6 col-md-2 text-center"><span class="mb-client-logo"><i class="fab fa-slack"></i>Slack</span>
+        </div>
+        <div class="col-6 col-md-2 text-center"><span class="mb-client-logo"><i
+              class="fab fa-shopify"></i>Shopify</span></div>
+        <div class="col-6 col-md-2 text-center"><span class="mb-client-logo"><i class="fab fa-stripe"></i>Stripe</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SERVICES -->
+  <section class="mb-section bg-white" id="services">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="mb-section-tag">What We Do</div>
+        <h2 class="mb-section-title">Our Core Services</h2>
+        <p class="mb-section-sub">Everything you need to establish a powerful digital presence and grow your business
+          online.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="mb-service-card h-100">
+            <div class="mb-service-icon"><i class="fa fa-palette"></i></div>
+            <h5>UI / UX Design</h5>
+            <p>Beautiful, user-friendly interfaces designed for real people with a focus on conversion and experience.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-service-card h-100">
+            <div class="mb-service-icon"><i class="fa fa-code"></i></div>
+            <h5>Web Development</h5>
+            <p>Fast, responsive, and scalable websites built with the latest modern web technologies.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-service-card h-100">
+            <div class="mb-service-icon"><i class="fa fa-mobile-alt"></i></div>
+            <h5>Mobile Apps</h5>
+            <p>Cross-platform mobile applications for iOS and Android, built for performance and delight.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-service-card h-100">
+            <div class="mb-service-icon"><i class="fa fa-chart-line"></i></div>
+            <h5>Digital Marketing</h5>
+            <p>SEO, paid ads, and social media strategies that bring real traffic and conversions to your business.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-service-card h-100">
+            <div class="mb-service-icon"><i class="fa fa-cloud"></i></div>
+            <h5>Cloud & DevOps</h5>
+            <p>Scalable cloud infrastructure, CI/CD pipelines, and DevOps solutions for modern teams.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-service-card h-100">
+            <div class="mb-service-icon"><i class="fa fa-shield-alt"></i></div>
+            <h5>Cyber Security</h5>
+            <p>End-to-end security audits, penetration testing, and compliance to protect your digital assets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CAROUSEL — OUR WORK -->
+  <section class="mb-section" id="work" style="background:#f0f4ff;">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="mb-section-tag">Portfolio</div>
+        <h2 class="mb-section-title">Our Recent Projects</h2>
+        <p class="mb-section-sub">A glimpse of the work we've crafted for clients across industries worldwide.</p>
+      </div>
+      <div class="mb-carousel-wrap">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80"
+                alt="E-Commerce Platform">
+              <div class="carousel-caption d-none d-md-flex justify-content-start pb-4 ps-4">
+                <div class="mb-carousel-caption-box">
+                  <span class="mb-carousel-tag">E-Commerce</span>
+                  <h5>ShopNest — Online Retail Platform</h5>
+                  <p>Full-stack e-commerce solution with 50K+ products, live inventory and AI recommendations.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80" alt="Mobile App">
+              <div class="carousel-caption d-none d-md-flex justify-content-start pb-4 ps-4">
+                <div class="mb-carousel-caption-box">
+                  <span class="mb-carousel-tag">Mobile App</span>
+                  <h5>HealthTrack — Wellness Mobile App</h5>
+                  <p>Award-winning iOS & Android health app with 200K+ active users and real-time analytics.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"
+                alt="Analytics Dashboard">
+              <div class="carousel-caption d-none d-md-flex justify-content-start pb-4 ps-4">
+                <div class="mb-carousel-caption-box">
+                  <span class="mb-carousel-tag">Dashboard</span>
+                  <h5>DataFlow — Analytics Dashboard</h5>
+                  <p>Real-time business intelligence platform serving enterprise clients across 20+ countries.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80" alt="Brand Identity">
+              <div class="carousel-caption d-none d-md-flex justify-content-start pb-4 ps-4">
+                <div class="mb-carousel-caption-box">
+                  <span class="mb-carousel-tag">Branding</span>
+                  <h5>NovaBrand — Corporate Identity</h5>
+                  <p>Complete brand overhaul including logo, design system, and digital marketing assets.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PORTFOLIO GRID -->
+  <section class="mb-section bg-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="mb-section-tag">Gallery</div>
+        <h2 class="mb-section-title">More Work We're Proud Of</h2>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 col-md-4">
+          <div class="mb-portfolio-item">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="Team collaboration">
+            <div class="mb-portfolio-overlay"><span><i class="fa fa-arrow-right me-2"></i>Team Portal</span></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="mb-portfolio-item">
+            <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&q=80" alt="Mobile design">
+            <div class="mb-portfolio-overlay"><span><i class="fa fa-arrow-right me-2"></i>Mobile UI</span></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="mb-portfolio-item">
+            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80" alt="Analytics">
+            <div class="mb-portfolio-overlay"><span><i class="fa fa-arrow-right me-2"></i>Analytics Tool</span></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="mb-portfolio-item">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Marketing">
+            <div class="mb-portfolio-overlay"><span><i class="fa fa-arrow-right me-2"></i>Marketing Site</span></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="mb-portfolio-item">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80" alt="Developer">
+            <div class="mb-portfolio-overlay"><span><i class="fa fa-arrow-right me-2"></i>Dev Platform</span></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="mb-portfolio-item">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80" alt="Conference">
+            <div class="mb-portfolio-overlay"><span><i class="fa fa-arrow-right me-2"></i>Event App</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- STATS -->
+  <section class="mb-stats">
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-6 col-md-3 mb-stat-box">
+          <div class="mb-stat-num">120+</div>
+          <div class="mb-stat-label"><i class="fa fa-briefcase me-1"></i>Projects Done</div>
+        </div>
+        <div class="col-6 col-md-3 mb-stat-box">
+          <div class="mb-stat-num">40+</div>
+          <div class="mb-stat-label"><i class="fa fa-smile me-1"></i>Happy Clients</div>
+        </div>
+        <div class="col-6 col-md-3 mb-stat-box">
+          <div class="mb-stat-num">8 Yrs</div>
+          <div class="mb-stat-label"><i class="fa fa-clock me-1"></i>Experience</div>
+        </div>
+        <div class="col-6 col-md-3 mb-stat-box">
+          <div class="mb-stat-num">98%</div>
+          <div class="mb-stat-label"><i class="fa fa-star me-1"></i>Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TEAM -->
+  <section class="mb-section bg-white" id="team">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="mb-section-tag">Our People</div>
+        <h2 class="mb-section-title">Meet Our Team</h2>
+        <p class="mb-section-sub">Talented, passionate professionals who turn ideas into digital realities.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="mb-team-card">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Alice Johnson">
+            <div class="mb-team-body">
+              <h5>Alice Johnson</h5>
+              <p class="mb-role"><i class="fa fa-palette me-1 text-primary"></i>Lead Designer</p>
+              <span class="badge bg-primary" style="font-size:11px;">UI/UX</span>
+              <div class="mb-team-social mt-2">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="mb-team-card">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Bob Smith">
+            <div class="mb-team-body">
+              <h5>Bob Smith</h5>
+              <p class="mb-role"><i class="fa fa-code me-1 text-success"></i>Frontend Developer</p>
+              <span class="badge bg-success" style="font-size:11px;">React</span>
+              <div class="mb-team-social mt-2">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="mb-team-card">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Clara Ray">
+            <div class="mb-team-body">
+              <h5>Clara Ray</h5>
+              <p class="mb-role"><i class="fa fa-server me-1 text-warning"></i>Backend Developer</p>
+              <span class="badge bg-warning text-dark" style="font-size:11px;">Node.js</span>
+              <div class="mb-team-social mt-2">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="mb-team-card">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Dan Lee">
+            <div class="mb-team-body">
+              <h5>Dan Lee</h5>
+              <p class="mb-role"><i class="fa fa-chart-bar me-1 text-danger"></i>Marketing Lead</p>
+              <span class="badge bg-danger" style="font-size:11px;">SEO</span>
+              <div class="mb-team-social mt-2">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROCESS -->
+  <section class="mb-section" style="background:#f0f4ff;">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="mb-section-tag">How We Work</div>
+        <h2 class="mb-section-title">Our Simple 4-Step Process</h2>
+        <p class="mb-section-sub">A proven, transparent workflow designed to deliver results on time, every time.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-md-3">
+          <div class="mb-process-card">
+            <div class="mb-process-num">01</div>
+            <div class="mb-service-icon mx-auto mb-3"><i class="fa fa-comments"></i></div>
+            <h6>Discovery</h6>
+            <p>We learn your goals, audience, and business requirements in depth.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="mb-process-card">
+            <div class="mb-process-num">02</div>
+            <div class="mb-service-icon mx-auto mb-3"><i class="fa fa-pencil-ruler"></i></div>
+            <h6>Design</h6>
+            <p>Our designers create wireframes and prototypes for your approval.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="mb-process-card">
+            <div class="mb-process-num">03</div>
+            <div class="mb-service-icon mx-auto mb-3"><i class="fa fa-laptop-code"></i></div>
+            <h6>Develop</h6>
+            <p>Developers build your product with clean, maintainable code.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="mb-process-card">
+            <div class="mb-process-num">04</div>
+            <div class="mb-service-icon mx-auto mb-3"><i class="fa fa-rocket"></i></div>
+            <h6>Launch</h6>
+            <p>We test thoroughly, then launch and support your product post-go-live.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TESTIMONIALS -->
+  <section class="mb-section bg-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="mb-section-tag">Reviews</div>
+        <h2 class="mb-section-title">What Clients Say</h2>
+        <p class="mb-section-sub">Real feedback from businesses we've helped grow.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="mb-testi-card h-100">
+            <div class="mb-testi-quote"><i class="fa fa-quote-left"></i></div>
+            <p class="mb-testi-text">"MyBrand transformed our online presence completely. The new website doubled our
+              conversions in the first month alone. Incredible team!"</p>
+            <div class="mb-stars mb-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <div class="d-flex align-items-center">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" class="mb-testi-avatar"
+                alt="Sarah K">
+              <div>
+                <div class="mb-testi-name">Sarah K.</div>
+                <div class="mb-testi-role">CEO, RetailPlus</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-testi-card h-100">
+            <div class="mb-testi-quote"><i class="fa fa-quote-left"></i></div>
+            <p class="mb-testi-text">"Exceptional work ethic and communication throughout. They delivered our app on
+              time and it exceeded every expectation we had set."</p>
+            <div class="mb-stars mb-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <div class="d-flex align-items-center">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" class="mb-testi-avatar"
+                alt="James R">
+              <div>
+                <div class="mb-testi-name">James R.</div>
+                <div class="mb-testi-role">CTO, HealthStart</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-testi-card h-100">
+            <div class="mb-testi-quote"><i class="fa fa-quote-left"></i></div>
+            <p class="mb-testi-text">"Professional, creative, and super responsive. The team genuinely cared about our
+              success. We'll be working with them again!"</p>
+            <div class="mb-stars mb-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                class="fa fa-star"></i><i class="fa fa-star-half-alt"></i></div>
+            <div class="d-flex align-items-center">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" class="mb-testi-avatar"
+                alt="Nadia M">
+              <div>
+                <div class="mb-testi-name">Nadia M.</div>
+                <div class="mb-testi-role">Founder, NovaBrand</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: CTA -->
+  <section class="mb-cta">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div
+            style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.7);margin-bottom:14px;">
+            Your Turn</div>
+          <h2>Ready to Create Your<br>Success Story?</h2>
+          <p>Join 40+ businesses who chose MyBrand to build their digital products. Let's create something exceptional
+            together.</p>
+          <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="contact.html" class="mb-cta-btn"><i class="fa fa-paper-plane me-2"></i>Start a Project</a>
+            <a href="services.html" class="mb-cta-btn-outline"><i class="fa fa-layer-group me-2"></i>Our Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="mb-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="mb-footer-brand mb-3">My<span>Brand</span></div>
+          <p style="font-size:14px;line-height:1.75;">We create digital experiences that help businesses grow and
+            succeed in a connected world.</p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="mb-social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="mb-social"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="mb-social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="mb-social"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="mb-social"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-white fw-bold mb-3">Pages</h6>
+          <a href="index.html" class="mb-footer-link">Home</a>
+          <a href="services.html" class="mb-footer-link">Services</a>
+          <a href="portfolio.html" class="mb-footer-link">Portfolio</a>
+          <a href="team.html" class="mb-footer-link">Team</a>
+          <a href="contact.html" class="mb-footer-link">Contact</a>
+        </div>
+        <div class="col-md-3">
+          <h6 class="text-white fw-bold mb-3">Services</h6>
+          <a href="services.html" class="mb-footer-link">UI / UX Design</a>
+          <a href="services.html" class="mb-footer-link">Web Development</a>
+          <a href="services.html" class="mb-footer-link">Mobile Apps</a>
+          <a href="services.html" class="mb-footer-link">Digital Marketing</a>
+          <a href="services.html" class="mb-footer-link">Cloud & DevOps</a>
+        </div>
+        <div class="col-md-3">
+          <h6 class="text-white fw-bold mb-3">Contact</h6>
+          <p style="font-size:13px;"><i class="fa fa-envelope me-2" style="color:#4f8ef7;"></i>hello@mybrand.com</p>
+          <p style="font-size:13px;"><i class="fa fa-phone me-2" style="color:#4f8ef7;"></i>+91 98765 43210</p>
+          <p style="font-size:13px;"><i class="fa fa-map-marker-alt me-2" style="color:#4f8ef7;"></i>Hyderabad, India
+          </p>
+          <p style="font-size:13px;"><i class="fa fa-clock me-2" style="color:#4f8ef7;"></i>Mon–Sat: 9AM–7PM IST</p>
+        </div>
+      </div>
+      <hr class="mb-footer-divider mt-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start" style="font-size:13px;">&copy; 2026 MyBrand. All rights
+          reserved. Made with <i class="fa fa-heart text-danger"></i> in Hyderabad.</div>
+        <div class="col-md-6 text-center text-md-end mt-2 mt-md-0" style="font-size:13px;">
+          <a href="#" class="mb-footer-link d-inline me-3">Privacy Policy</a>
+          <a href="#" class="mb-footer-link d-inline me-3">Terms</a>
+          <a href="#" class="mb-footer-link d-inline">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
