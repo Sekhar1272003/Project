@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+</head>
+
+<body>
+    <script>
+        let hasID = true;
+        let hasTicket = true;
+        let age = 20;
+
+        if (hasID && hasTicket && age >= 18) {
+            console.log("Entry Allowed");
+        }
+        else {
+            console.log("Entry Denied");
+        }
+    </script>
+
+    <script>
+        let ID = false;
+        let Ticket = false;
+        let age1 = 16;
+
+
+        if (ID || Ticket || age1 >= 18) {
+            console.log("Entry Allowed");
+        }
+        else {
+            console.log("Entry Denied");
+        }
+    </script>
+
+    <script>
+        let hasID1 = false;
+        let hasTicket1 = false;
+        let hasVIPPass = true;
+        let age2 = 20;
+
+        if (hasID1 && (hasTicket1 || hasVIPPass) && age2 >= 18) {
+            console.log("Entry Allowed");
+        }
+        else {
+            console.log("Entry Denied");
+        }
+    </script>
+
+    <script>
+        let isWeekend = true;
+        let isHoliday = true;
+        let leaveApproved = true;
+
+        if (isWeekend && isHoliday && leaveApproved) {
+            console.log("Leave Granted");
+        }
+        else {
+            console.log("Leave Not Granted");
+        }
+    </script>
+
+    <script>
+        let isWeekend1 = false;
+        let isHoliday1 = true;
+        let leaveApproved1 = false;
+
+        if (isWeekend1 || isHoliday1 || leaveApproved1) {
+            console.log("Leave Granted");
+        }
+        else {
+            console.log("Leave Not Granted");
+        }
+    </script>
+
+    <script>
+        let isWeekend3 = false;
+        let isHoliday3 = true;
+        let leaveApproved3 = true;
+
+        if ((isWeekend3 || isHoliday3) && leaveApproved3) {
+            console.log("Leave Granted");
+        }
+        else {
+            console.log("Leave Not Granted");
+        }
+    </script>
+
+
+    <script>
+        let month = "July";
+
+        switch (month) {
+            case "March":
+            case "April":
+            case "May":
+                console.log("Summer Season");
+                break;
+
+            case "June":
+            case "July":
+            case "August":
+            case "September":
+                console.log("Rainy Season");
+                break;
+
+            case "October":
+            case "November":
+            case "December":
+            case "January":
+            case "February":
+                console.log("Winter Season");
+                break;
+
+            default:
+                console.log("Invalid Month");
+        }
+    </script>
+
+
+    <script>
+        let monthNo = Number(prompt("Enter Month Numb"));
+
+        switch (monthNo) {
+
+            case 1:
+                console.log("January");
+                break;
+
+            case 2:
+                console.log("February");
+                break;
+
+            case 3:
+                console.log("March");
+                break;
+
+            case 4:
+                console.log("April");
+                break;
+
+            case 5:
+                console.log("May");
+                break;
+
+            case 6:
+                console.log("June");
+                break;
+
+            case 7:
+                console.log("July");
+                break;
+
+            case 8:
+                console.log("August");
+                break;
+
+            case 9:
+                console.log("September");
+                break;
+
+            case 10:
+                console.log("October");
+                break;
+
+            case 11:
+                console.log("November");
+                break;
+
+            case 12:
+                console.log("December");
+                break;
+
+            default:
+                console.log("Invalid Month Number");
+        }
+    </script>
+</body>
+
+</html>
