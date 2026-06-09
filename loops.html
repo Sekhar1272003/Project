@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops tasks</title>
+</head>
+
+<body>
+    <script>
+        // Task 1: Student Attendance System (for of)
+
+        let students = ["Ravi", "Priya", "Kiran", "Anu"];
+
+        for (let student of students) {
+            console.log("Attendance Marked for " + student);
+        }
+
+
+        // Task 2: Online Shopping Products (for Each)
+
+        let products = ["Laptop", "Mouse", "Keyboard", "Monitor"];
+
+        products.forEach(function (product) {
+            console.log("Available Product: " + product);
+        });
+
+
+        // Task 3: Employee Welcome Messages (for of)
+
+        let employees = ["John", "David", "Sara"];
+
+        for (let employee of employees) {
+            console.log("Welcome " + employee);
+        }
+
+
+        // Task 4: Movie Ticket Booking (for loop)
+
+        for (let seat = 1; seat <= 10; seat++) {
+            console.log("Seat " + seat + " Booked");
+        }
+
+
+        // Task 5: Food Delivery Orders (for...of)
+
+        let orders = ["Order101", "Order102", "Order103"];
+
+        for (let order of orders) {
+            console.log("Delivering " + order);
+        }
+
+
+        // Task 6: Mobile Contacts (forEach)
+
+        let contacts = ["Rahul", "Priya", "Arjun", "Neha"];
+
+        contacts.forEach(function (contact) {
+            console.log("Calling " + contact);
+        });
+
+
+        // Task 7: WhatsApp Broadcast (for...of)
+
+        let users = ["Ravi", "Kiran", "Anu"];
+
+        for (let user of users) {
+            console.log("Message Sent to " + user);
+        }
+
+
+        // Task 8: YouTube Playlist (for...of)
+
+        let videos = ["HTML Basics", "CSS Basics", "JavaScript Basics"];
+
+        for (let video of videos) {
+            console.log("Now Playing: " + video);
+        }
+
+
+        // Task 9: ATM Withdrawal System (while loop)
+
+        let balance = 1000;
+
+        while (balance > 0) {
+            console.log("Balance: " + balance);
+            balance = balance - 200;
+        }
+
+
+        // Task 10: Bus Journey Tracker (for loop)
+
+        for (let stop = 1; stop <= 5; stop++) {
+            console.log("Reached Stop " + stop);
+        }
+
+
+        // Challenge Task 1: Student Result Processing
+
+        let studentsResult = ["Ravi", "Priya", "Kiran", "Anu"];
+
+        for (let student of studentsResult) {
+            console.log("Checking Result for " + student);
+        }
+
+        console.log("All Results Published Successfully");
+
+
+        // Challenge Task 2: Roll Number Classification
+
+        for (let i = 1; i <= 20; i++) {
+
+            if (i % 2 == 0) {
+                console.log("Student " + i + " - Even Roll Number");
+            }
+            else {
+                console.log("Student " + i + " - Odd Roll Number");
+            }
+
+        }
+    </script>
+</body>
+
+</html>
