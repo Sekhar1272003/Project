@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Warehouse Management System</title>
+</head>
+
+<body>
+    <script>
+        const products = [
+            { name: "  wireless mouse ", category: "electronics", quantity: 25, price: 799 },
+            { name: "Gaming Keyboard", category: "ELECTRONICS", quantity: 8, price: 2499 },
+            { name: "office chair", category: "furniture", quantity: 3, price: 5999 },
+            { name: "LED Monitor", category: "Electronics", quantity: 15, price: 10999 },
+            { name: "water bottle", category: "home", quantity: 50, price: 299 }
+        ];
+
+        console.log("SMART WAREHOUSE MANAGEMENT SYSTEM");
+
+        // 1. CLEAN DATA
+        products.forEach(product => {
+            product.name = product.name.trim();
+
+            let words = product.name.split(" ");
+            product.name = words.map(word =>
+                word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            ).join(" ");
+
+            product.category = product.category.toUpperCase();
+        });
+
+        console.log("CLEANED DATA");
+        console.log(products);
+
+        // 2. INVENTORY VALUE
+        products.forEach(product => {
+            product.inventory = product.quantity * product.price;
+        });
+
+        console.log("INVENTORY VALUES");
+        console.log(products);
+
+        // 3. STOCK STATUS
+        products.forEach(product => {
+            if (product.quantity > 20) {
+                product.status = "HIGH STOCK";
+            }
+            else if (product.quantity >= 10 && product.quantity <= 20) {
+                product.status = "MEDIUM STOCK";
+            }
+            else if (product.quantity >= 1 && product.quantity <= 9) {
+                product.status = "LOW STOCK";
+            }
+            else {
+                product.status = "OUT OF STOCK";
+            }
+        });
+
+        console.log("STOCK STATUS");
+        console.log(products);
+
+        // 4. WAREHOUSE STATISTICS
+        let totalProducts = products.length;
+
+        let totalValue = products.reduce(
+            (sum, product) => sum + product.inventory, 0
+        );
+
+        let avgPrice =
+            products.reduce((sum, product) => sum + product.price, 0) / totalProducts;
+
+        let costlyProduct = products.reduce(
+            (max, product) => product.price > max.price ? product : max
+        );
+
+        let cheapProduct = products.reduce(
+            (min, product) => product.price < min.price ? product : min
+        );
+
+        let highQty = products.reduce(
+            (max, product) => product.quantity > max.quantity ? product : max
+        );
+
+        let lowQty = products.reduce(
+            (min, product) => product.quantity < min.quantity ? product : min
+        );
+
+        console.log("WAREHOUSE STATISTICS");
+        console.log("Total Products:", totalProducts);
+        console.log("Total Inventory Value:", totalValue);
+        console.log("Average Price:", avgPrice);
+        console.log("Most Expensive:", costlyProduct.name);
+        console.log("Cheapest Product:", cheapProduct.name);
+        console.log("Highest Quantity:", highQty.name);
+        console.log("Lowest Quantity:", lowQty.name);
+
+        // 5. SEARCH FEATURE
+        let keyword = "ele";
+
+        let searchData = products.filter(product =>
+            product.category.toLowerCase().includes(keyword.toLowerCase())
+        );
+
+        console.log("SEARCH RESULTS");
+        console.log(searchData);
+
+        // 6A. SORT PRICE HIGH TO LOW
+        let priceSort = [...products].sort(
+            (a, b) => b.price - a.price
+        );
+
+        console.log("PRICE SORT");
+        console.log(priceSort);
+
+        // 6B. SORT QUANTITY LOW TO HIGH
+        let quantitySort = [...products].sort(
+            (a, b) => a.quantity - b.quantity
+        );
+
+        console.log("QUANTITY SORT");
+        console.log(quantitySort);
+
+        // 7. TOP 3 COSTLIEST PRODUCTS
+        let topThree = [...products]
+            .sort((a, b) => b.price - a.price)
+            .slice(0, 3);
+
+        console.log("TOP 3 COSTLIEST PRODUCTS");
+        console.log(topThree);
+
+        // 8. LOW STOCK ALERT
+        console.log("LOW STOCK ALERT");
+
+        products.forEach(product => {
+            if (product.quantity < 5) {
+                console.log("WARNING:", product.name, "stock is critically low");
+            }
+        });
+
+        // 9. CATEGORY SUMMARY
+        let categoryInfo = {};
+
+        products.forEach(product => {
+            categoryInfo[product.category] =
+                (categoryInfo[product.category] || 0) + 1;
+        });
+
+        console.log("CATEGORY SUMMARY");
+        console.log(categoryInfo);
+
+        // 10. STOCK VISUALIZATION
+        console.log("STOCK VISUALIZATION");
+
+        products.forEach(product => {
+            console.log(
+                product.name,
+                "#".repeat(product.quantity)
+            );
+        });
+    </script>
+</body>
+
+</html>
