@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeless Watches</title>
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial;
+            background-color:#f2f2f2;
+        }
+
+        /* Header */
+        header{
+            background-color:black;
+            color:white;
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        header h2{
+            margin:0;
+        }
+
+        header input{
+            width:300px;
+            padding:8px;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin:10px;
+        }
+
+        /* Main container */
+        .container{
+            width:90%;
+            margin:auto;
+            margin-top:30px;
+            display:flex;
+            gap:40px;
+        }
+
+        /* Left side */
+        .left{
+            width:50%;
+        }
+
+        .main-image{
+            width:100%;
+            border-radius:10px;
+        }
+
+        .small-images{
+            margin-top:15px;
+        }
+
+        .small-images img{
+            width:80px;
+            margin-right:10px;
+            border:1px solid gray;
+        }
+
+        /* Right side */
+        .right{
+            width:50%;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+        }
+
+        .brand{
+            color:gray;
+        }
+
+        .price{
+            margin-top:20px;
+        }
+
+        .new-price{
+            font-size:28px;
+            font-weight:bold;
+        }
+
+        .old-price{
+            text-decoration:line-through;
+            color:gray;
+            margin-left:10px;
+        }
+
+        .discount{
+            color:green;
+            margin-left:10px;
+        }
+
+        .description{
+            margin-top:20px;
+            line-height:25px;
+        }
+
+        .rating{
+            margin-top:20px;
+            color:orange;
+        }
+
+        /* Quantity */
+        .quantity{
+            margin-top:20px;
+        }
+
+        .quantity button{
+            padding:10px 15px;
+            background:black;
+            color:white;
+            border:none;
+        }
+
+        .quantity input{
+            width:40px;
+            text-align:center;
+            padding:10px;
+        }
+
+        /* Add to bag */
+        .bag{
+            width:100%;
+            margin-top:20px;
+            padding:15px;
+            background:black;
+            color:white;
+            border:none;
+            font-size:18px;
+        }
+
+        /* Offer box */
+        .offer{
+            background:#eeeeee;
+            margin-top:30px;
+            padding:20px;
+            text-align:center;
+            border-radius:10px;
+        }
+
+        .offer button{
+            padding:10px 20px;
+            background:black;
+            color:white;
+            border:none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <h2>TIMELESS WATCHES</h2>
+
+        <input type="text" placeholder="Search...">
+
+        <nav>
+            <a href="#">Shop</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Brands</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Main Section -->
+
+    <div class="container">
+
+        <!-- Left Side -->
+
+        <div class="left">
+
+            <img class="main-image"
+            src="https://images.pexels.com/photos/12835315/pexels-photo-12835315.jpeg"
+            alt="watch">
+
+            <div class="small-images">
+
+                <img src="https://images.pexels.com/photos/12835315/pexels-photo-12835315.jpeg">
+
+                <img src="https://images.pexels.com/photos/12835315/pexels-photo-12835315.jpeg">
+
+                <img src="https://images.pexels.com/photos/12835315/pexels-photo-12835315.jpeg">
+
+                <img src="https://images.pexels.com/photos/12835315/pexels-photo-12835315.jpeg">
+
+            </div>
+
+        </div>
+
+
+        <!-- Right Side -->
+
+        <div class="right">
+
+            <h1>Elegant Luxury Watch</h1>
+
+            <p class="brand">PRESTIGE TIME CO.</p>
+
+            <div class="price">
+
+                <span class="new-price">$499.99</span>
+
+                <span class="old-price">$799.99</span>
+
+                <span class="discount">38% OFF</span>
+
+            </div>
+
+
+            <p class="description">
+
+                This luxurious timepiece combines elegance with precision craftsmanship.
+                Perfect for formal occasions or everyday wear. It features premium materials
+                and beautiful design.
+
+            </p>
+
+
+            <p class="rating">
+
+                ⭐⭐⭐⭐⭐ Rated 4.8/5 (256 reviews)
+
+            </p>
+
+
+            <!-- Quantity -->
+
+            <div class="quantity">
+
+                <button>-</button>
+
+                <input type="text" value="1">
+
+                <button>+</button>
+
+            </div>
+
+
+            <!-- Add to Bag -->
+
+            <button class="bag">Add to Bag</button>
+
+
+            <!-- Offer -->
+
+            <div class="offer">
+
+                <h3>Limited-Time Offer!</h3>
+
+                <p>Get additional 10% off your first purchase.</p>
+
+                <button>Sign Up Now</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
