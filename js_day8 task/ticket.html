@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Pricing</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            text-align: center;
+            align-items: center;
+            background-color: rgb(7, 95, 125);
+            margin-top: 80px;
+        }
+
+        .box{
+            background: white;
+            width: 350px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input, select{
+            padding: 10px;
+            width: 220px;
+            margin: 10px;
+        }
+
+        button{
+            padding: 10px 20px;
+            background: green;
+            color: white;
+            cursor: pointer;
+        }
+
+        p{
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>Movie Ticket Price</h2>
+
+        <input type="number" id="age" placeholder="Enter Age">
+
+        <select id="showtime">
+            <option value="matinee">Matinee Show</option>
+            <option value="evening">Evening Show</option>
+        </select>
+
+        <button onclick="getData()">Check Price</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+
+        function ticketPrice(age){
+
+            let showtime = document.getElementById("showtime").value;
+
+            if(isNaN(age) || age < 0){
+                document.getElementById("result").innerHTML =
+                "Invalid Age";
+            }
+
+            else if(age < 12){
+                document.getElementById("result").innerHTML =
+                "Child Ticket Price = ₹5";
+            }
+
+            else if(age >= 65){
+                document.getElementById("result").innerHTML =
+                "Senior Citizen Ticket Price = ₹7";
+            }
+
+            else if(showtime === "matinee"){
+                document.getElementById("result").innerHTML =
+                "Adult Matinee Ticket Price = ₹10";
+            }
+
+            else{
+                document.getElementById("result").innerHTML =
+                "Adult Evening Ticket Price = ₹15";
+            }
+        }
+
+        function getData(){
+            let age = Number(document.getElementById("age").value);
+
+            ticketPrice(age);   
+        }
+
+    </script>
+
+</body>
+</html>
