@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow Button</title>
+
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:#f0f0f0;
+            font-family:Arial;
+        }
+
+        .box{
+            background:white;
+            width:250px;
+            padding:20px;
+            text-align:center;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        img{
+            width:80px;
+            height:80px;
+            border-radius:50%;
+        }
+
+        button{
+            width:150px;
+            padding:10px;
+            border:none;
+            color:white;
+            background:blue;
+            border-radius:5px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+    <h2>Sarah Jensen</h2>
+
+    <p>@sarah_j</p>
+
+    <button onclick="changeButton()" id="btn">Follow</button>
+
+</div>
+
+<script>
+
+function changeButton(){
+
+    let button = document.getElementById("btn");
+
+    if(button.innerHTML == "Follow"){
+        button.innerHTML = "Following";
+        button.style.background = "green";
+    }
+
+    else{
+        button.innerHTML = "Follow";
+        button.style.background = "blue";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
