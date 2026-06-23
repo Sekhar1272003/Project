@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Billing System</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin: 20px;
+    }
+
+    .container{
+        width: 60%;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    input{
+        padding: 8px;
+        margin: 5px;
+        width: 150px;
+    }
+
+    button{
+        padding: 8px 15px;
+        background: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    table{
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    th, td{
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .delete-btn{
+        background: red;
+    }
+
+    h3{
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Simple Billing System</h2>
+
+    <input type="text" id="productName" placeholder="Product Name">
+    <input type="number" id="price" placeholder="Price">
+    <input type="number" id="quantity" placeholder="Quantity">
+
+    <button onclick="addProduct()">Add Product</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody id="productTable">
+        </tbody>
+    </table>
+
+    <h3 id="totalProducts">Total Products: 0</h3>
+    <h3 id="grandTotal">Grand Total: ₹0</h3>
+    <h3 id="averageCost">Average Cost per Product: ₹0</h3>
+</div>
+
+<script>
+
+    // array to store products
+    let products = [];
+
+    // add product function
+    function addProduct(){
+
+        let name = document.getElementById("productName").value;
+        let price = Number(document.getElementById("price").value);
+        let quantity = Number(document.getElementById("quantity").value);
+
+        // validation using conditions
+        if(name === "" || price <= 0 || quantity <= 0){
+            alert("Enter valid details");
+            return;
+        }
+
+        // object creation
+        let product = {
+            productName: name,
+            price: price,
+            quantity: quantity,
+            total: price * quantity
+        };
+
+        // add object into array
+        products.push(product);
+
+        displayProducts();
+
+        // clear input fields
+        document.getElementById("productName").value = "";
+        document.getElementById("price").value = "";
+        document.getElementById("quantity").value = "";
+    }
+
+
+    // display products in table
+    function displayProducts(){
+
+        let table = document.getElementById("productTable");
+        table.innerHTML = "";
+
+        // loop
+        products.forEach(function(item,index){
+
+            table.innerHTML += `
+            <tr>
+                <td>${item.productName}</td>
+                <td>${item.price}</td>
+                <td>${item.quantity}</td>
+                <td>${item.total}</td>
+                <td>
+                  <button class="delete-btn" onclick="deleteProduct(${index})">
+                  Delete
+                  </button>
+                </td>
+            </tr>
+            `;
+        });
+
+        calculateBill();
+    }
+
+
+    // calculate summary
+    function calculateBill(){
+
+        let totalProducts = products.length;
+        let grandTotal = 0;
+
+        // loop for total
+        for(let i=0; i<products.length; i++){
+            grandTotal = grandTotal + products[i].total;
+        }
+
+        let average = 0;
+
+        if(totalProducts > 0){
+            average = grandTotal / totalProducts;
+        }
+
+        // DOM update
+        document.getElementById("totalProducts").innerText =
+        `Total Products: ${totalProducts}`;
+
+        document.getElementById("grandTotal").innerText =
+        `Grand Total: ₹${grandTotal.toFixed(2)}`;
+
+        document.getElementById("averageCost").innerText =
+        `Average Cost per Product: ₹${average.toFixed(2)}`;
+    }
+
+
+    // delete product
+    function deleteProduct(index){
+
+        products.splice(index,1);
+
+        displayProducts();
+    }
+
+</script>
+
+</body>
+</html>
