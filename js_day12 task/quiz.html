@@ -12,9 +12,28 @@
 
   <!-- Welcome Screen -->
   <div id="welcome-screen" class="screen active">
-    <h1>JavaScript Quiz</h1>
-    <p>Test your JavaScript knowledge with this fun quiz! Answer all the questions and see your final score.</p>
-    <p class="total-q">Total Questions: <span id="total-questions-display">10</span></p>
+    <div class="icon-circle">?</div>
+    <h1>Welcome to the<br>JavaScript Quiz!</h1>
+    <p>Test your JavaScript knowledge with <span id="total-questions-display">10</span> multiple choice questions.</p>
+
+    <div class="feature-row">
+      <div class="feature-box">
+        <div class="feature-icon">📋</div>
+        <span id="feature-total">10</span>
+        <small>Questions</small>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">⏱️</div>
+        <span>Multiple</span>
+        <small>Choice</small>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">🏆</div>
+        <span>Test Your</span>
+        <small>Knowledge</small>
+      </div>
+    </div>
+
     <button id="start-btn">Start Quiz</button>
   </div>
 
@@ -22,9 +41,11 @@
   <div id="quiz-screen" class="screen">
     <div class="quiz-header">
       <span id="progress-text">Question 1 of 10</span>
-      <div class="progress-bar">
-        <div id="progress-fill"></div>
-      </div>
+      <span id="timer-display" class="timer">⏱ 15s</span>
+    </div>
+
+    <div class="progress-bar">
+      <div id="progress-fill"></div>
     </div>
 
     <h2 id="question-text">Question text goes here</h2>
@@ -40,25 +61,29 @@
 
   <!-- Result Screen -->
   <div id="result-screen" class="screen">
+    <div class="icon-circle trophy">🏆</div>
     <h1>Quiz Completed!</h1>
-    <p id="performance-message" class="performance-message"></p>
+    <p class="performance-message" id="performance-message">Great job! Here are your results.</p>
+
+    <div class="score-circle-wrap">
+      <div id="score-circle" class="score-circle">
+        <span id="result-percentage">0%</span>
+        <small>Your Score</small>
+      </div>
+    </div>
 
     <div class="result-stats">
-      <div class="stat-box">
-        <span class="stat-label">Total Questions</span>
-        <span id="result-total" class="stat-value">0</span>
-      </div>
       <div class="stat-box correct">
-        <span class="stat-label">Correct Answers</span>
         <span id="result-correct" class="stat-value">0</span>
+        <small>Correct</small>
       </div>
       <div class="stat-box wrong">
-        <span class="stat-label">Wrong Answers</span>
         <span id="result-wrong" class="stat-value">0</span>
+        <small>Wrong</small>
       </div>
-      <div class="stat-box">
-        <span class="stat-label">Percentage</span>
-        <span id="result-percentage" class="stat-value">0%</span>
+      <div class="stat-box total">
+        <span id="result-total" class="stat-value">0</span>
+        <small>Total</small>
       </div>
     </div>
 

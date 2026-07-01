@@ -1,9 +1,9 @@
-// ===== Quiz Data (JavaScript Questions) =====
-const questions = [
+// Questions
+let questions = [
   {
-    question: "Which keyword is used to declare a variable in JavaScript?",
-    options: ["int", "var", "string", "define"],
-    correctAnswer: 1
+    question: "Which company developed JavaScript?",
+    options: ["Netscape", "Microsoft", "Google", "Oracle"],
+    correctAnswer: 0
   },
   {
     question: "Which symbol is used for single-line comments in JavaScript?",
@@ -16,13 +16,8 @@ const questions = [
     correctAnswer: 2
   },
   {
-    question: "What does 'DOM' stand for?",
-    options: [
-      "Document Object Model",
-      "Data Object Model",
-      "Document Order Model",
-      "Display Object Model"
-    ],
+    question: "Which keyword is used to declare a variable in JavaScript?",
+    options: ["var", "let", "constant", "variable"],
     correctAnswer: 0
   },
   {
@@ -51,154 +46,227 @@ const questions = [
     correctAnswer: 1
   },
   {
-    question: "Which keyword is used to declare a constant in JavaScript?",
-    options: ["var", "let", "const", "constant"],
-    correctAnswer: 2
+    question: "Which method converts JSON data into a JavaScript object?",
+    options: ["JSON.parse()", "JSON.stringify()", "JSON.convert()", "JSON.object()"],
+    correctAnswer: 0
   }
 ];
 
-// ===== State Variables =====
-let currentQuestionIndex = 0;
-let userAnswers = new Array(questions.length).fill(null);
+// Variables
+const TIME_PER_QUESTION = 15;
 
-// ===== DOM Elements =====
-const welcomeScreen = document.getElementById("welcome-screen");
-const quizScreen = document.getElementById("quiz-screen");
-const resultScreen = document.getElementById("result-screen");
+let current = 0;
+let answers = [];
+let timeLeft = 15;
+let timerId;
 
-const startBtn = document.getElementById("start-btn");
-const prevBtn = document.getElementById("prev-btn");
-const nextBtn = document.getElementById("next-btn");
-const submitBtn = document.getElementById("submit-btn");
-const restartBtn = document.getElementById("restart-btn");
+// Elements
+let welcome = document.getElementById("welcome-screen");
+let quiz = document.getElementById("quiz-screen");
+let result = document.getElementById("result-screen");
 
-const totalQuestionsDisplay = document.getElementById("total-questions-display");
-const progressText = document.getElementById("progress-text");
-const progressFill = document.getElementById("progress-fill");
-const questionText = document.getElementById("question-text");
-const optionsContainer = document.getElementById("options-container");
+let questionEl = document.getElementById("question-text");
+let optionsEl = document.getElementById("options-container");
+let progressText = document.getElementById("progress-text");
+let progressFill = document.getElementById("progress-fill");
+let timerDisplay = document.getElementById("timer-display");
 
-const resultTotal = document.getElementById("result-total");
-const resultCorrect = document.getElementById("result-correct");
-const resultWrong = document.getElementById("result-wrong");
-const resultPercentage = document.getElementById("result-percentage");
-const performanceMessage = document.getElementById("performance-message");
+document.getElementById("total-questions-display").innerHTML = questions.length;
+document.getElementById("feature-total").innerHTML = questions.length;
 
-// ===== Initialize =====
-totalQuestionsDisplay.textContent = questions.length;
 
-// ===== Screen Switching =====
-function showScreen(screen) {
-  [welcomeScreen, quizScreen, resultScreen].forEach(s => s.classList.remove("active"));
-  screen.classList.add("active");
-}
+// Start Button
+document.getElementById("start-btn").onclick = function () {
 
-// ===== Start Quiz =====
-startBtn.addEventListener("click", () => {
-  currentQuestionIndex = 0;
-  userAnswers = new Array(questions.length).fill(null);
-  showScreen(quizScreen);
-  loadQuestion();
-});
+  welcome.classList.remove("active");
+  quiz.classList.add("active");
 
-// ===== Load Question =====
-function loadQuestion() {
-  const q = questions[currentQuestionIndex];
+  current = 0;
+  answers = [];
 
-  progressText.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
-  const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
-  progressFill.style.width = progressPercent + "%";
+  showQuestion();
+};
 
-  questionText.textContent = q.question;
 
-  optionsContainer.innerHTML = "";
-  q.options.forEach((optionText, index) => {
-    const optionDiv = document.createElement("div");
-    optionDiv.classList.add("option");
-    optionDiv.textContent = optionText;
-    optionDiv.dataset.index = index;
+// Show Question
+function showQuestion() {
 
-    if (userAnswers[currentQuestionIndex] === index) {
-      optionDiv.classList.add("selected");
+  clearInterval(timerId);
+
+  let q = questions[current];
+
+  // question
+  questionEl.innerHTML = q.question;
+
+  // clear old options
+  optionsEl.innerHTML = "";
+
+  // show options
+  for (let i = 0; i < 4; i++) {
+
+    let div = document.createElement("div");
+
+    div.className = "option";
+
+    div.innerHTML = q.options[i];
+
+    // old selected answer
+    if (answers[current] == i) {
+      div.classList.add("selected");
     }
 
-    optionDiv.addEventListener("click", () => selectOption(index));
-    optionsContainer.appendChild(optionDiv);
-  });
+    // click option
+    div.onclick = function () {
 
-  prevBtn.disabled = currentQuestionIndex === 0;
+      answers[current] = i;
 
-  if (currentQuestionIndex === questions.length - 1) {
-    nextBtn.style.display = "none";
-    submitBtn.style.display = "inline-block";
+      let all = document.querySelectorAll(".option");
+
+      for (let j = 0; j < all.length; j++) {
+        all[j].classList.remove("selected");
+      }
+
+      div.classList.add("selected");
+    };
+
+    optionsEl.appendChild(div);
+  }
+
+  // progress
+  progressText.innerHTML =
+    "Question " + (current + 1) + " of " + questions.length;
+
+  progressFill.style.width =
+    ((current + 1) / questions.length) * 100 + "%";
+
+  // previous button
+  if (current == 0) {
+    document.getElementById("prev-btn").disabled = true;
   } else {
-    nextBtn.style.display = "inline-block";
-    submitBtn.style.display = "none";
+    document.getElementById("prev-btn").disabled = false;
   }
+
+  // submit button on last question
+  if (current == questions.length - 1) {
+    document.getElementById("next-btn").style.display = "none";
+    document.getElementById("submit-btn").style.display = "inline";
+  } else {
+    document.getElementById("next-btn").style.display = "inline";
+    document.getElementById("submit-btn").style.display = "none";
+  }
+
+  startTimer();
 }
 
-// ===== Select Option =====
-function selectOption(index) {
-  userAnswers[currentQuestionIndex] = index;
 
-  const allOptions = optionsContainer.querySelectorAll(".option");
-  allOptions.forEach(opt => opt.classList.remove("selected"));
-  allOptions[index].classList.add("selected");
-}
+// Timer
+function startTimer() {
 
-// ===== Navigation =====
-prevBtn.addEventListener("click", () => {
-  if (currentQuestionIndex > 0) {
-    currentQuestionIndex--;
-    loadQuestion();
-  }
-});
+  timeLeft = TIME_PER_QUESTION;
 
-nextBtn.addEventListener("click", () => {
-  if (currentQuestionIndex < questions.length - 1) {
-    currentQuestionIndex++;
-    loadQuestion();
-  }
-});
+  timerDisplay.innerHTML = "⏱ " + timeLeft + "s";
 
-// ===== Submit Quiz =====
-submitBtn.addEventListener("click", () => {
-  let correctCount = 0;
-  let wrongCount = 0;
+  timerId = setInterval(function () {
 
-  questions.forEach((q, index) => {
-    if (userAnswers[index] === q.correctAnswer) {
-      correctCount++;
-    } else {
-      wrongCount++;
+    timeLeft--;
+
+    timerDisplay.innerHTML = "⏱ " + timeLeft + "s";
+
+    // auto next
+    if (timeLeft == 0) {
+
+      clearInterval(timerId);
+
+      if (current < questions.length - 1) {
+        current++;
+        showQuestion();
+      } else {
+        submitQuiz();
+      }
     }
-  });
 
-  const percentage = Math.round((correctCount / questions.length) * 100);
+  }, 1000);
+}
 
-  resultTotal.textContent = questions.length;
-  resultCorrect.textContent = correctCount;
-  resultWrong.textContent = wrongCount;
-  resultPercentage.textContent = percentage + "%";
 
-  let message = "";
-  if (percentage >= 90) {
-    message = "Excellent!";
-  } else if (percentage >= 70) {
-    message = "Great Job!";
-  } else if (percentage >= 50) {
-    message = "Good Effort!";
-  } else {
-    message = "Keep Practicing!";
+// Next Button
+document.getElementById("next-btn").onclick = function () {
+
+  if (current < questions.length - 1) {
+    current++;
+    showQuestion();
   }
-  performanceMessage.textContent = message;
 
-  showScreen(resultScreen);
-});
+};
 
-// ===== Restart Quiz =====
-restartBtn.addEventListener("click", () => {
-  currentQuestionIndex = 0;
-  userAnswers = new Array(questions.length).fill(null);
-  showScreen(welcomeScreen);
-});
+
+// Previous Button
+document.getElementById("prev-btn").onclick = function () {
+
+  if (current > 0) {
+    current--;
+    showQuestion();
+  }
+
+};
+
+
+// Submit
+document.getElementById("submit-btn").onclick = function () {
+  submitQuiz();
+};
+
+
+// Result
+function submitQuiz() {
+
+  clearInterval(timerId);
+
+  let score = 0;
+
+  // check answers
+  for (let i = 0; i < questions.length; i++) {
+
+    if (answers[i] == questions[i].correctAnswer) {
+      score++;
+    }
+
+  }
+
+  let wrong = questions.length - score;
+  let percent = (score / questions.length) * 100;
+
+  quiz.classList.remove("active");
+  result.classList.add("active");
+
+  document.getElementById("result-total").innerHTML = questions.length;
+  document.getElementById("result-correct").innerHTML = score;
+  document.getElementById("result-wrong").innerHTML = wrong;
+  document.getElementById("result-percentage").innerHTML = percent + "%";
+
+  // message
+  if (percent >= 80) {
+    document.getElementById("performance-message").innerHTML = "Excellent!";
+  }
+  else if (percent >= 50) {
+    document.getElementById("performance-message").innerHTML = "Good Job!";
+  }
+  else {
+    document.getElementById("performance-message").innerHTML = "Keep Practicing!";
+  }
+
+}
+
+
+// Restart
+document.getElementById("restart-btn").onclick = function () {
+
+  clearInterval(timerId);
+
+  current = 0;
+  answers = [];
+
+  result.classList.remove("active");
+  welcome.classList.add("active");
+
+};
