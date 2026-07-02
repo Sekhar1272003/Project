@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive JavaScript Demo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: 0.5s;
+        }
+
+        .container {
+            width: 650px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+            transition: 0.4s;
+        }
+
+        p {
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .btn-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        button {
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn1 {
+            background: #ff6b6b;
+        }
+
+        .btn2 {
+            background: #4ecdc4;
+        }
+
+        .btn3 {
+            background: #6c5ce7;
+        }
+
+        .btn4 {
+            background: #f39c12;
+        }
+
+        .btn5 {
+            background: #2d3436;
+            grid-column: span 2;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 id="mainHeading">Welcome to JavaScript World</h1>
+
+        <p id="description">
+            Click buttons below and watch JavaScript magic happen.
+        </p>
+
+        <div class="btn-box">
+            <button class="btn1" onclick="changeHeading()">Change Heading</button>
+
+            <button class="btn2" onclick="changeColor()">Change Text Color</button>
+
+            <button class="btn3" onclick="changeBackground()">Change Background</button>
+
+            <button class="btn4" onclick="showDate()">Show Date & Time</button>
+
+            <button class="btn5" onclick="resetAll()">Reset Everything</button>
+        </div>
+
+    </div>
+
+    <script>
+
+        function changeHeading() {
+            document.getElementById("mainHeading").innerHTML =
+                "JavaScript Makes Websites Interactive!";
+        }
+
+        function changeColor() {
+
+            let colors = ["red", "green", "blue", "purple", "orange", "brown"];
+
+            let randomColor =
+                colors[Math.floor(Math.random() * colors.length)];
+
+            document.getElementById("mainHeading").style.color =
+                randomColor;
+        }
+
+        function changeBackground() {
+
+            let bgColors = [
+                "#f8c291",
+                "#78e08f",
+                "#82ccdd",
+                "#f6b93b",
+                "#e55039",
+                "#60a3bc"
+            ];
+
+            let randomBg =
+                bgColors[Math.floor(Math.random() * bgColors.length)];
+
+            document.body.style.background =
+                randomBg;
+        }
+
+        function showDate() {
+
+            document.getElementById("description").innerHTML =
+                "Today: " + new Date();
+        }
+
+        function resetAll() {
+
+            document.getElementById("mainHeading").innerHTML =
+                "Welcome to JavaScript World";
+
+            document.getElementById("mainHeading").style.color =
+                "black";
+
+            document.getElementById("description").innerHTML =
+                "Click buttons below and watch JavaScript magic happen.";
+
+            document.body.style.background =
+                "linear-gradient(135deg, #74ebd5, #9face6)";
+        }
+
+    </script>
+
+</body>
+
+</html>

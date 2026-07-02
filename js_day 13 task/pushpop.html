@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push Pop Array</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:#f4f4f4;
+        }
+
+        .container{
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+            text-align:center;
+            width:350px;
+        }
+
+        input{
+            width:80%;
+            padding:10px;
+            margin:10px 0;
+            font-size:16px;
+        }
+
+        button{
+            padding:10px 20px;
+            margin:5px;
+            border:none;
+            cursor:pointer;
+            font-size:16px;
+            border-radius:5px;
+        }
+
+        .push{
+            background:green;
+            color:white;
+        }
+
+        .pop{
+            background:red;
+            color:white;
+        }
+
+        #output{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Array Push & Pop</h2>
+
+        <input type="text" id="value" placeholder="Enter value">
+
+        <br>
+
+        <button class="push" onclick="pushValue()">Push</button>
+        <button class="pop" onclick="popValue()">Pop</button>
+
+        <div id="output">Array: []</div>
+    </div>
+
+<script>
+
+    let arr = [];
+
+    function pushValue(){
+
+        let input = document.getElementById("value").value;
+
+        if(input !== ""){
+            arr.push(input);
+            document.getElementById("value").value = "";
+            displayArray();
+        }
+        else{
+            alert("Enter a value");
+        }
+    }
+
+    function popValue(){
+
+        if(arr.length > 0){
+            arr.pop();
+            displayArray();
+        }
+        else{
+            alert("Array is empty");
+        }
+    }
+
+    function displayArray(){
+        document.getElementById("output").innerHTML = "Array: [" + arr.join(", ") + "]";
+    }
+
+</script>
+
+</body>
+</html>
